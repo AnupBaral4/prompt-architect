@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>FAQ | Prompt Architect v6.0</title>
+    <meta name="description" content="Frequently Asked Questions about Prompt Architect">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="flex flex-col items-center pb-10 pt-12">
+    <!-- Background Effects -->
+    <div class="hero-bg"></div>
+    <div class="particles" id="particles"></div>
+
+    <div class="content-wrapper w-full">
+        <nav class="w-full max-w-2xl px-4 mx-auto flex justify-between items-end mb-20 reveal" style="animation-delay: 0.1s;">
+            <div>
+                <a href="index.html">
+                    <h1 class="text-2xl font-bold tracking-tighter leading-none" style="background: linear-gradient(135deg, #00ff88 0%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ARCHITECT</h1>
+                    <p class="text-[9px] text-neutral-500 uppercase tracking-[0.25em] font-bold mt-2">v6.0 Build System</p>
+                </a>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="about.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">About</a>
+                <a href="faq.html" class="text-[10px] text-green-400 uppercase tracking-widest font-bold transition-colors">FAQ</a>
+                <a href="contact.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">Contact</a>
+            </div>
+        </nav>
+
+        <main class="w-full max-w-2xl px-4 mx-auto space-y-20">
+            
+            <section class="reveal" style="animation-delay: 0.2s;">
+                <h1 class="text-5xl md:text-7xl font-[200] tracking-tighter mb-8" style="background: linear-gradient(135deg, #00ff88 0%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Frequently Asked Questions</h1>
+                <p class="text-xl text-neutral-400 leading-relaxed">Everything you need to know about Prompt Architect</p>
+            </section>
+
+            <section class="reveal space-y-6" style="animation-delay: 0.3s;">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-white">Getting Started</h2>
+                
+                <div class="faq-item synthesis-box rounded-3xl p-8">
+                    <button class="faq-question w-full text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                        <h3 class="text-xl font-bold text-white pr-4">What is Prompt Architect?</h3>
+                        <span class="text-green-400 text-2xl transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-neutral-300 leading-relaxed">
+                        <p>Prompt Architect is an industrial-grade build environment designed to synthesize complex natural language into optimized parameters for Midjourney V6.0 and DALL-E 3 Art Models. It helps you create professional-quality prompts through an intuitive interface with curated attribute libraries.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item synthesis-box rounded-3xl p-8">
+                    <button class="faq-question w-full text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                        <h3 class="text-xl font-bold text-white pr-4">How do I use Prompt Architect?</h3>
+                        <span class="text-green-400 text-2xl transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-neutral-300 leading-relaxed">
+                        <p>Simply follow these steps:</p>
+                        <ol class="list-decimal list-inside space-y-2 mt-3">
+                            <li>Initialize your concept in the subject field at the top</li>
+                            <li>Select modular attributes from the curated categories (Art Style, Composition, Mood, Lighting, Palette, Quality)</li>
+                            <li>Watch your prompt build in real-time in the Synthesis Box</li>
+                            <li>Click "Copy Final String" to use your optimized prompt in AI art generators</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item synthesis-box rounded-3xl p-8">
+                    <button class="faq-question w-full text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                        <h3 class="text-xl font-bold text-white pr-4">Is Prompt Architect free to use?</h3>
+                        <span class="text-green-400 text-2xl transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-neutral-300 leading-relaxed">
+                        <p>Yes! Prompt Architect is completely free to use. We operate on an ad-supported model, which allows us to provide this professional tool to the global AI community at no cost.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal space-y-6" style="animation-delay: 0.4s;">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-white">Technical Questions</h2>
+                
+                <div class="faq-item synthesis-box rounded-3xl p-8">
+                    <button class="faq-question w-full text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                        <h3 class="text-xl font-bold text-white pr-4">Which AI models are supported?</h3>
+                        <span class="text-green-400 text-2xl transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-neutral-300 leading-relaxed">
+                        <p>Prompt Architect is optimized for:</p>
+                        <ul class="list-disc list-inside space-y-2 mt-3">
+                            <li><strong>Midjourney V6.0</strong> - The latest version with enhanced natural language understanding</li>
+                            <li><strong>DALL-E 3</strong> - OpenAI's advanced image generation model</li>
+                            <li>The prompts also work well with other AI art generators that use natural language processing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item synthesis-box rounded-3xl p-8">
+                    <button class="faq-question w-full text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                        <h3 class="text-xl font-bold text-white pr-4">What does "V6.0 Optimization" mean?</h3>
+                        <span class="text-green-400 text-2xl transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-neutral-300 leading-relaxed">
+                        <p>The output string is engineered to follow the specific grammatical structure preferred by the latest generative models. This includes subject-first logic followed by stylistic modifiers, which helps the AI understand your intent more accurately and produce better results.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item synthesis-box rounded-3xl p-8">
+                    <button class="faq-question w-full text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                        <h3 class="text-xl font-bold text-white pr-4">Does it work on mobile devices?</h3>
+                        <span class="text-green-400 text-2xl transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-neutral-300 leading-relaxed">
+                        <p>Absolutely! Prompt Architect is fully responsive and works seamlessly on desktop, tablet, and mobile devices. The interface adapts to your screen size for optimal usability.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal space-y-6" style="animation-delay: 0.5s;">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-white">Privacy & Data</h2>
+                
+                <div class="faq-item synthesis-box rounded-3xl p-8">
+                    <button class="faq-question w-full text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                        <h3 class="text-xl font-bold text-white pr-4">Do you store my prompts?</h3>
+                        <span class="text-green-400 text-2xl transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-neutral-300 leading-relaxed">
+                        <p>No! Prompt Architect operates entirely client-side. This means all prompt generation occurs locally within your browser's memory. We do not host databases or store your prompts, ensuring maximum privacy and zero data retention.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item synthesis-box rounded-3xl p-8">
+                    <button class="faq-question w-full text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                        <h3 class="text-xl font-bold text-white pr-4">Is my data secure?</h3>
+                        <span class="text-green-400 text-2xl transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-neutral-300 leading-relaxed">
+                        <p>Yes. Since everything runs in your browser and nothing is sent to our servers, your creative ideas remain completely private. We use Google AdSense for advertisements, which may use cookies for ad personalization, but your prompt data is never transmitted or stored.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item synthesis-box rounded-3xl p-8">
+                    <button class="faq-question w-full text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                        <h3 class="text-xl font-bold text-white pr-4">Do I need to create an account?</h3>
+                        <span class="text-green-400 text-2xl transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-neutral-300 leading-relaxed">
+                        <p>No account needed! You can start using Prompt Architect immediately without any registration. Just visit the site and begin building your prompts.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal space-y-6" style="animation-delay: 0.6s;">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-white">Usage & Features</h2>
+                
+                <div class="faq-item synthesis-box rounded-3xl p-8">
+                    <button class="faq-question w-full text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                        <h3 class="text-xl font-bold text-white pr-4">Can I customize the attributes?</h3>
+                        <span class="text-green-400 text-2xl transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-neutral-300 leading-relaxed">
+                        <p>Currently, Prompt Architect provides a curated library of professionally selected attributes across six categories. While you can't add custom attributes directly, you can always edit the final prompt string after copying it to add your own modifications.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item synthesis-box rounded-3xl p-8">
+                    <button class="faq-question w-full text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                        <h3 class="text-xl font-bold text-white pr-4">What is the Smart Core graphic?</h3>
+                        <span class="text-green-400 text-2xl transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-neutral-300 leading-relaxed">
+                        <p>The Smart Core is the animated 3D cube you see next to the subject input field. It's a visual indicator that represents the active synthesis state of the system, showing that Prompt Architect is processing your selections in real-time.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item synthesis-box rounded-3xl p-8">
+                    <button class="faq-question w-full text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                        <h3 class="text-xl font-bold text-white pr-4">Can I save my prompts for later?</h3>
+                        <span class="text-green-400 text-2xl transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-neutral-300 leading-relaxed">
+                        <p>Since we don't store data, there's no built-in save feature. However, you can easily copy your prompt using the "Copy Final String" button and save it in your preferred note-taking app, document, or prompt management tool.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item synthesis-box rounded-3xl p-8">
+                    <button class="faq-question w-full text-left flex justify-between items-center" onclick="toggleFaq(this)">
+                        <h3 class="text-xl font-bold text-white pr-4">How do I reset and start over?</h3>
+                        <span class="text-green-400 text-2xl transition-transform">+</span>
+                    </button>
+                    <div class="faq-answer hidden mt-4 text-neutral-300 leading-relaxed">
+                        <p>Click the "Reset All" button located at the top right of the Prompt Synthesis section. This will clear your subject input and deselect all attributes, allowing you to start fresh with a new prompt.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal text-center space-y-6 py-20 border-t border-neutral-800" style="animation-delay: 0.7s;">
+                <h2 class="text-3xl font-bold text-white tracking-tight">Still Have Questions?</h2>
+                <p class="text-neutral-400 text-lg">We're here to help! Reach out to us.</p>
+                <a href="contact.html" class="inline-block haptic-btn glow-hover bg-gradient-to-r from-green-500 to-emerald-500 text-black px-12 py-5 rounded-full text-sm font-bold transition-all">Contact Us</a>
+            </section>
+        </main>
+
+        <footer class="w-full max-w-2xl px-4 mx-auto mt-32 mb-10 text-[9px] text-neutral-500 uppercase tracking-[0.2em] font-bold flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>© 2025 PROMPT ARCHITECT | GLOBAL EDITION</div>
+            <div class="flex space-x-6">
+                <button onclick="openModal('privacy')" class="hover:text-green-400 transition-colors">Privacy Policy</button>
+                <button onclick="openModal('terms')" class="hover:text-green-400 transition-colors">Terms of Service</button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content space-y-6 text-neutral-400 pb-20">
+            <h2 class="text-3xl font-bold text-white tracking-tighter">Privacy Policy</h2>
+            <p class="text-[11px] uppercase tracking-widest text-neutral-500">Effective Date: January 2025</p>
+            
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">1. Data Collection</h3>
+                <p class="text-sm">Prompt Architect is a static, client-side application. We do not host databases or store your personal information. All prompt generation occurs locally within your browser's memory.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">2. Cookies and Advertising</h3>
+                <p class="text-sm">We use Google AdSense to serve advertisements. Google, as a third-party vendor, uses cookies to serve ads on our site. Google's use of advertising cookies enables it and its partners to serve ads based on your visit to this site and/or other sites on the Internet.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">3. Third Party Services</h3>
+                <p class="text-sm">You may opt out of personalized advertising by visiting Ads Settings or www.aboutads.info. We do not control the practices of third-party advertisers.</p>
+            </section>
+
+            <button onclick="closeModal('privacy')" class="bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest haptic-btn">Return to System</button>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div id="terms-modal" class="modal">
+        <div class="modal-content space-y-6 text-neutral-400 pb-20">
+            <h2 class="text-3xl font-bold text-white tracking-tighter">Terms of Service</h2>
+            <p class="text-[11px] uppercase tracking-widest text-neutral-500">Agreement v1.0</p>
+            
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">1. Use of Service</h3>
+                <p class="text-sm">By accessing Prompt Architect, you agree to use the tool for legal, creative purposes. You are responsible for the inputs you provide and the outputs you generate using third-party AI models.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">2. Intellectual Property</h3>
+                <p class="text-sm">The 'Architect Build System' UI, logic, and code are the intellectual property of Prompt Architect. Users retain ownership of the specific strings they construct using our interface.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">3. Limitation of Liability</h3>
+                <p class="text-sm">The tool is provided "as is" without warranty of any kind. We are not liable for any discrepancies between our synthesized strings and the final results produced by generative AI platforms.</p>
+            </section>
+
+            <button onclick="closeModal('terms')" class="bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest haptic-btn">Return to System</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function toggleFaq(button) {
+            const answer = button.nextElementSibling;
+            const icon = button.querySelector('span');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                if (item !== answer && !item.classList.contains('hidden')) {
+                    item.classList.add('hidden');
+                    item.previousElementSibling.querySelector('span').textContent = '+';
+                    item.previousElementSibling.querySelector('span').style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Toggle current FAQ
+            answer.classList.toggle('hidden');
+            if (answer.classList.contains('hidden')) {
+                icon.textContent = '+';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                icon.textContent = '−';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+</body>
+</html>

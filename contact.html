@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Contact | Prompt Architect v6.0</title>
+    <meta name="description" content="Get in touch with the Prompt Architect team">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="flex flex-col items-center pb-10 pt-12">
+    <!-- Background Effects -->
+    <div class="hero-bg"></div>
+    <div class="particles" id="particles"></div>
+
+    <div class="content-wrapper w-full">
+        <nav class="w-full max-w-2xl px-4 mx-auto flex justify-between items-end mb-20 reveal" style="animation-delay: 0.1s;">
+            <div>
+                <a href="index.html">
+                    <h1 class="text-2xl font-bold tracking-tighter leading-none" style="background: linear-gradient(135deg, #00ff88 0%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ARCHITECT</h1>
+                    <p class="text-[9px] text-neutral-500 uppercase tracking-[0.25em] font-bold mt-2">v6.0 Build System</p>
+                </a>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="about.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">About</a>
+                <a href="faq.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">FAQ</a>
+                <a href="contact.html" class="text-[10px] text-green-400 uppercase tracking-widest font-bold transition-colors">Contact</a>
+            </div>
+        </nav>
+
+        <main class="w-full max-w-2xl px-4 mx-auto space-y-20">
+            
+            <section class="reveal" style="animation-delay: 0.2s;">
+                <h1 class="text-5xl md:text-7xl font-[200] tracking-tighter mb-8" style="background: linear-gradient(135deg, #00ff88 0%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Get In Touch</h1>
+                <p class="text-xl text-neutral-400 leading-relaxed">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+            </section>
+
+            <section class="reveal" style="animation-delay: 0.3s;">
+                <div class="synthesis-box rounded-[2.5rem] p-10 md:p-14">
+                    <form action="https://api.web3forms.com/submit" method="POST" id="contact-form" class="space-y-8">
+                        <input type="hidden" name="access_key" value="8ba53645-0162-4356-9101-6fed185347f5">
+                        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+                        <input type="hidden" name="email_to" value="dev.promptarchitect@gmail.com">
+                        
+                        <div class="space-y-3">
+                            <label for="name" class="text-[10px] uppercase tracking-[0.2em] font-bold text-neutral-400 block">Your Name</label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                required
+                                class="w-full bg-transparent border-b-2 border-neutral-700 focus:border-green-500 outline-none text-white text-lg py-3 transition-all"
+                                placeholder="John Doe"
+                            >
+                        </div>
+
+                        <div class="space-y-3">
+                            <label for="email" class="text-[10px] uppercase tracking-[0.2em] font-bold text-neutral-400 block">Email Address</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                required
+                                class="w-full bg-transparent border-b-2 border-neutral-700 focus:border-green-500 outline-none text-white text-lg py-3 transition-all"
+                                placeholder="john@example.com"
+                            >
+                        </div>
+
+                        <div class="space-y-3">
+                            <label for="subject" class="text-[10px] uppercase tracking-[0.2em] font-bold text-neutral-400 block">Subject</label>
+                            <input 
+                                type="text" 
+                                id="subject" 
+                                name="subject" 
+                                required
+                                class="w-full bg-transparent border-b-2 border-neutral-700 focus:border-green-500 outline-none text-white text-lg py-3 transition-all"
+                                placeholder="How can we help?"
+                            >
+                        </div>
+
+                        <div class="space-y-3">
+                            <label for="message" class="text-[10px] uppercase tracking-[0.2em] font-bold text-neutral-400 block">Message</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                required
+                                rows="6"
+                                class="w-full bg-transparent border-2 border-neutral-700 focus:border-green-500 outline-none text-white text-lg p-4 rounded-2xl transition-all resize-none"
+                                placeholder="Tell us what's on your mind..."
+                            ></textarea>
+                        </div>
+
+                        <button 
+                            type="submit" 
+                            class="w-full haptic-btn glow-hover bg-gradient-to-r from-green-500 to-emerald-500 text-black px-10 py-5 rounded-full text-sm font-bold transition-all"
+                        >
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="reveal space-y-8" style="animation-delay: 0.4s;">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-white">Other Ways To Reach Us</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="category-section space-y-4 text-center">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center glow-accent mx-auto">
+                            <span class="text-3xl">📧</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Email</h3>
+                        <p class="text-neutral-400 text-sm break-words px-2">dev.promptarchitect@gmail.com</p>
+                    </div>
+
+                    <div class="category-section space-y-4 text-center">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center glow-accent mx-auto">
+                            <span class="text-3xl">📸</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Instagram</h3>
+                        <a href="https://instagram.com/prompts.architect" target="_blank" class="text-green-400 text-sm hover:text-green-300 transition-colors inline-block">@prompts.architect</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="reveal synthesis-box rounded-[2.5rem] p-10 md:p-14 text-center space-y-6" style="animation-delay: 0.5s;">
+                <h2 class="text-2xl font-bold text-white tracking-tight">Frequently Asked Questions</h2>
+                <p class="text-neutral-400">For quick answers, check out our FAQ section on the main page or visit our documentation.</p>
+                <a href="index.html#faq" class="inline-block text-green-400 font-bold hover:text-green-300 transition-colors">View FAQ →</a>
+            </section>
+        </main>
+
+        <footer class="w-full max-w-2xl px-4 mx-auto mt-32 mb-10 text-[9px] text-neutral-500 uppercase tracking-[0.2em] font-bold flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>© 2025 PROMPT ARCHITECT | GLOBAL EDITION</div>
+            <div class="flex space-x-6">
+                <button onclick="openModal('privacy')" class="hover:text-green-400 transition-colors">Privacy Policy</button>
+                <button onclick="openModal('terms')" class="hover:text-green-400 transition-colors">Terms of Service</button>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content space-y-6 text-neutral-400 pb-20">
+            <h2 class="text-3xl font-bold text-white tracking-tighter">Privacy Policy</h2>
+            <p class="text-[11px] uppercase tracking-widest text-neutral-500">Effective Date: January 2025</p>
+            
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">1. Data Collection</h3>
+                <p class="text-sm">Prompt Architect is a static, client-side application. We do not host databases or store your personal information. All prompt generation occurs locally within your browser's memory.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">2. Cookies and Advertising</h3>
+                <p class="text-sm">We use Google AdSense to serve advertisements. Google, as a third-party vendor, uses cookies to serve ads on our site. Google's use of advertising cookies enables it and its partners to serve ads based on your visit to this site and/or other sites on the Internet.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">3. Third Party Services</h3>
+                <p class="text-sm">You may opt out of personalized advertising by visiting Ads Settings or www.aboutads.info. We do not control the practices of third-party advertisers.</p>
+            </section>
+
+            <button onclick="closeModal('privacy')" class="bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest haptic-btn">Return to System</button>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div id="terms-modal" class="modal">
+        <div class="modal-content space-y-6 text-neutral-400 pb-20">
+            <h2 class="text-3xl font-bold text-white tracking-tighter">Terms of Service</h2>
+            <p class="text-[11px] uppercase tracking-widest text-neutral-500">Agreement v1.0</p>
+            
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">1. Use of Service</h3>
+                <p class="text-sm">By accessing Prompt Architect, you agree to use the tool for legal, creative purposes. You are responsible for the inputs you provide and the outputs you generate using third-party AI models.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">2. Intellectual Property</h3>
+                <p class="text-sm">The 'Architect Build System' UI, logic, and code are the intellectual property of Prompt Architect. Users retain ownership of the specific strings they construct using our interface.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">3. Limitation of Liability</h3>
+                <p class="text-sm">The tool is provided "as is" without warranty of any kind. We are not liable for any discrepancies between our synthesized strings and the final results produced by generative AI platforms.</p>
+            </section>
+
+            <button onclick="closeModal('terms')" class="bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest haptic-btn">Return to System</button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 translate-y-20 px-8 py-4 rounded-full text-xs font-bold transition-all duration-500 opacity-0 z-50">Message Sent Successfully!</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
