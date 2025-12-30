@@ -319,3 +319,157 @@ body {
     border: 1px dashed rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
 }
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    /* Adjust hero background for mobile */
+    .hero-bg {
+        height: 40vh;
+    }
+
+    /* Better spacing for mobile */
+    body {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    /* Navigation improvements */
+    nav {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 1rem;
+        margin-bottom: 3rem !important;
+    }
+
+    nav > div:last-child {
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    nav a {
+        font-size: 9px;
+    }
+
+    /* Input field adjustments */
+    .product-input {
+        font-size: 2rem !important;
+        padding: 0.75rem 0 !important;
+    }
+
+    /* Smart core sizing */
+    .smart-core {
+        width: 36px;
+        height: 36px;
+    }
+
+    .core-face {
+        border-width: 1.5px;
+    }
+
+    .face-1 { transform: rotateY(0deg) translateZ(18px); }
+    .face-2 { transform: rotateY(90deg) translateZ(18px); }
+    .face-3 { transform: rotateY(180deg) translateZ(18px); }
+    .face-4 { transform: rotateY(-90deg) translateZ(18px); }
+    .face-5 { transform: rotateX(90deg) translateZ(18px); }
+    .face-6 { transform: rotateX(-90deg) translateZ(18px); }
+
+    /* Synthesis box mobile */
+    .synthesis-box {
+        padding: 1.5rem !important;
+        border-radius: 1.5rem !important;
+    }
+
+    #output-text {
+        font-size: 1rem !important;
+        line-height: 1.5 !important;
+        min-height: 80px !important;
+    }
+
+    /* Button adjustments */
+    #copy-btn {
+        padding: 0.875rem 1.5rem !important;
+        font-size: 10px !important;
+    }
+
+    /* Category sections */
+    .category-section {
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+
+    .category-section h2 {
+        font-size: 8px;
+    }
+
+    /* Chips mobile sizing */
+    .chip {
+        padding: 0.5rem 0.75rem;
+        font-size: 10px;
+    }
+
+    /* Modal mobile */
+    .modal {
+        padding: 2rem 1rem;
+    }
+
+    .modal-content {
+        padding: 0 0.5rem;
+    }
+
+    .modal h2 {
+        font-size: 1.75rem;
+    }
+
+    /* FAQ mobile */
+    .faq-item {
+        padding: 1.25rem !important;
+    }
+
+    .faq-question h3 {
+        font-size: 1rem !important;
+        line-height: 1.4;
+    }
+
+    .faq-answer {
+        font-size: 0.875rem;
+    }
+
+    /* Footer mobile */
+    footer {
+        font-size: 8px;
+        margin-top: 4rem !important;
+    }
+
+    /* Spacing adjustments */
+    main {
+        gap: 3rem !important;
+    }
+
+    section {
+        gap: 1.5rem !important;
+    }
+
+    /* Hero titles mobile */
+    h1 {
+        font-size: 2.5rem !important;
+        line-height: 1.1 !important;
+    }
+
+    /* Contact form mobile */
+    #contact-form input,
+    #contact-form textarea {
+        font-size: 1rem;
+    }
+
+    /* About page feature cards */
+    .category-section .space-y-4 {
+        gap: 0.75rem;
+    }
+
+    /* Reduce particle count on mobile */
+    .particle:nth-child(n+16) {
+        display: none;
+    }
+}
