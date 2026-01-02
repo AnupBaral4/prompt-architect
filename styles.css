@@ -391,6 +391,66 @@ body {
     transform: scale(0.98);
 }
 
+/* Range Slider Styling */
+.slider-thumb::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    transition: all 0.3s ease;
+}
+
+.slider-thumb::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+}
+
+.slider-thumb::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    transition: all 0.3s ease;
+}
+
+.slider-thumb::-moz-range-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+}
+
+/* Neural Card Styling */
+.neural-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+}
+
+.neural-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.neural-card:hover::before {
+    left: 100%;
+}
+
+.neural-card:active {
+    transform: scale(0.98);
+}
+
 /* Mobile Optimizations */
 @media (max-width: 768px) {
     /* Adjust hero background for mobile */

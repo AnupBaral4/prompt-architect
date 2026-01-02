@@ -19,7 +19,14 @@ const categories = [
     { id: 'technical', name: 'Quality', chips: ['8k', 'Ray Tracing', 'Masterpiece', 'Intricate Textures', 'Sharp Focus'] }
 ];
 
-const state = { subject: '', attributes: {} };
+const state = { 
+    subject: '', 
+    attributes: {},
+    aspectRatio: '',
+    stylize: 100,
+    chaos: 0,
+    negative: ''
+};
 const subjectInput = document.getElementById('subject-input');
 const outputText = document.getElementById('output-text');
 const categoriesContainer = document.getElementById('categories-container');
@@ -59,7 +66,7 @@ function selectAttribute(catId, value, btn) {
 }
 
 function buildPrompt() {
-    const { subject, attributes } = state;
+    const { subject, attributes, aspectRatio, stylize, chaos, negative } = state;
     if (!subject && Object.keys(attributes).length === 0) {
         outputText.innerHTML = `<span class="text-neutral-600 italic font-light tracking-tight">Ready for architectural parameters...</span>`;
         return;
@@ -78,7 +85,17 @@ function buildPrompt() {
     }
     if (attributes.color) promptParts.push(`in a <span class="token-modifier">${attributes.color}</span> palette`);
     if (attributes.technical) promptParts.push(`captured in <span class="token-modifier">${attributes.technical}</span> detail`);
-    outputText.innerHTML = promptParts.join(", ") + ` <span class="token-param">--v 6.0</span>`;
+    
+    // Build parameters string
+    let params = [];
+    params.push('--v 6.0');
+    if (aspectRatio) params.push(`--ar ${aspectRatio}`);
+    if (stylize !== 100) params.push(`--s ${stylize}`);
+    if (chaos > 0) params.push(`--c ${chaos}`);
+    if (negative) params.push(`--no ${negative}`);
+    
+    const paramsStr = params.map(p => `<span class="token-param">${p}</span>`).join(' ');
+    outputText.innerHTML = promptParts.join(", ") + ` ${paramsStr}`;
 }
 
 document.getElementById('copy-btn').onclick = (e) => copyToClipboard(e);
@@ -171,6 +188,116 @@ function loadBlueprint(subject, style, lighting) {
     document.getElementById('output-text').scrollIntoView({ behavior: 'smooth', block: 'center' });
     
     // 7. Visual feedback - flash the synthesis box
+    const synthesisBox = document.querySelector('.synthesis-box');
+    synthesisBox.style.borderColor = 'rgba(16, 185, 129, 0.6)';
+    setTimeout(() => {
+        synthesisBox.style.borderColor = '';
+    }, 1000);
+}
+
+// Technical Parameter Functions
+function selectAspectRatio(ratio) {
+    const buttons = document.querySelectorAll('.aspect-btn');
+    buttons.forEach(btn => btn.classList.remove('chip-active'));
+    
+    if (state.aspectRatio === ratio) {
+        state.aspectRatio = '';
+    } else {
+        state.aspectRatio = ratio;
+        const btn = document.querySelector(`[data-aspect="${ratio}"]`);
+        if (btn) btn.classList.add('chip-active');
+    }
+    buildPrompt();
+}
+
+function updateStylize(value) {
+    state.stylize = parseInt(value);
+    document.getElementById('stylize-value').textContent = value;
+    buildPrompt();
+}
+
+function updateChaos(value) {
+    state.chaos = parseInt(value);
+    document.getElementById('chaos-value').textContent = value;
+    buildPrompt();
+}
+
+function updateNegative(value) {
+    state.negative = value.trim();
+    buildPrompt();
+}
+
+// Neural Blueprint Loader
+function loadNeuralBlueprint(subject, style, lighting, mood, aspectRatio, stylize, chaos, negative) {
+    // 1. Inject subject
+    state.subject = subject;
+    subjectInput.value = subject;
+    
+    // 2. Clear all existing attributes
+    state.attributes = {};
+    document.querySelectorAll('.chip-active').forEach(el => el.classList.remove('chip-active'));
+    
+    // 3. Activate chips
+    if (style) {
+        const styleButtons = document.querySelectorAll('button[data-category="style"]');
+        styleButtons.forEach(btn => {
+            if (btn.innerText === style) {
+                btn.classList.add('chip-active');
+                state.attributes['style'] = style;
+            }
+        });
+    }
+    
+    if (lighting) {
+        const lightingButtons = document.querySelectorAll('button[data-category="lighting"]');
+        lightingButtons.forEach(btn => {
+            if (btn.innerText === lighting) {
+                btn.classList.add('chip-active');
+                state.attributes['lighting'] = lighting;
+            }
+        });
+    }
+    
+    if (mood) {
+        const moodButtons = document.querySelectorAll('button[data-category="mood"]');
+        moodButtons.forEach(btn => {
+            if (btn.innerText === mood) {
+                btn.classList.add('chip-active');
+                state.attributes['mood'] = mood;
+            }
+        });
+    }
+    
+    // 4. Set technical parameters
+    if (aspectRatio) {
+        state.aspectRatio = aspectRatio;
+        document.querySelectorAll('.aspect-btn').forEach(btn => btn.classList.remove('chip-active'));
+        const aspectBtn = document.querySelector(`[data-aspect="${aspectRatio}"]`);
+        if (aspectBtn) aspectBtn.classList.add('chip-active');
+    }
+    
+    if (stylize) {
+        state.stylize = stylize;
+        document.getElementById('stylize-slider').value = stylize;
+        document.getElementById('stylize-value').textContent = stylize;
+    }
+    
+    if (chaos !== undefined) {
+        state.chaos = chaos;
+        document.getElementById('chaos-slider').value = chaos;
+        document.getElementById('chaos-value').textContent = chaos;
+    }
+    
+    if (negative) {
+        state.negative = negative;
+        document.getElementById('negative-input').value = negative;
+    }
+    
+    // 5. Build prompt
+    buildPrompt();
+    
+    // 6. Visual feedback
+    document.getElementById('output-text').scrollIntoView({ behavior: 'smooth', block: 'center' });
     const synthesisBox = document.querySelector('.synthesis-box');
     synthesisBox.style.borderColor = 'rgba(16, 185, 129, 0.6)';
     setTimeout(() => {

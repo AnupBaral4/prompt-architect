@@ -8,15 +8,13 @@
     <meta name="description" content="Professional Industrial Edition Prompt Architect. Build optimized Midjourney v6.0 and DALL-E prompts using our advanced synthesis system.">
     <meta name="keywords" content="AI Prompt Generator, Midjourney v6, Prompt Engineering, DALL-E 3, Image Generation Tool, Prompt Architect">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0a0a'/%3E%3Cpath d='M20 20 L50 35 L80 20 L80 50 L50 65 L20 50 Z' fill='none' stroke='%2300ff88' stroke-width='3'/%3E%3Cpath d='M35 40 L50 48 L65 40 L65 55 L50 63 L35 55 Z' fill='%2300ff88' opacity='0.3'/%3E%3C/svg%3E">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     
-    <script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WY34XWK7V2"></script>
     <script>
@@ -73,6 +71,65 @@
 
             <div id="categories-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal" style="animation-delay: 0.3s;"></div>
 
+            <section class="reveal pt-6" style="animation-delay: 0.35s;">
+                <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500 mb-6 block">Technical Tuning / Advanced Parameters</label>
+                
+                <div class="category-section space-y-6">
+                    <!-- Aspect Ratio -->
+                    <div>
+                        <h3 class="text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-500 mb-3">Aspect Ratio (--ar)</h3>
+                        <div class="flex gap-2">
+                            <button onclick="selectAspectRatio('1:1')" data-aspect="1:1" class="aspect-btn chip haptic-btn px-6 py-3 text-[11px] font-medium">1:1</button>
+                            <button onclick="selectAspectRatio('4:5')" data-aspect="4:5" class="aspect-btn chip haptic-btn px-6 py-3 text-[11px] font-medium">4:5</button>
+                            <button onclick="selectAspectRatio('16:9')" data-aspect="16:9" class="aspect-btn chip haptic-btn px-6 py-3 text-[11px] font-medium">16:9</button>
+                            <button onclick="selectAspectRatio('9:16')" data-aspect="9:16" class="aspect-btn chip haptic-btn px-6 py-3 text-[11px] font-medium">9:16</button>
+                        </div>
+                    </div>
+
+                    <!-- Stylize Slider -->
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-500">Stylize (--s)</h3>
+                            <span id="stylize-value" class="mono text-sm text-emerald-500 font-bold">100</span>
+                        </div>
+                        <input type="range" id="stylize-slider" min="0" max="1000" value="100" step="50" 
+                               oninput="updateStylize(this.value)" 
+                               class="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer slider-thumb">
+                        <div class="flex justify-between text-[8px] text-neutral-600 mt-1">
+                            <span>0</span>
+                            <span>500</span>
+                            <span>1000</span>
+                        </div>
+                    </div>
+
+                    <!-- Chaos Slider -->
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-500">Chaos (--c)</h3>
+                            <span id="chaos-value" class="mono text-sm text-emerald-500 font-bold">0</span>
+                        </div>
+                        <input type="range" id="chaos-slider" min="0" max="100" value="0" step="10" 
+                               oninput="updateChaos(this.value)" 
+                               class="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer slider-thumb">
+                        <div class="flex justify-between text-[8px] text-neutral-600 mt-1">
+                            <span>0</span>
+                            <span>50</span>
+                            <span>100</span>
+                        </div>
+                    </div>
+
+                    <!-- Negative Prompt -->
+                    <div>
+                        <h3 class="text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-500 mb-3">Exclusion Parameters (--no)</h3>
+                        <div class="input-wrapper relative">
+                            <input type="text" id="negative-input" placeholder="blur, distorted, low quality..." 
+                                   oninput="updateNegative(this.value)"
+                                   class="w-full text-sm py-3 px-4 bg-transparent border-2 border-neutral-700 focus:border-emerald-500 outline-none text-white placeholder:text-neutral-600 transition-all rounded-lg">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section class="reveal pt-6" style="animation-delay: 0.4s;">
                 <div class="flex items-center justify-between mb-4">
                     <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500">02 / Prompt Synthesis</label>
@@ -110,8 +167,97 @@
             <section class="reveal pt-20 border-t border-neutral-800" style="animation-delay: 0.6s;">
                 <div class="flex items-center justify-between mb-8">
                     <div>
-                        <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500 block mb-2">03 / Blueprint Library</label>
-                        <p class="text-sm text-neutral-400">Load pre-configured industrial templates</p>
+                        <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500 block mb-2">03 / Neural Blueprints</label>
+                        <p class="text-sm text-neutral-400">Pre-configured synthesis templates</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Neural Blueprint 1: Cyberpunk City -->
+                    <button onclick="loadNeuralBlueprint('neon-lit cyberpunk street at night', 'Cyberpunk', 'Cyber Neon', 'Dark', '16:9', 600, 30, 'blurry, daylight')" 
+                            class="neural-card text-left bg-zinc-900 border border-zinc-800 hover:border-emerald-500 p-6 transition-all duration-300 group relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="space-y-1">
+                                    <div class="text-[8px] text-zinc-600 uppercase tracking-[0.2em] font-bold mono">NEURAL_001</div>
+                                    <div class="text-[8px] text-emerald-500 uppercase tracking-[0.2em] font-bold mono">CYBERPUNK</div>
+                                </div>
+                                <div class="w-12 h-12 border-2 border-zinc-800 group-hover:border-emerald-500 flex items-center justify-center transition-colors bg-zinc-900">
+                                    <span class="text-2xl">🌃</span>
+                                </div>
+                            </div>
+                            <h3 class="text-white font-bold text-xl mb-3 mono tracking-tight">CYBER_CITY</h3>
+                            <p class="text-zinc-500 text-xs leading-relaxed mb-4">High-contrast neon dystopia with volumetric fog and rain-slicked reflections</p>
+                            <div class="space-y-1 text-[9px] text-zinc-600 mono">
+                                <div>AR: 16:9 | STYLIZE: 600 | CHAOS: 30</div>
+                                <div>MOOD: Dark + Cyber Neon</div>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-zinc-800">
+                                <span class="text-[8px] text-emerald-500 uppercase tracking-[0.2em] font-bold group-hover:text-emerald-400">LOAD NEURAL NET →</span>
+                            </div>
+                        </div>
+                    </button>
+
+                    <!-- Neural Blueprint 2: Ethereal Portrait -->
+                    <button onclick="loadNeuralBlueprint('ethereal portrait with flowing fabric', 'Surrealism', 'Soft Sunlight', 'Ethereal', '4:5', 800, 10, 'harsh lighting, dark')" 
+                            class="neural-card text-left bg-zinc-900 border border-zinc-800 hover:border-emerald-500 p-6 transition-all duration-300 group relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="space-y-1">
+                                    <div class="text-[8px] text-zinc-600 uppercase tracking-[0.2em] font-bold mono">NEURAL_002</div>
+                                    <div class="text-[8px] text-emerald-500 uppercase tracking-[0.2em] font-bold mono">PORTRAIT</div>
+                                </div>
+                                <div class="w-12 h-12 border-2 border-zinc-800 group-hover:border-emerald-500 flex items-center justify-center transition-colors bg-zinc-900">
+                                    <span class="text-2xl">✨</span>
+                                </div>
+                            </div>
+                            <h3 class="text-white font-bold text-xl mb-3 mono tracking-tight">ETHEREAL_SOUL</h3>
+                            <p class="text-zinc-500 text-xs leading-relaxed mb-4">Dreamlike portrait with soft focus and otherworldly atmosphere</p>
+                            <div class="space-y-1 text-[9px] text-zinc-600 mono">
+                                <div>AR: 4:5 | STYLIZE: 800 | CHAOS: 10</div>
+                                <div>MOOD: Ethereal + Soft Light</div>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-zinc-800">
+                                <span class="text-[8px] text-emerald-500 uppercase tracking-[0.2em] font-bold group-hover:text-emerald-400">LOAD NEURAL NET →</span>
+                            </div>
+                        </div>
+                    </button>
+
+                    <!-- Neural Blueprint 3: Architectural Minimal -->
+                    <button onclick="loadNeuralBlueprint('minimalist concrete architecture', 'Minimalism', 'Hard Shadows', 'Peaceful', '1:1', 200, 0, 'clutter, decorations')" 
+                            class="neural-card text-left bg-zinc-900 border border-zinc-800 hover:border-emerald-500 p-6 transition-all duration-300 group relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="space-y-1">
+                                    <div class="text-[8px] text-zinc-600 uppercase tracking-[0.2em] font-bold mono">NEURAL_003</div>
+                                    <div class="text-[8px] text-emerald-500 uppercase tracking-[0.2em] font-bold mono">MINIMAL</div>
+                                </div>
+                                <div class="w-12 h-12 border-2 border-zinc-800 group-hover:border-emerald-500 flex items-center justify-center transition-colors bg-zinc-900">
+                                    <span class="text-2xl">🏛️</span>
+                                </div>
+                            </div>
+                            <h3 class="text-white font-bold text-xl mb-3 mono tracking-tight">BRUTALIST_FORM</h3>
+                            <p class="text-zinc-500 text-xs leading-relaxed mb-4">Clean geometric architecture with strong shadows and minimal palette</p>
+                            <div class="space-y-1 text-[9px] text-zinc-600 mono">
+                                <div>AR: 1:1 | STYLIZE: 200 | CHAOS: 0</div>
+                                <div>MOOD: Peaceful + Hard Shadows</div>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-zinc-800">
+                                <span class="text-[8px] text-emerald-500 uppercase tracking-[0.2em] font-bold group-hover:text-emerald-400">LOAD NEURAL NET →</span>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+            </section>
+
+            <section class="reveal pt-20 border-t border-neutral-800" style="animation-delay: 0.65s;">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500 block mb-2">04 / Legacy Blueprints</label>
+                        <p class="text-sm text-neutral-400">Classic pre-configured templates</p>
                     </div>
                 </div>
 
