@@ -35,6 +35,7 @@
             </div>
             <div class="flex items-center gap-6">
                 <a href="about.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">About</a>
+                <a href="gallery.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">Gallery</a>
                 <a href="faq.html" class="text-[10px] text-green-400 uppercase tracking-widest font-bold transition-colors">FAQ</a>
                 <a href="contact.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">Contact</a>
             </div>
@@ -211,11 +212,65 @@
             </section>
         </main>
 
-        <footer class="w-full max-w-2xl px-4 mx-auto mt-32 mb-10 text-[9px] text-neutral-500 uppercase tracking-[0.2em] font-bold flex flex-col md:flex-row justify-between items-center gap-4">
-            <div>© 2025 PROMPT ARCHITECT | GLOBAL EDITION</div>
-            <div class="flex space-x-6">
-                <button onclick="openModal('privacy')" class="hover:text-green-400 transition-colors">Privacy Policy</button>
-                <button onclick="openModal('terms')" class="hover:text-green-400 transition-colors">Terms of Service</button>
+        <footer class="w-full max-w-2xl px-4 mx-auto mt-32 mb-10">
+            <!-- SEO Content Section -->
+            <div class="mb-12 pb-8 border-b border-neutral-800">
+                <div class="space-y-6">
+                    <!-- SEO Description -->
+                    <div class="text-sm text-neutral-400 leading-relaxed">
+                        <p><strong class="text-neutral-300">Prompt Architect</strong> is a professional AI prompt generator designed for creators, designers, and artists working with Midjourney V6.0 and DALL-E 3. Build optimized prompts using our industrial-grade synthesis system featuring curated style libraries, technical parameter controls, and pre-configured neural blueprints. Perfect for prompt engineering, AI art generation, and creative workflows requiring precise natural language processing.</p>
+                    </div>
+
+                    <!-- Keyword-Rich Navigation -->
+                    <nav class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+                        <div>
+                            <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Tools</h3>
+                            <ul class="space-y-2">
+                                <li><a href="index.html" class="text-neutral-400 hover:text-green-400 transition-colors">AI Prompt Builder</a></li>
+                                <li><a href="gallery.html" class="text-neutral-400 hover:text-green-400 transition-colors">Generated Image Gallery</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Learn</h3>
+                            <ul class="space-y-2">
+                                <li><a href="faq.html" class="text-neutral-400 hover:text-green-400 transition-colors">Prompt Engineering FAQ</a></li>
+                                <li><a href="about.html" class="text-neutral-400 hover:text-green-400 transition-colors">About Midjourney Optimization</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Connect</h3>
+                            <ul class="space-y-2">
+                                <li><a href="contact.html" class="text-neutral-400 hover:text-green-400 transition-colors">Contact & Support</a></li>
+                                <li><a href="https://instagram.com/prompts.architect" target="_blank" rel="noopener" class="text-neutral-400 hover:text-green-400 transition-colors">Instagram Showcase</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <!-- Trust Signals -->
+                    <div class="flex flex-wrap gap-4 text-xs text-neutral-500">
+                        <span class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            100% Client-Side Processing
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"/></svg>
+                            Privacy-Focused, No Data Stored
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"/></svg>
+                            Fast, Lightweight & Accessible
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright & Legal -->
+            <div class="text-[9px] text-neutral-500 uppercase tracking-[0.2em] font-bold flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>© 2025 PROMPT ARCHITECT | AI PROMPT GENERATION TOOL</div>
+                <div class="flex space-x-6">
+                    <button onclick="openModal('privacy')" class="hover:text-green-400 transition-colors">Privacy Policy</button>
+                    <button onclick="openModal('terms')" class="hover:text-green-400 transition-colors">Terms of Service</button>
+                </div>
             </div>
         </footer>
     </div>

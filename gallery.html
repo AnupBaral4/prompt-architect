@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Gallery | Prompt Architect v6.0</title>
+    <meta name="description" content="Showcase of images generated using Prompt Architect">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230a0a0a'/%3E%3Cpath d='M20 20 L50 35 L80 20 L80 50 L50 65 L20 50 Z' fill='none' stroke='%2300ff88' stroke-width='3'/%3E%3Cpath d='M35 40 L50 48 L65 40 L65 55 L50 63 L35 55 Z' fill='%2300ff88' opacity='0.3'/%3E%3C/svg%3E">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WY34XWK7V2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WY34XWK7V2');
+    </script>
+
+    <style>
+        /* Gallery-specific styles */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: #0a0a0a;
+            border: 1px solid #252525;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover {
+            border-color: #00ff88;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 50%, transparent 100%);
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            color: #000;
+            padding: 0.5rem 1rem;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            z-index: 10;
+            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.4);
+            animation: pulse-badge 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .gemini-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.4rem 0.8rem;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            z-index: 10;
+        }
+
+        /* Modal Styles - Override default .modal from styles.css */
+        .modal-gallery {
+            display: none !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: rgba(0, 0, 0, 0.98) !important;
+            backdrop-filter: blur(20px) !important;
+            z-index: 9999 !important;
+            overflow-y: auto !important;
+            padding: 2rem !important;
+            animation: fadeIn 0.3s ease !important;
+            align-items: flex-start !important;
+            justify-content: center !important;
+        }
+
+        .modal-gallery.active {
+            display: flex !important;
+        }
+
+        .modal-content-gallery {
+            max-width: 1200px !important;
+            width: 100% !important;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            animation: slideUp 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+        }
+
+        .modal-content-gallery img {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            object-fit: contain;
+            cursor: zoom-in;
+            transition: all 0.3s ease;
+        }
+
+        .modal-content-gallery img:hover {
+            opacity: 0.95;
+        }
+
+        /* Full Screen Image Viewer */
+        .image-fullscreen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.98);
+            z-index: 99999;
+            cursor: zoom-out;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .image-fullscreen.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: auto;
+        }
+
+        .image-fullscreen img {
+            max-width: 95vw;
+            max-height: 95vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            animation: zoomIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            box-shadow: 0 0 100px rgba(0, 255, 136, 0.3);
+        }
+
+        @keyframes zoomIn {
+            from { 
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to { 
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .fullscreen-controls {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 100000;
+        }
+
+        .fullscreen-btn {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #00ff88;
+            font-size: 20px;
+        }
+
+        .fullscreen-btn:hover {
+            background: rgba(0, 255, 136, 0.2);
+            border-color: #00ff88;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+        }
+
+        .zoom-indicator {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            color: #00ff88;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            z-index: 100000;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .prompt-display {
+            background: rgba(21, 21, 21, 0.8);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .copy-prompt-btn {
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            color: #000;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-weight: 700;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .copy-prompt-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+        }
+
+        .copy-prompt-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Scanline effect */
+        .scanline {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ff88, transparent);
+            animation: scan 3s linear infinite;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(400px); }
+        }
+
+        /* Grid animation on load */
+        .gallery-item {
+            opacity: 0;
+            animation: revealGallery 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes revealGallery {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Close button */
+        .close-gallery-btn {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .close-gallery-btn:hover {
+            background: rgba(0, 255, 136, 0.2);
+            border-color: #00ff88;
+            color: #00ff88;
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center pb-10 pt-12">
+    <!-- Background Effects -->
+    <div class="hero-bg"></div>
+    <div class="particles" id="particles"></div>
+
+    <div class="content-wrapper w-full">
+        <nav class="w-full max-w-6xl px-4 mx-auto flex justify-between items-end mb-20 reveal" style="animation-delay: 0.1s;">
+            <div>
+                <a href="index.html">
+                    <h1 class="text-2xl font-bold tracking-tighter leading-none" style="background: linear-gradient(135deg, #00ff88 0%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ARCHITECT</h1>
+                    <p class="text-[9px] text-neutral-500 uppercase tracking-[0.25em] font-bold mt-2">v6.0 Build System</p>
+                </a>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="about.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">About</a>
+                <a href="gallery.html" class="text-[10px] text-green-400 uppercase tracking-widest font-bold transition-colors">Gallery</a>
+                <a href="faq.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">FAQ</a>
+                <a href="contact.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">Contact</a>
+            </div>
+        </nav>
+
+        <main class="w-full max-w-6xl px-4 mx-auto space-y-20">
+            
+            <section class="reveal" style="animation-delay: 0.2s;">
+                <h1 class="text-5xl md:text-7xl font-[200] tracking-tighter mb-4" style="background: linear-gradient(135deg, #00ff88 0%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Synthesis Gallery</h1>
+                <p class="text-xl text-neutral-400 leading-relaxed mb-2">Images generated using Prompt Architect v6.0</p>
+                <div class="flex items-center gap-3 text-sm text-neutral-500">
+                    <span class="flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                        Live Showcase
+                    </span>
+                    <span>•</span>
+                    <span>4 Featured Outputs</span>
+                </div>
+            </section>
+
+            <section class="reveal grid grid-cols-1 md:grid-cols-2 gap-8" style="animation-delay: 0.3s;">
+                
+                <!-- Gallery Item 1: Cyberpunk City -->
+                <div class="gallery-item" onclick="openGalleryModal(1)">
+                    <div class="scanline"></div>
+                    <div class="gemini-badge">GEMINI NANO BANANA</div>
+                    <img src="cyberpunk-city-showcase.jpg" alt="Cyberpunk City Generated Image" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3 class="text-white font-bold text-xl mb-2 mono">CYBER_METROPOLIS</h3>
+                        <p class="text-neutral-400 text-sm mb-3">Futuristic cyberpunk city at night</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[9px] bg-emerald-500/20 text-emerald-500 px-2 py-1 rounded">16:9</span>
+                            <span class="text-[9px] bg-emerald-500/20 text-emerald-500 px-2 py-1 rounded">STYLIZE 150</span>
+                            <span class="text-[9px] bg-emerald-500/20 text-emerald-500 px-2 py-1 rounded">CHAOS 25</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 2: Mountain Sunrise -->
+                <div class="gallery-item" onclick="openGalleryModal(2)">
+                    <div class="scanline"></div>
+                    <div class="gemini-badge">GEMINI NANO BANANA</div>
+                    <img src="mountain-sunrise-showcase.jpg" alt="Mountain Sunrise Generated Image" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3 class="text-white font-bold text-xl mb-2 mono">DAWN_PEAKS</h3>
+                        <p class="text-neutral-400 text-sm mb-3">Mountain landscape at sunrise</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[9px] bg-emerald-500/20 text-emerald-500 px-2 py-1 rounded">3:2</span>
+                            <span class="text-[9px] bg-emerald-500/20 text-emerald-500 px-2 py-1 rounded">STYLIZE 80</span>
+                            <span class="text-[9px] bg-emerald-500/20 text-emerald-500 px-2 py-1 rounded">CHAOS 10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 3: Sci-Fi Control Room -->
+                <div class="gallery-item" onclick="openGalleryModal(3)">
+                    <div class="scanline"></div>
+                    <div class="gemini-badge">GEMINI NANO BANANA</div>
+                    <img src="scifi-control-showcase.jpg" alt="Sci-Fi Control Room Generated Image" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3 class="text-white font-bold text-xl mb-2 mono">QUANTUM_BRIDGE</h3>
+                        <p class="text-neutral-400 text-sm mb-3">Futuristic sci-fi control room interior</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[9px] bg-emerald-500/20 text-emerald-500 px-2 py-1 rounded">16:9</span>
+                            <span class="text-[9px] bg-emerald-500/20 text-emerald-500 px-2 py-1 rounded">STYLIZE 120</span>
+                            <span class="text-[9px] bg-emerald-500/20 text-emerald-500 px-2 py-1 rounded">CHAOS 15</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 4: Featured Exclusive -->
+                <div class="gallery-item" onclick="openGalleryModal(4)">
+                    <div class="scanline"></div>
+                    <div class="featured-badge">EXCLUSIVE</div>
+                    <img src="featured-exclusive-01.png" alt="Featured Exclusive Artwork" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h3 class="text-white font-bold text-xl mb-2 mono">ARCHITECT_EXCLUSIVE</h3>
+                        <p class="text-neutral-400 text-sm mb-3">Premium curated showcase</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-[9px] bg-red-500/20 text-red-500 px-2 py-1 rounded">PROMPT LOCKED</span>
+                            <span class="text-[9px] bg-red-500/20 text-red-500 px-2 py-1 rounded">EXCLUSIVE</span>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <section class="reveal text-center py-16 border-t border-neutral-800" style="animation-delay: 0.5s;">
+                <h2 class="text-3xl font-bold text-white mb-4 tracking-tight">Create Your Own Masterpieces</h2>
+                <p class="text-neutral-400 mb-8">Use Prompt Architect to generate stunning AI images</p>
+                <a href="index.html" class="inline-block haptic-btn glow-hover bg-gradient-to-r from-green-500 to-emerald-500 text-black px-12 py-5 rounded-full text-sm font-bold transition-all">Launch Architect</a>
+            </section>
+
+        </main>
+
+        <footer class="w-full max-w-6xl px-4 mx-auto mt-32 mb-10">
+            <!-- SEO Content Section -->
+            <div class="mb-12 pb-8 border-b border-neutral-800">
+                <div class="space-y-6">
+                    <!-- SEO Description -->
+                    <div class="text-sm text-neutral-400 leading-relaxed">
+                        <p><strong class="text-neutral-300">Prompt Architect</strong> is a professional AI prompt generator designed for creators, designers, and artists working with Midjourney V6.0 and DALL-E 3. Build optimized prompts using our industrial-grade synthesis system featuring curated style libraries, technical parameter controls, and pre-configured neural blueprints. Perfect for prompt engineering, AI art generation, and creative workflows requiring precise natural language processing.</p>
+                    </div>
+
+                    <!-- Keyword-Rich Navigation -->
+                    <nav class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+                        <div>
+                            <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Tools</h3>
+                            <ul class="space-y-2">
+                                <li><a href="index.html" class="text-neutral-400 hover:text-green-400 transition-colors">AI Prompt Builder</a></li>
+                                <li><a href="gallery.html" class="text-neutral-400 hover:text-green-400 transition-colors">Generated Image Gallery</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Learn</h3>
+                            <ul class="space-y-2">
+                                <li><a href="faq.html" class="text-neutral-400 hover:text-green-400 transition-colors">Prompt Engineering FAQ</a></li>
+                                <li><a href="about.html" class="text-neutral-400 hover:text-green-400 transition-colors">About Midjourney Optimization</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Connect</h3>
+                            <ul class="space-y-2">
+                                <li><a href="contact.html" class="text-neutral-400 hover:text-green-400 transition-colors">Contact & Support</a></li>
+                                <li><a href="https://instagram.com/prompts.architect" target="_blank" rel="noopener" class="text-neutral-400 hover:text-green-400 transition-colors">Instagram Showcase</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <!-- Trust Signals -->
+                    <div class="flex flex-wrap gap-4 text-xs text-neutral-500">
+                        <span class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            100% Client-Side Processing
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"/></svg>
+                            Privacy-Focused, No Data Stored
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"/></svg>
+                            Fast, Lightweight & Accessible
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright & Legal -->
+            <div class="text-[9px] text-neutral-500 uppercase tracking-[0.2em] font-bold flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>© 2025 PROMPT ARCHITECT | AI PROMPT GENERATION TOOL</div>
+                <div class="flex space-x-6">
+                    <button onclick="openModal('privacy')" class="hover:text-green-400 transition-colors">Privacy Policy</button>
+                    <button onclick="openModal('terms')" class="hover:text-green-400 transition-colors">Terms of Service</button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Gallery Modal -->
+    <div id="gallery-modal" class="modal-gallery">
+        <div class="modal-content-gallery">
+            <div class="flex justify-end mb-6">
+                <button onclick="closeGalleryModal()" class="close-gallery-btn">×</button>
+            </div>
+            
+            <div id="modal-image-container" class="mb-6">
+                <img id="modal-image" src="" alt="" onclick="openFullscreen(this.src)">
+            </div>
+
+            <div id="modal-details" class="space-y-6"></div>
+        </div>
+    </div>
+
+    <!-- Full Screen Image Viewer -->
+    <div id="image-fullscreen" class="image-fullscreen" onclick="closeFullscreen()">
+        <div class="fullscreen-controls">
+            <button onclick="event.stopPropagation(); downloadImage();" class="fullscreen-btn" title="Download Image">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                </svg>
+            </button>
+            <button onclick="event.stopPropagation(); closeFullscreen();" class="fullscreen-btn" title="Close (ESC)">×</button>
+        </div>
+        <div class="zoom-indicator">CLICK ANYWHERE TO CLOSE • ESC KEY</div>
+        <img id="fullscreen-image" src="" alt="" onclick="event.stopPropagation();">
+    </div>
+
+    <!-- Privacy Modal -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content space-y-6 text-neutral-400 pb-20">
+            <h2 class="text-3xl font-bold text-white tracking-tighter">Privacy Policy</h2>
+            <p class="text-[11px] uppercase tracking-widest text-neutral-500">Effective Date: January 2025</p>
+            
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">1. Data Collection</h3>
+                <p class="text-sm">Prompt Architect is a static, client-side application. We do not host databases or store your personal information. All prompt generation occurs locally within your browser's memory.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">2. Cookies and Advertising</h3>
+                <p class="text-sm">We use Google AdSense to serve advertisements. Google, as a third-party vendor, uses cookies to serve ads on our site. Google's use of advertising cookies enables it and its partners to serve ads based on your visit to this site and/or other sites on the Internet.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">3. Third Party Services</h3>
+                <p class="text-sm">You may opt out of personalized advertising by visiting Ads Settings or www.aboutads.info. We do not control the practices of third-party advertisers.</p>
+            </section>
+
+            <button onclick="closeModal('privacy')" class="bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest haptic-btn">Return to System</button>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div id="terms-modal" class="modal">
+        <div class="modal-content space-y-6 text-neutral-400 pb-20">
+            <h2 class="text-3xl font-bold text-white tracking-tighter">Terms of Service</h2>
+            <p class="text-[11px] uppercase tracking-widest text-neutral-500">Agreement v1.0</p>
+            
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">1. Use of Service</h3>
+                <p class="text-sm">By accessing Prompt Architect, you agree to use the tool for legal, creative purposes. You are responsible for the inputs you provide and the outputs you generate using third-party AI models.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">2. Intellectual Property</h3>
+                <p class="text-sm">The 'Architect Build System' UI, logic, and code are the intellectual property of Prompt Architect. Users retain ownership of the specific strings they construct using our interface.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">3. Limitation of Liability</h3>
+                <p class="text-sm">The tool is provided "as is" without warranty of any kind. We are not liable for any discrepancies between our synthesized strings and the final results produced by generative AI platforms.</p>
+            </section>
+
+            <button onclick="closeModal('terms')" class="bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest haptic-btn">Return to System</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Gallery data
+        const galleryData = {
+            1: {
+                title: "CYBER_METROPOLIS",
+                description: "Futuristic cyberpunk city at night",
+                image: "cyberpunk-city-showcase.jpg",
+                prompt: `Futuristic cyberpunk city at night
+Style: Cyberpunk, high-detail, cinematic, neon accents
+Composition: Wide-angle cityscape, strong depth, layered skyline, clear foreground and background separation
+Lighting: Neon signage glow, moody contrast, reflections on wet surfaces
+Environment: Dense urban core, rain-soaked streets, atmospheric haze
+Technical tuning: --ar 16:9 --stylize 150 --chaos 25 --v 6
+Negative prompt: low detail, flat lighting, cartoon style, overexposed highlights, blurry structures`,
+                hasPrompt: true,
+                badge: "GEMINI NANO BANANA"
+            },
+            2: {
+                title: "DAWN_PEAKS",
+                description: "Mountain landscape at sunrise",
+                image: "mountain-sunrise-showcase.jpg",
+                prompt: `Mountain landscape at sunrise
+Style: Natural realism, high detail, photographic look
+Composition: Rule of thirds, wide landscape framing, clear horizon line
+Lighting: Soft golden sunrise light, gentle shadows, subtle contrast
+Environment: Mist-covered mountains, calm atmosphere, open sky
+Technical tuning: --ar 3:2 --stylize 80 --chaos 10 --v 6
+Negative prompt: oversaturated colors, harsh contrast, fantasy elements, artificial lighting`,
+                hasPrompt: true,
+                badge: "GEMINI NANO BANANA"
+            },
+            3: {
+                title: "QUANTUM_BRIDGE",
+                description: "Futuristic sci-fi control room interior",
+                image: "scifi-control-showcase.jpg",
+                prompt: `Futuristic sci-fi control room interior
+Style: Clean sci-fi, minimalistic, high-tech design
+Composition: Symmetrical framing, central focal point, balanced geometry
+Lighting: Cool ambient lighting, soft glow panels, controlled highlights
+Environment: Advanced space station interior, sleek materials, quiet atmosphere
+Technical tuning: --ar 16:9 --stylize 120 --chaos 15 --v 6
+Negative prompt: cluttered layout, retro sci-fi, fantasy elements, excessive neon, distorted perspective`,
+                hasPrompt: true,
+                badge: "GEMINI NANO BANANA"
+            },
+            4: {
+                title: "ARCHITECT_EXCLUSIVE",
+                description: "Premium curated showcase - Prompt not available",
+                image: "featured-exclusive-01.png",
+                prompt: null,
+                hasPrompt: false,
+                badge: "EXCLUSIVE"
+            }
+        };
+
+        function openGalleryModal(id) {
+            const data = galleryData[id];
+            const modal = document.getElementById('gallery-modal');
+            const modalImage = document.getElementById('modal-image');
+            const modalDetails = document.getElementById('modal-details');
+
+            modalImage.src = data.image;
+            modalImage.alt = data.title;
+
+            let detailsHTML = `
+                <div class="synthesis-box rounded-3xl p-8">
+                    <div class="flex items-start justify-between mb-6">
+                        <div>
+                            <h2 class="text-3xl font-bold text-white mono mb-2">${data.title}</h2>
+                            <p class="text-neutral-400">${data.description}</p>
+                        </div>
+                        <span class="text-[10px] bg-emerald-500/20 text-emerald-500 px-3 py-1 rounded font-bold">${data.badge}</span>
+                    </div>
+            `;
+
+            if (data.hasPrompt) {
+                detailsHTML += `
+                    <div class="prompt-display">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold">Full Synthesis String</h3>
+                            <button onclick="copyPrompt(${id})" class="copy-prompt-btn rounded-full">
+                                <span class="relative z-10">COPY PROMPT</span>
+                            </button>
+                        </div>
+                        <pre class="text-sm text-neutral-300 leading-relaxed whitespace-pre-wrap mono">${data.prompt}</pre>
+                    </div>
+                `;
+            } else {
+                detailsHTML += `
+                    <div class="prompt-display text-center py-8">
+                        <div class="text-6xl mb-4">🔒</div>
+                        <h3 class="text-xl font-bold text-white mb-2">Exclusive Artwork</h3>
+                        <p class="text-neutral-400">This is a premium featured piece. Prompt details are not publicly available.</p>
+                    </div>
+                `;
+            }
+
+            detailsHTML += `</div>`;
+            modalDetails.innerHTML = detailsHTML;
+            modal.classList.add('active');
+        }
+
+        function closeGalleryModal() {
+            const modal = document.getElementById('gallery-modal');
+            modal.classList.remove('active');
+        }
+
+        function copyPrompt(id) {
+            const data = galleryData[id];
+            if (data.hasPrompt) {
+                navigator.clipboard.writeText(data.prompt).then(() => {
+                    const btn = event.target.closest('.copy-prompt-btn');
+                    const originalText = btn.innerHTML;
+                    btn.innerHTML = '<span class="relative z-10">✓ COPIED!</span>';
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                    }, 2000);
+                });
+            }
+        }
+
+        // Close modal on outside click
+        document.getElementById('gallery-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeGalleryModal();
+            }
+        });
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeGalleryModal();
+                closeFullscreen();
+            }
+        });
+
+        // Full Screen Image Functions
+        let currentImageSrc = '';
+
+        function openFullscreen(imageSrc) {
+            currentImageSrc = imageSrc;
+            const fullscreenDiv = document.getElementById('image-fullscreen');
+            const fullscreenImg = document.getElementById('fullscreen-image');
+            fullscreenImg.src = imageSrc;
+            fullscreenDiv.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFullscreen() {
+            const fullscreenDiv = document.getElementById('image-fullscreen');
+            fullscreenDiv.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function downloadImage() {
+            if (currentImageSrc) {
+                const link = document.createElement('a');
+                link.href = currentImageSrc;
+                link.download = currentImageSrc.split('/').pop();
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+
+        // Prevent fullscreen close when clicking the image itself
+        document.getElementById('fullscreen-image').addEventListener('click', function(e) {
+            e.stopPropagation();
+            // Don't close - just prevent event from bubbling to parent
+        });
+
+        // Click anywhere else (background) to close
+        document.getElementById('image-fullscreen').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>
