@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://prompt-architect-six.vercel.app/sitemap.xml
+Sitemap: https://promptsarchitect.com/sitemap.xml

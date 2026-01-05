@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>The Ultimate Guide to Midjourney V6 Prompts | Prompt Architect</title>
+    <meta name="description" content="Learn advanced prompt engineering techniques for Midjourney V6. Master parameters, modifiers, and professional strategies to create stunning AI art consistently.">
+    <meta name="keywords" content="midjourney v6, midjourney prompts, AI art generation, prompt engineering, midjourney tutorial, AI image generation">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Ultimate Guide to Midjourney V6 Prompts">
+    <meta property="og:description" content="Master advanced prompt engineering for Midjourney V6. Learn parameters, modifiers, and pro strategies for stunning AI art.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../favicon.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WY34XWK7V2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WY34XWK7V2');
+    </script>
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "The Ultimate Guide to Midjourney V6 Prompts",
+      "description": "Learn advanced prompt engineering techniques for Midjourney V6. Master parameters, modifiers, and professional strategies to create stunning AI art consistently.",
+      "image": "https://promptsarchitect.com/midjourney-v6-guide.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "Prompt Architect Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Prompt Architect",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://promptsarchitect.com/favicon.png"
+        }
+      },
+      "datePublished": "2024-12-20",
+      "dateModified": "2024-12-20",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://promptsarchitect.com/blog/midjourney-v6-guide"
+      },
+      "keywords": ["Midjourney V6", "Prompt Engineering", "AI Art", "Midjourney Tutorial"],
+      "articleSection": "Tutorial",
+      "wordCount": 2800
+    }
+    </script>
+    
+    <style>
+        /* Article-specific styles */
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .article-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 3rem 0 1.5rem;
+            color: #ffffff;
+            line-height: 1.3;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .article-content h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 4px;
+            height: 32px;
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            border-radius: 2px;
+        }
+        
+        .article-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: #ffffff;
+        }
+        
+        .article-content p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #cccccc;
+        }
+        
+        .article-content strong {
+            color: #00ff88;
+            font-weight: 600;
+        }
+        
+        .article-content ul {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .article-content li {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #cccccc;
+        }
+        
+        .article-content li::marker {
+            color: #00ff88;
+        }
+        
+        .code-block {
+            background: rgba(21, 21, 21, 0.8);
+            border: 1px solid #252525;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            overflow-x: auto;
+        }
+        
+        .code-block code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9375rem;
+            color: #00ff88;
+            line-height: 1.6;
+            white-space: pre;
+        }
+        
+        .info-box, .warning-box {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .warning-box {
+            background: rgba(255, 136, 0, 0.05);
+            border-color: rgba(255, 136, 0, 0.2);
+        }
+        
+        .info-box-title, .warning-box-title {
+            color: #00ff88;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .warning-box-title {
+            color: #ff8800;
+        }
+        
+        .info-box p, .warning-box p {
+            font-size: 1rem;
+            margin: 0;
+        }
+        
+        .toc {
+            background: rgba(21, 21, 21, 0.6);
+            border: 1px solid #252525;
+            border-radius: 1rem;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 5rem;
+        }
+        
+        .toc h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1.25rem;
+            color: #00ff88;
+            font-weight: 600;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .toc a {
+            color: #888888;
+            text-decoration: none;
+            font-size: 0.9375rem;
+            transition: all 0.3s;
+            display: block;
+            padding-left: 1rem;
+            border-left: 2px solid transparent;
+        }
+        
+        .toc a:hover {
+            color: #00ff88;
+            border-left-color: #00ff88;
+            padding-left: 1.5rem;
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 0.75rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .share-btn {
+            background: rgba(21, 21, 21, 0.8);
+            border: 1px solid #252525;
+            border-radius: 12px;
+            padding: 0.75rem 1.5rem;
+            color: #888888;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .share-btn:hover {
+            border-color: #00ff88;
+            color: #00ff88;
+            transform: translateY(-2px);
+        }
+        
+        .related-posts {
+            background: rgba(21, 21, 21, 0.6);
+            border: 1px solid #252525;
+            border-radius: 1rem;
+            padding: 3rem;
+            margin: 4rem 0;
+            backdrop-filter: blur(20px);
+        }
+        
+        .related-post-card {
+            background: rgba(21, 21, 21, 0.8);
+            border: 1px solid #252525;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .related-post-card:hover {
+            border-color: #00ff88;
+            transform: translateY(-4px);
+        }
+        
+        @media (max-width: 768px) {
+            .article-content h2 {
+                font-size: 1.625rem;
+                margin: 2rem 0 1rem;
+            }
+            
+            .article-content h3 {
+                font-size: 1.25rem;
+            }
+            
+            .article-content p,
+            .article-content li {
+                font-size: 1rem;
+            }
+            
+            .toc {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center pb-10 pt-12">
+    <!-- Background Effects -->
+    <div class="hero-bg"></div>
+    <div class="particles" id="particles"></div>
+
+    <div class="content-wrapper w-full">
+        <!-- Navigation -->
+        <nav class="w-full max-w-6xl px-4 mx-auto flex justify-between items-end mb-20 reveal" style="animation-delay: 0.1s;">
+            <div>
+                <a href="index.html">
+                    <h1 class="text-2xl font-bold tracking-tighter leading-none" style="background: linear-gradient(135deg, #00ff88 0%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ARCHITECT</h1>
+                    <p class="text-[9px] text-neutral-500 uppercase tracking-[0.25em] font-bold mt-2">v6.0 Build System</p>
+                </a>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="../about.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">About</a>
+                <a href="../gallery.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">Gallery</a>
+                <a href="blog.html" class="text-[10px] text-green-400 uppercase tracking-widest font-bold transition-colors">Blog</a>
+                <a href="../faq.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">FAQ</a>
+                <a href="../contact.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">Contact</a>
+            </div>
+        </nav>
+
+        <main class="w-full max-w-6xl px-4 mx-auto space-y-20">
+            
+            <!-- Article Header -->
+            <section class="reveal text-center space-y-6" style="animation-delay: 0.2s;">
+                <div class="text-[9px] text-neutral-500 uppercase tracking-widest">
+                    <a href="../index.html" class="hover:text-green-400 transition-colors">Home</a> / 
+                    <a href="blog.html" class="hover:text-green-400 transition-colors">Blog</a> / 
+                    <span class="text-green-400">Ultimate Midjourney V6 Guide</span>
+                </div>
+                
+                <span class="inline-block bg-green-500 text-black px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider">Tutorial</span>
+                
+                <h1 class="text-4xl md:text-6xl font-[200] tracking-tighter" style="background: linear-gradient(135deg, #00ff88 0%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    The Ultimate Guide to Midjourney V6 Prompts
+                </h1>
+                
+                <p class="text-xl text-neutral-400 max-w-3xl mx-auto">
+                    Master advanced prompt engineering techniques and create stunning AI art consistently
+                </p>
+                
+                <div class="flex items-center justify-center gap-6 text-neutral-500 text-sm">
+                    <span>December 28, 2024</span>
+                    <span>•</span>
+                    <span>12 min read</span>
+                </div>
+            </section>
+
+            <!-- Main Content -->
+            <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-12" style="animation-delay: 0.3s;">
+                
+                <!-- Sidebar - Table of Contents -->
+                <aside class="lg:col-span-3">
+                    <div class="toc">
+                        <h2>Table of Contents</h2>
+                        <ul>
+                            <li><a href="#introduction">Introduction</a></li>
+                            <li><a href="#basics">V6 Basics</a></li>
+                            <li><a href="#structure">Prompt Structure</a></li>
+                            <li><a href="#parameters">Key Parameters</a></li>
+                            <li><a href="#modifiers">Style Modifiers</a></li>
+                            <li><a href="#advanced">Advanced Techniques</a></li>
+                            <li><a href="#examples">Real Examples</a></li>
+                            <li><a href="#mistakes">Common Mistakes</a></li>
+                            <li><a href="#conclusion">Conclusion</a></li>
+                        </ul>
+                    </div>
+                </aside>
+                
+                <!-- Main Article Content -->
+                <div class="lg:col-span-9">
+                    <div class="article-content">
+                        
+                        <!-- Introduction -->
+                        <section id="introduction">
+                            <p>Midjourney V6 represents a quantum leap in AI image generation, offering unprecedented control over artistic output through sophisticated prompt engineering. Whether you're a digital artist, designer, or creative professional, mastering V6's prompt system is essential for consistent, high-quality results.</p>
+                            
+                            <p>This comprehensive guide distills professional techniques, advanced parameters, and battle-tested strategies into an actionable framework you can apply immediately.</p>
+                        </section>
+                        
+                        <!-- Share Buttons -->
+                        <div class="share-buttons">
+                            <a href="#" class="share-btn haptic-btn" onclick="shareOnTwitter(); return false;">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                                </svg>
+                                Share
+                            </a>
+                            <a href="#" class="share-btn haptic-btn" onclick="copyLink(); return false;">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                </svg>
+                                Copy Link
+                            </a>
+                        </div>
+                        
+                        <!-- V6 Basics -->
+                        <section id="basics">
+                            <h2>What Makes Midjourney V6 Different?</h2>
+                            
+                            <p>Midjourney V6 introduces several revolutionary improvements that fundamentally change how we approach prompt engineering. Understanding these changes is crucial for leveraging the full power of this latest iteration.</p>
+                            
+                            <h3>Key Improvements Over V5</h3>
+                            
+                            <ul>
+                                <li><strong>Enhanced Natural Language Understanding:</strong> V6 comprehends complex sentence structures and nuanced descriptions far better than previous versions, allowing for more conversational and detailed prompts.</li>
+                                <li><strong>Superior Photorealism:</strong> The model excels at generating hyperrealistic images with accurate lighting, materials, and textures that rival professional photography.</li>
+                                <li><strong>Precise Parameter Control:</strong> Fine-tuned control over stylization, chaos, and aspect ratios enables unprecedented creative flexibility.</li>
+                                <li><strong>Better Prompt Adherence:</strong> V6 follows instructions more accurately, especially regarding specific details, compositions, and style requirements.</li>
+                            </ul>
+                            
+                            <div class="info-box">
+                                <div class="info-box-title">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    Pro Tip
+                                </div>
+                                <p>Always include <strong>--v 6.0</strong> at the end of your prompts to ensure you're using the latest model. Without this parameter, Midjourney may default to an earlier version.</p>
+                            </div>
+                        </section>
+                        
+                        <!-- Prompt Structure -->
+                        <section id="structure">
+                            <h2>Optimal Prompt Structure for V6</h2>
+                            
+                            <p>A well-structured prompt is the foundation of exceptional AI art. V6's enhanced language understanding allows for more natural phrasing while still benefiting from systematic organization.</p>
+                            
+                            <h3>The Three-Layer Framework</h3>
+                            
+                            <p>Professional prompt engineers use a layered approach that builds complexity progressively. This framework ensures clarity while maximizing creative control.</p>
+                            
+                            <div class="code-block">
+                                <code>[SUBJECT] + [STYLE MODIFIERS] + [TECHNICAL DETAILS] + [PARAMETERS]
+
+Example:
+A futuristic cityscape at sunset, cinematic lighting, 
+hyper-realistic details, shot on ARRI Alexa --ar 16:9 --s 150 --v 6.0</code>
+                            </div>
+                            
+                            <p><strong>Layer 1 - Core Subject:</strong> Start with your primary subject. Be specific and descriptive. Instead of "a cat," use "a Maine Coon cat with amber eyes sitting on a velvet cushion."</p>
+                            
+                            <p><strong>Layer 2 - Style & Mood:</strong> Add artistic direction through style modifiers, lighting conditions, and atmospheric elements.</p>
+                            
+                            <p><strong>Layer 3 - Technical Specifications:</strong> Include camera angles, lens types, rendering quality, and other technical details.</p>
+                        </section>
+                        
+                        <!-- Parameters -->
+                        <section id="parameters">
+                            <h2>Essential V6 Parameters</h2>
+                            
+                            <p>Parameters are the command-line flags that control technical aspects of image generation. Understanding these is crucial for professional-grade results.</p>
+                            
+                            <h3>Aspect Ratio (--ar)</h3>
+                            
+                            <p>Controls the width-to-height ratio of your output. V6 supports flexible aspect ratios.</p>
+                            
+                            <div class="code-block">
+                                <code>--ar 1:1    // Square (Instagram)
+--ar 4:5    // Portrait
+--ar 16:9   // Landscape (YouTube)
+--ar 9:16   // Vertical (Stories)
+--ar 21:9   // Cinematic ultrawide</code>
+                            </div>
+                            
+                            <h3>Stylize (--s)</h3>
+                            
+                            <p>Controls how much artistic interpretation Midjourney applies. Range: 0-1000, default is 100.</p>
+                            
+                            <ul>
+                                <li><strong>--s 0-50:</strong> Minimal stylization, literal interpretation of prompts.</li>
+                                <li><strong>--s 100-200:</strong> Balanced artistic enhancement. Recommended for most professional work.</li>
+                                <li><strong>--s 500-1000:</strong> Maximum creativity. Great for abstract art and experimental pieces.</li>
+                            </ul>
+                            
+                            <h3>Chaos (--c)</h3>
+                            
+                            <p>Introduces variability in the initial generation grid. Range: 0-100, default is 0. Higher chaos values produce more diverse results.</p>
+                            
+                            <h3>Negative Prompts (--no)</h3>
+                            
+                            <p>Explicitly exclude unwanted elements from your generation.</p>
+                            
+                            <div class="code-block">
+                                <code>modern office interior --no people, clutter, plants --v 6.0
+
+fantasy dragon --no wings, fire, scales --v 6.0</code>
+                            </div>
+                        </section>
+                        
+                        <!-- Style Modifiers -->
+                        <section id="modifiers">
+                            <h2>Powerful Style Modifiers</h2>
+                            
+                            <p>Style modifiers are descriptive keywords that dramatically influence the aesthetic direction. V6's enhanced understanding makes these incredibly effective.</p>
+                            
+                            <h3>Photographic Styles</h3>
+                            
+                            <ul>
+                                <li><strong>Cinematic:</strong> Film-like quality with color grading and depth</li>
+                                <li><strong>Shot on [Camera Name]:</strong> ARRI Alexa, RED Dragon, Canon 5D produce distinct looks</li>
+                                <li><strong>[Lens Type]:</strong> 85mm portrait, 24mm wide-angle, macro 100mm</li>
+                            </ul>
+                            
+                            <h3>Lighting Conditions</h3>
+                            
+                            <div class="code-block">
+                                <code>// Golden hour magic
+sunset portrait, golden hour lighting, warm rim light --v 6.0
+
+// Dramatic studio setup
+product photography, key light from left, rim light --v 6.0
+
+// Atmospheric environmental
+volumetric fog, god rays filtering through trees --v 6.0</code>
+                            </div>
+                        </section>
+                        
+                        <!-- Advanced Techniques -->
+                        <section id="advanced">
+                            <h2>Advanced Prompt Engineering</h2>
+                            
+                            <h3>Multi-Prompt Weighting</h3>
+                            
+                            <p>Control the relative importance of different prompt elements using double colons (::) and weight values.</p>
+                            
+                            <div class="code-block">
+                                <code>// Emphasize specific elements
+futuristic city::2 nature elements::1 --v 6.0
+(City has 2x the influence of nature)</code>
+                            </div>
+                            
+                            <h3>Permutation Prompts</h3>
+                            
+                            <p>Generate multiple variations simultaneously using curly braces {}.</p>
+                            
+                            <div class="code-block">
+                                <code>// Generate 3 variations at once
+{red, blue, green} sports car in showroom --v 6.0</code>
+                            </div>
+                        </section>
+                        
+                        <!-- Real Examples -->
+                        <section id="examples">
+                            <h2>Real-World Prompt Examples</h2>
+                            
+                            <h3>Portrait Photography</h3>
+                            
+                            <div class="code-block">
+                                <code>Professional headshot of a confident business executive, 
+natural window lighting from left, shallow depth of field, 
+shot on Canon 5D Mark IV with 85mm f/1.4 lens --ar 4:5 --s 100 --v 6.0</code>
+                            </div>
+                            
+                            <h3>Cinematic Landscape</h3>
+                            
+                            <div class="code-block">
+                                <code>Ethereal mountain landscape at dawn, volumetric fog rolling 
+through valleys, golden hour lighting, cinematic color grading --ar 21:9 --s 200 --v 6.0</code>
+                            </div>
+                            
+                            <h3>Concept Art</h3>
+                            
+                            <div class="code-block">
+                                <code>Futuristic cyberpunk cityscape, neon-soaked streets, 
+rain-slicked pavement, flying vehicles, atmospheric perspective --ar 16:9 --s 400 --v 6.0</code>
+                            </div>
+                        </section>
+                        
+                        <!-- Common Mistakes -->
+                        <section id="mistakes">
+                            <h2>Common Mistakes to Avoid</h2>
+                            
+                            <h3>1. Over-Prompting</h3>
+                            <p>V6's improved understanding means you don't need exhaustive descriptions. Too many keywords create confusion. Keep prompts focused and intentional.</p>
+                            
+                            <div class="warning-box">
+                                <div class="warning-box-title">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                    </svg>
+                                    Important
+                                </div>
+                                <p>Bad: "beautiful amazing stunning gorgeous incredible cat..."<br>Better: "Maine Coon cat on velvet cushion, natural window lighting --ar 4:5 --v 6.0"</p>
+                            </div>
+                            
+                            <h3>2. Forgetting the --v 6.0 Parameter</h3>
+                            <p>Always explicitly specify V6 to access its latest capabilities.</p>
+                            
+                            <h3>3. Vague Subject Descriptions</h3>
+                            <p>Specificity is key. "A dog" yields generic results, while "Golden Retriever puppy with ocean background" provides clear direction.</p>
+                        </section>
+                        
+                        <!-- Conclusion -->
+                        <section id="conclusion">
+                            <h2>Mastering the Craft</h2>
+                            
+                            <p>Prompt engineering for Midjourney V6 is both an art and a science. The techniques covered in this guide provide a solid foundation, but true mastery comes from experimentation and iteration.</p>
+                            
+                            <p>Remember that V6's enhanced language understanding rewards clarity and specificity over keyword stuffing. Think like a photographer or art director—describe what you want to see with precision and purpose.</p>
+                            
+                            <div class="info-box">
+                                <div class="info-box-title">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                    </svg>
+                                    Quick Tip
+                                </div>
+                                <p>Use our <a href="index.html" class="text-[#00ff88] underline">Prompt Architect tool</a> to systematically build and test your prompts with instant preview and parameter control.</p>
+                            </div>
+                            
+                            <p>Your next masterpiece is just one well-crafted prompt away.</p>
+                        </section>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Related Posts -->
+            <div class="reveal related-posts" style="animation-delay: 0.4s;">
+                <h2 class="text-3xl font-bold mb-8 text-white">Related Articles</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <a href="blog-post-2.html" class="related-post-card">
+                        <span class="inline-block bg-[#00ff88] bg-opacity-20 text-[#00ff88] px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-3">Comparison</span>
+                        <h3 class="text-lg font-bold text-white mb-2">DALL-E 3 vs Midjourney V6: Complete Guide</h3>
+                        <p class="text-sm text-neutral-400">Which AI art tool is right for your creative workflow?</p>
+                    </a>
+                    
+                    <a href="blog-post-3.html" class="related-post-card">
+                        <span class="inline-block bg-[#00ff88] bg-opacity-20 text-[#00ff88] px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-3">Pro Tips</span>
+                        <h3 class="text-lg font-bold text-white mb-2">10 Pro Tips for Cinematic AI Art</h3>
+                        <p class="text-sm text-neutral-400">Master professional techniques for stunning imagery.</p>
+                    </a>
+                    
+                    <a href="blog.html" class="related-post-card">
+                        <span class="inline-block bg-[#00ff88] bg-opacity-20 text-[#00ff88] px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-3">Guide</span>
+                        <h3 class="text-lg font-bold text-white mb-2">Prompt Engineering 101: Beginner's Guide</h3>
+                        <p class="text-sm text-neutral-400">Essential fundamentals for AI art beginners.</p>
+                    </a>
+                    
+                </div>
+            </div>
+            
+        </main>
+
+        <!-- Footer -->
+        <footer class="w-full max-w-6xl px-4 mx-auto mt-32 mb-10">
+            <div class="mb-12 pb-8 border-b border-neutral-800">
+                <div class="space-y-6">
+                    <div class="text-sm text-neutral-400 leading-relaxed">
+                        <p><strong class="text-neutral-300">Prompt Architect</strong> is a professional AI prompt generator designed for creators, designers, and artists working with Midjourney V6.0 and DALL-E 3. Build optimized prompts using our industrial-grade synthesis system featuring curated style libraries, technical parameter controls, and pre-configured neural blueprints. Perfect for prompt engineering, AI art generation, and creative workflows requiring precise natural language processing.</p>
+                    </div>
+
+                    <nav class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+                        <div>
+                            <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Tools</h3>
+                            <ul class="space-y-2">
+                                <li><a href="../index.html" class="text-neutral-400 hover:text-green-400 transition-colors">AI Prompt Builder</a></li>
+                                <li><a href="../gallery.html" class="text-neutral-400 hover:text-green-400 transition-colors">Generated Image Gallery</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Learn</h3>
+                            <ul class="space-y-2">
+                                <li><a href="blog.html" class="text-neutral-400 hover:text-green-400 transition-colors">AI Art Blog</a></li>
+                                <li><a href="../faq.html" class="text-neutral-400 hover:text-green-400 transition-colors">Prompt Engineering FAQ</a></li>
+                                <li><a href="../about.html" class="text-neutral-400 hover:text-green-400 transition-colors">About Midjourney Optimization</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Connect</h3>
+                            <ul class="space-y-2">
+                                <li><a href="../contact.html" class="text-neutral-400 hover:text-green-400 transition-colors">Contact & Support</a></li>
+                                <li><a href="https://instagram.com/prompts.architect" target="_blank" rel="noopener" class="text-neutral-400 hover:text-green-400 transition-colors">Instagram Showcase</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+
+                    <div class="flex flex-wrap gap-4 text-xs text-neutral-500">
+                        <span class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            100% Client-Side Processing
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"/></svg>
+                            Privacy-Focused, No Data Stored
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"/></svg>
+                            Fast, Lightweight & Accessible
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-[9px] text-neutral-500 uppercase tracking-[0.2em] font-bold flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>© 2025 PROMPT ARCHITECT | AI PROMPT GENERATION TOOL</div>
+                <div class="flex space-x-6">
+                    <button onclick="openModal('privacy')" class="hover:text-green-400 transition-colors">Privacy Policy</button>
+                    <button onclick="openModal('terms')" class="hover:text-green-400 transition-colors">Terms of Service</button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content space-y-6 text-neutral-400 pb-20">
+            <h2 class="text-3xl font-bold text-white tracking-tighter">Privacy Policy</h2>
+            <p class="text-[11px] uppercase tracking-widest text-neutral-500">Effective Date: January 2025</p>
+            
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">1. Data Collection</h3>
+                <p class="text-sm">Prompt Architect is a static, client-side application. We do not host databases or store your personal information. All prompt generation occurs locally within your browser's memory.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">2. Cookies and Advertising</h3>
+                <p class="text-sm">We use Google AdSense to serve advertisements. Google, as a third-party vendor, uses cookies to serve ads on our site. Google's use of advertising cookies enables it and its partners to serve ads based on your visit to this site and/or other sites on the Internet.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">3. Third Party Services</h3>
+                <p class="text-sm">You may opt out of personalized advertising by visiting Ads Settings or www.aboutads.info. We do not control the practices of third-party advertisers.</p>
+            </section>
+
+            <button onclick="closeModal('privacy')" class="bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest haptic-btn">Return to System</button>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div id="terms-modal" class="modal">
+        <div class="modal-content space-y-6 text-neutral-400 pb-20">
+            <h2 class="text-3xl font-bold text-white tracking-tighter">Terms of Service</h2>
+            <p class="text-[11px] uppercase tracking-widest text-neutral-500">Agreement v1.0</p>
+            
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">1. Use of Service</h3>
+                <p class="text-sm">By accessing Prompt Architect, you agree to use the tool for legal, creative purposes. You are responsible for the inputs you provide and the outputs you generate using third-party AI models.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">2. Intellectual Property</h3>
+                <p class="text-sm">The 'Architect Build System' UI, logic, and code are the intellectual property of Prompt Architect. Users retain ownership of the specific strings they construct using our interface.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">3. Limitation of Liability</h3>
+                <p class="text-sm">The tool is provided "as is" without warranty of any kind. We are not liable for any discrepancies between our synthesized strings and the final results produced by generative AI platforms.</p>
+            </section>
+
+            <button onclick="closeModal('terms')" class="bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest haptic-btn">Return to System</button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 translate-y-20 px-8 py-4 rounded-full text-xs font-bold transition-all duration-500 opacity-0 z-50">Link Copied to Clipboard</div>
+
+    <script src="script.js"></script>
+    <script>
+        // Share functions for blog post
+        function shareOnTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent("Check out this ultimate guide to Midjourney V6 prompts! #Midjourney #AIArt #PromptEngineering");
+            window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                showToast('Link copied to clipboard!');
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.opacity = '1';
+            toast.style.transform = 'translate(-50%, 0)';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translate(-50%, 20px)';
+            }, 3000);
+        }
+
+        function openModal(id) {
+            const modal = document.getElementById(id + '-modal');
+            if (modal) modal.style.display = 'block';
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id + '-modal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        // Close modal when clicking outside content
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
