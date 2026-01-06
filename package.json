@@ -1,0 +1,24 @@
+{
+  "name": "testing-architect",
+  "version": "1.0.0",
+  "description": "**Professional AI Prompt Generator for Midjourney V6.0 & DALL-E 3**",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://AnupBaral4@github.com/AnupBaral4/prompt-architect.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AnupBaral4/prompt-architect/issues"
+  },
+  "homepage": "https://github.com/AnupBaral4/prompt-architect#readme",
+  "devDependencies": {
+    "tailwindcss": "^4.1.18"
+  }
+}

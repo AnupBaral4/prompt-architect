@@ -1,13 +1,17 @@
 // Generate animated particles
-const particlesContainer = document.getElementById('particles');
-for (let i = 0; i < 30; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    particle.style.left = Math.random() * 100 + '%';
-    particle.style.top = Math.random() * 100 + '%';
-    particle.style.animationDelay = Math.random() * 20 + 's';
-    particle.style.animationDuration = (15 + Math.random() * 10) + 's';
-    particlesContainer.appendChild(particle);
+function initParticles() {
+    const particlesContainer = document.getElementById('particles');
+    if (!particlesContainer) return;
+
+    for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 20 + 's';
+        particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+        particlesContainer.appendChild(particle);
+    }
 }
 
 const categories = [
@@ -27,35 +31,50 @@ const state = {
     chaos: 0,
     negative: ''
 };
-const subjectInput = document.getElementById('subject-input');
-const outputText = document.getElementById('output-text');
-const categoriesContainer = document.getElementById('categories-container');
-const toast = document.getElementById('toast');
+// DOM elements - will be assigned in init() after DOM is ready
+let subjectInput, outputText, categoriesContainer, toast;
 
 function init() {
-    categories.forEach((cat) => {
-        const section = document.createElement('section');
-        section.className = 'category-section space-y-5';
-        const title = document.createElement('h2');
-        title.className = 'text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-500';
-        title.innerText = cat.name;
-        const chipGrid = document.createElement('div');
-        chipGrid.className = 'flex flex-wrap gap-2';
-        cat.chips.forEach(chipText => {
-            const btn = document.createElement('button');
-            btn.className = 'chip haptic-btn px-4 py-2 rounded-xl text-[11px] font-medium text-neutral-300 transition-all';
-            btn.dataset.category = cat.id;
-            btn.innerText = chipText;
-            btn.onclick = () => selectAttribute(cat.id, chipText, btn);
-            chipGrid.appendChild(btn);
-        });
-        section.appendChild(title);
-        section.appendChild(chipGrid);
-        categoriesContainer.appendChild(section);
-    });
-}
+    // Initialize particles on all pages
+    initParticles();
 
-subjectInput.oninput = (e) => { state.subject = e.target.value; buildPrompt(); };
+    // Assign DOM elements (only if they exist on current page)
+    subjectInput = document.getElementById('subject-input');
+    outputText = document.getElementById('output-text');
+    categoriesContainer = document.getElementById('categories-container');
+    toast = document.getElementById('toast');
+
+    // Only set up functionality if we're on the index page (where these elements exist)
+    if (subjectInput && outputText && categoriesContainer) {
+        // Set up subject input listener
+        subjectInput.oninput = (e) => { 
+            state.subject = e.target.value; 
+            buildPrompt(); 
+        };
+
+        // Initialize categories
+        categories.forEach((cat) => {
+            const section = document.createElement('section');
+            section.className = 'category-section space-y-5';
+            const title = document.createElement('h2');
+            title.className = 'text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-500';
+            title.innerText = cat.name;
+            const chipGrid = document.createElement('div');
+            chipGrid.className = 'flex flex-wrap gap-2';
+            cat.chips.forEach(chipText => {
+                const btn = document.createElement('button');
+                btn.className = 'chip haptic-btn px-4 py-2 rounded-xl text-[11px] font-medium text-neutral-300 transition-all';
+                btn.dataset.category = cat.id;
+                btn.innerText = chipText;
+                btn.onclick = () => selectAttribute(cat.id, chipText, btn);
+                chipGrid.appendChild(btn);
+            });
+            section.appendChild(title);
+            section.appendChild(chipGrid);
+            categoriesContainer.appendChild(section);
+        });
+    }
+}
 
 function selectAttribute(catId, value, btn) {
     const siblings = document.querySelectorAll(`button[data-category="${catId}"]`);
@@ -66,6 +85,9 @@ function selectAttribute(catId, value, btn) {
 }
 
 function buildPrompt() {
+    // Only run on pages that have the output text element
+    if (!outputText) return;
+    
     const { subject, attributes, aspectRatio, stylize, chaos, negative } = state;
     if (!subject && Object.keys(attributes).length === 0) {
         outputText.innerHTML = `<span class="text-neutral-600 italic font-light tracking-tight">Ready for architectural parameters...</span>`;
@@ -98,13 +120,21 @@ function buildPrompt() {
     outputText.innerHTML = promptParts.join(", ") + ` ${paramsStr}`;
 }
 
-document.getElementById('copy-btn').onclick = (e) => copyToClipboard(e);
+const copyBtn = document.getElementById('copy-btn');
+if (copyBtn) {
+    copyBtn.onclick = (e) => copyToClipboard(e);
+}
+
 
 function copyToClipboard(e) {
     const outputText = document.getElementById('output-text');
+    if (!outputText) return;
+    
     const btn = document.getElementById('copy-btn');
     const btnText = document.getElementById('btn-text');
     const btnIcon = document.getElementById('btn-icon');
+    
+    if (!btn || !btnText || !btnIcon) return;
     
     if (outputText.innerText.includes('Ready for')) return;
     
@@ -212,14 +242,20 @@ function selectAspectRatio(ratio) {
 
 function updateStylize(value) {
     state.stylize = parseInt(value);
-    document.getElementById('stylize-value').textContent = value;
-    buildPrompt();
+    const stylizeValue = document.getElementById('stylize-value');
+    if (stylizeValue) {
+        stylizeValue.textContent = value;
+        buildPrompt();
+    }
 }
 
 function updateChaos(value) {
     state.chaos = parseInt(value);
-    document.getElementById('chaos-value').textContent = value;
-    buildPrompt();
+    const chaosValue = document.getElementById('chaos-value');
+    if (chaosValue) {
+        chaosValue.textContent = value;
+        buildPrompt();
+    }
 }
 
 function updateNegative(value) {
@@ -229,6 +265,9 @@ function updateNegative(value) {
 
 // Neural Blueprint Loader
 function loadNeuralBlueprint(subject, style, lighting, mood, aspectRatio, stylize, chaos, negative) {
+    // Only run on pages that have the required elements
+    if (!subjectInput) return;
+    
     // 1. Inject subject
     state.subject = subject;
     subjectInput.value = subject;
@@ -297,21 +336,33 @@ function loadNeuralBlueprint(subject, style, lighting, mood, aspectRatio, styliz
     buildPrompt();
     
     // 6. Visual feedback
-    document.getElementById('output-text').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const outputText = document.getElementById('output-text');
+    if (outputText) {
+        outputText.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
     const synthesisBox = document.querySelector('.synthesis-box');
-    synthesisBox.style.borderColor = 'rgba(16, 185, 129, 0.6)';
-    setTimeout(() => {
-        synthesisBox.style.borderColor = '';
-    }, 1000);
+    if (synthesisBox) {
+        synthesisBox.style.borderColor = 'rgba(16, 185, 129, 0.6)';
+        setTimeout(() => {
+            synthesisBox.style.borderColor = '';
+        }, 1000);
+    }
 }
 
-document.getElementById('clear-btn').onclick = () => {
-    state.subject = '';
-    state.attributes = {};
-    subjectInput.value = '';
-    document.querySelectorAll('.chip-active').forEach(el => el.classList.remove('chip-active'));
-    buildPrompt();
-};
+
+const clearBtn = document.getElementById('clear-btn');
+if (clearBtn) {
+    clearBtn.onclick = () => {
+        if (!subjectInput) return;
+
+        state.subject = '';
+        state.attributes = {};
+        subjectInput.value = '';
+        document.querySelectorAll('.chip-active').forEach(el => el.classList.remove('chip-active'));
+        buildPrompt();
+    };
+}
+
 
 function openModal(id) {
     const modal = document.getElementById(id + '-modal');

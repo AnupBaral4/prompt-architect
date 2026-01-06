@@ -451,6 +451,28 @@ body {
     transform: scale(0.98);
 }
 
+/* Blog Card Animation - Same as Neural Cards */
+.blog-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
+    transition: left 0.5s ease;
+    pointer-events: none;
+}
+
+.blog-card:hover::before {
+    left: 100%;
+}
+
 /* Mobile Optimizations */
 @media (max-width: 768px) {
     /* Adjust hero background for mobile */
