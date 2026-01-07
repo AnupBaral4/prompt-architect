@@ -313,11 +313,33 @@ body {
     background: rgba(21, 21, 21, 0.8);
 }
 
+.category-section h2 {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: #888;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
 /* Ad Space Enhancement */
 .ad-space {
     background: rgba(21, 21, 21, 0.5);
     border: 1px dashed rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+}
+
+/* Chip Styles */
+.chip {
+    background: rgba(21, 21, 21, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.chip:hover {
+    border-color: rgba(0, 255, 136, 0.5);
+    background: rgba(0, 255, 136, 0.1);
+    transform: translateY(-2px);
 }
 
 /* --- Industrial Stream Animation for Copy Button --- */
@@ -471,6 +493,203 @@ body {
 
 .blog-card:hover::before {
     left: 100%;
+}
+
+/* Prompt Strength Ring */
+.strength-ring {
+    pointer-events: none;
+    z-index: 10;
+}
+
+.strength-ring-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.05);
+    stroke-width: 3;
+}
+
+.strength-ring-progress {
+    fill: none;
+    stroke: url(#strengthGradient);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 220;
+    stroke-dashoffset: 220;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.5));
+}
+
+.strength-badge {
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+    color: #000;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    box-shadow: 0 4px 15px rgba(0, 255, 136, 0.4);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 20;
+}
+
+/* Sparkle Animation */
+.sparkle {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: linear-gradient(135deg, #00ff88, #ffffff);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: sparkleFloat 1s ease-out forwards;
+}
+
+@keyframes sparkleFloat {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(0);
+    }
+}
+
+/* Typing Sparkle Animation */
+.typing-sparkle {
+    position: fixed;
+    font-size: 16px;
+    pointer-events: none;
+    z-index: 9999;
+    animation: typingSparkleFloat 0.8s ease-out forwards;
+}
+
+@keyframes typingSparkleFloat {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-40px) scale(0.8);
+    }
+}
+
+/* Core Pulse Animation */
+@keyframes corePulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Enhanced Input Focus */
+.product-input:focus {
+    outline: none;
+    border-bottom-color: transparent;
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+/* History Sidebar */
+.history-sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 380px;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(0, 255, 136, 0.2);
+    z-index: 1000;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+}
+
+.history-sidebar.active {
+    right: 0;
+}
+
+.history-item {
+    transition: all 0.3s ease;
+}
+
+.history-item:hover {
+    transform: translateX(-4px);
+}
+
+/* Surprise Me Button */
+.surprise-btn {
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+}
+
+.surprise-shimmer {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 30%, rgba(139, 92, 246, 0.1) 50%, transparent 70%);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Button Secondary Style */
+.btn-secondary {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(0, 255, 136, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-secondary:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Enhanced Quality Indicator */
+#quality-indicator {
+    animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Mobile Optimizations */

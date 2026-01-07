@@ -8,7 +8,6 @@
     <meta name="description" content="Professional Industrial Edition Prompt Architect. Build optimized Midjourney v6.0 and DALL-E prompts using our advanced synthesis system.">
     <meta name="keywords" content="AI Prompt Generator, Midjourney v6, Prompt Engineering, DALL-E 3, Image Generation Tool, Prompt Architect">
     
-    <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
@@ -18,7 +17,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WY34XWK7V2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -28,9 +26,29 @@
     </script>
 </head>
 <body class="flex flex-col items-center pb-10 pt-12">
-    <!-- Background Effects -->
     <div class="hero-bg"></div>
     <div class="particles" id="particles"></div>
+
+    <!-- History Sidebar (Initially Hidden) -->
+    <div id="history-sidebar" class="history-sidebar">
+        <div class="p-6 border-b border-neutral-800">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-sm font-bold text-white tracking-tight">PROMPT HISTORY</h3>
+                <button onclick="closeHistory()" class="text-neutral-500 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <p class="text-[10px] text-neutral-500 uppercase tracking-widest">Saved Sessions</p>
+        </div>
+        <div id="history-list" class="p-4 space-y-3 overflow-y-auto" style="max-height: calc(100vh - 140px);">
+            <!-- History items will be inserted here -->
+        </div>
+        <div class="p-4 border-t border-neutral-800">
+            <button onclick="clearHistory()" class="w-full text-[10px] text-red-400 hover:text-red-300 uppercase tracking-widest font-bold">Clear All History</button>
+        </div>
+    </div>
 
     <div class="content-wrapper w-full">
         <nav class="w-full max-w-2xl px-4 mx-auto flex justify-between items-end mb-20 reveal" style="animation-delay: 0.1s;">
@@ -46,10 +64,6 @@
                 <a href="blog/blog.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400">Blog</a>
                 <a href="faq.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">FAQ</a>
                 <a href="contact.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">Contact</a>
-                <div class="text-[9px] text-neutral-500 uppercase tracking-widest font-bold flex items-center gap-2">
-                    <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                    Synthesis Mode
-                </div>
             </div>
         </nav>
 
@@ -58,19 +72,57 @@
             <div id="adsense-top" class="ad-space w-full text-center py-6 rounded-2xl text-[8px] text-neutral-500 uppercase tracking-widest">Advertisement Space</div>
 
             <section class="reveal" style="animation-delay: 0.2s;">
-                <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500 mb-6 block">01 / Concept Initialization</label>
+                <div class="flex items-center justify-between mb-6">
+                    <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500">01 / Concept Initialization</label>
+                    <div class="flex items-center gap-6">
+                        <button onclick="toggleHistory()" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors flex items-center gap-2 haptic-btn group relative">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            History
+                            <span class="absolute -bottom-8 right-0 w-48 text-[8px] text-neutral-600 normal-case tracking-normal font-normal opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Saved locally in your browser</span>
+                        </button>
+                        <div class="text-[9px] text-neutral-500 uppercase tracking-widest font-bold flex items-center gap-2">
+                            <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                            Synthesis Mode
+                        </div>
+                    </div>
+                </div>
                 <div class="input-wrapper flex items-center space-x-6">
-                    <div class="flex-shrink-0">
-                        <div class="smart-core">
+                    <div class="flex-shrink-0 relative">
+                        <!-- Prompt Strength Ring -->
+                        <svg class="strength-ring" width="80" height="80" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <circle class="strength-ring-bg" cx="40" cy="40" r="35" />
+                            <circle id="strength-ring-progress" class="strength-ring-progress" cx="40" cy="40" r="35" />
+                        </svg>
+                        <div class="smart-core" id="smart-core">
                             <div class="core-face face-1"></div><div class="core-face face-2"></div>
                             <div class="core-face face-3"></div><div class="core-face face-4"></div>
                             <div class="core-face face-5"></div><div class="core-face face-6"></div>
                         </div>
+                        <div id="strength-badge" class="strength-badge">0%</div>
                     </div>
                     <div class="flex-grow relative">
                         <input type="text" id="subject-input" placeholder="Define subject..." class="w-full text-3xl md:text-5xl font-[200] py-4 bg-transparent product-input text-white placeholder:text-neutral-700 focus:placeholder:opacity-0 transition-all">
                         <div class="input-underline"></div>
+                        <!-- Character counter -->
+                        <div id="char-counter" class="absolute -bottom-6 right-0 text-[9px] text-neutral-600 mono opacity-0 transition-opacity">
+                            <span id="char-count">0</span> characters
+                        </div>
                     </div>
+                </div>
+                <!-- Prompt Quality Indicator -->
+                <div id="quality-indicator" class="mt-6 flex items-center justify-between px-4 py-3 bg-zinc-900/50 border border-zinc-800 rounded-xl opacity-0 transition-all">
+                    <div class="flex items-center gap-3">
+                        <div id="quality-icon" class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center">
+                            <span class="text-lg">🎯</span>
+                        </div>
+                        <div>
+                            <div id="quality-title" class="text-xs font-bold text-neutral-400">PROMPT STRENGTH</div>
+                            <div id="quality-desc" class="text-[10px] text-neutral-600">Add attributes to improve...</div>
+                        </div>
+                    </div>
+                    <div id="quality-score" class="text-2xl font-bold text-green-500 mono">0%</div>
                 </div>
             </section>
 
@@ -80,7 +132,6 @@
                 <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500 mb-6 block">Technical Tuning / Advanced Parameters</label>
                 
                 <div class="category-section space-y-6">
-                    <!-- Aspect Ratio -->
                     <div>
                         <h3 class="text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-500 mb-3">Aspect Ratio (--ar)</h3>
                         <div class="flex gap-2">
@@ -91,7 +142,6 @@
                         </div>
                     </div>
 
-                    <!-- Stylize Slider -->
                     <div>
                         <div class="flex justify-between items-center mb-3">
                             <h3 class="text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-500">Stylize (--s)</h3>
@@ -107,7 +157,6 @@
                         </div>
                     </div>
 
-                    <!-- Chaos Slider -->
                     <div>
                         <div class="flex justify-between items-center mb-3">
                             <h3 class="text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-500">Chaos (--c)</h3>
@@ -123,7 +172,6 @@
                         </div>
                     </div>
 
-                    <!-- Negative Prompt -->
                     <div>
                         <h3 class="text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-500 mb-3">Exclusion Parameters (--no)</h3>
                         <div class="input-wrapper relative">
@@ -135,6 +183,23 @@
                 </div>
             </section>
 
+            <!-- Random Generator Button - Moved Here -->
+            <section class="reveal text-center" style="animation-delay: 0.38s;">
+                <button onclick="randomizePrompt()" class="surprise-btn group relative overflow-hidden px-12 py-6 rounded-2xl border-2 border-purple-500/30 bg-gradient-to-r from-purple-900/20 to-pink-900/20 hover:border-purple-500 transition-all">
+                    <div class="surprise-shimmer"></div>
+                    <div class="relative z-10 flex items-center justify-center gap-4">
+                        <span class="text-3xl">🎲</span>
+                        <div class="text-left">
+                            <div class="text-sm font-bold text-white tracking-tight">SURPRISE ME</div>
+                            <div class="text-[9px] text-purple-400 uppercase tracking-widest">Random Prompt Generator</div>
+                        </div>
+                        <svg class="w-6 h-6 text-purple-400 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </div>
+                </button>
+            </section>
+
             <section class="reveal pt-6" style="animation-delay: 0.4s;">
                 <div class="flex items-center justify-between mb-4">
                     <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500">02 / Prompt Synthesis</label>
@@ -144,25 +209,35 @@
                     <div id="output-text" class="mono text-xl md:text-2xl leading-[1.6] text-white min-h-[100px] break-words relative z-10">
                         <span class="text-neutral-600 italic font-light tracking-tight">Ready for architectural parameters...</span>
                     </div>
-                    <div class="mt-14 flex items-center justify-between border-t border-neutral-800 pt-8 relative z-10">
+                    <div class="mt-14 flex items-center justify-between border-t border-neutral-800 pt-8 relative z-10 flex-wrap gap-4">
                         <div class="flex items-center space-x-3">
                             <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse glow-accent"></div>
                             <span class="text-[8px] text-neutral-500 uppercase tracking-[0.2em] font-bold">Optimized for V6.0</span>
                         </div>
-                        <button id="copy-btn" onclick="copyToClipboard(event)" 
-                                class="btn-stream group haptic-btn glow-hover bg-gradient-to-r from-green-500 to-emerald-500 text-black px-10 py-4 rounded-full text-[11px] font-bold transition-all flex items-center justify-center gap-3 border-2 border-green-500">
-                            
-                            <!-- The progress element -->
-                            <div class="stream-progress"></div>
-                            
-                            <span id="btn-icon" class="z-10">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3" />
+                        <div class="flex gap-3">
+                            <button onclick="downloadPrompt()" class="btn-secondary haptic-btn bg-zinc-800 hover:bg-zinc-700 text-white px-6 py-3 rounded-full text-[10px] font-bold transition-all flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                                 </svg>
-                            </span>
-                            
-                            <span id="btn-text" class="z-10 tracking-widest">COPY FINAL STRING</span>
-                        </button>
+                                <span class="tracking-widest">DOWNLOAD</span>
+                            </button>
+                            <button onclick="saveToHistory()" class="btn-secondary haptic-btn bg-zinc-800 hover:bg-zinc-700 text-white px-6 py-3 rounded-full text-[10px] font-bold transition-all flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                                </svg>
+                                <span class="tracking-widest">SAVE</span>
+                            </button>
+                            <button id="copy-btn" onclick="copyToClipboard(event)" 
+                                    class="btn-stream group haptic-btn glow-hover bg-gradient-to-r from-green-500 to-emerald-500 text-black px-10 py-4 rounded-full text-[11px] font-bold transition-all flex items-center justify-center gap-3 border-2 border-green-500">
+                                <div class="stream-progress"></div>
+                                <span id="btn-icon" class="z-10">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3" />
+                                    </svg>
+                                </span>
+                                <span id="btn-text" class="z-10 tracking-widest">COPY FINAL STRING</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -178,7 +253,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Neural Blueprint 1: Cyberpunk City -->
                     <button onclick="loadNeuralBlueprint('neon-lit cyberpunk street at night', 'Cyberpunk', 'Cyber Neon', 'Dark', '16:9', 600, 30, 'blurry, daylight')" 
                             class="neural-card text-left bg-zinc-900 border border-zinc-800 hover:border-emerald-500 p-6 transition-all duration-300 group relative overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -204,7 +278,6 @@
                         </div>
                     </button>
 
-                    <!-- Neural Blueprint 2: Ethereal Portrait -->
                     <button onclick="loadNeuralBlueprint('ethereal portrait with flowing fabric', 'Surrealism', 'Soft Sunlight', 'Ethereal', '4:5', 800, 10, 'harsh lighting, dark')" 
                             class="neural-card text-left bg-zinc-900 border border-zinc-800 hover:border-emerald-500 p-6 transition-all duration-300 group relative overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -230,7 +303,6 @@
                         </div>
                     </button>
 
-                    <!-- Neural Blueprint 3: Architectural Minimal -->
                     <button onclick="loadNeuralBlueprint('minimalist concrete architecture', 'Minimalism', 'Hard Shadows', 'Peaceful', '1:1', 200, 0, 'clutter, decorations')" 
                             class="neural-card text-left bg-zinc-900 border border-zinc-800 hover:border-emerald-500 p-6 transition-all duration-300 group relative overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -277,15 +349,12 @@
         </main>
 
         <footer class="w-full max-w-2xl px-4 mx-auto mt-32 mb-10">
-            <!-- SEO Content Section -->
             <div class="mb-12 pb-8 border-b border-neutral-800">
                 <div class="space-y-6">
-                    <!-- SEO Description -->
                     <div class="text-sm text-neutral-400 leading-relaxed">
                         <p><strong class="text-neutral-300">Prompt Architect</strong> is a professional AI prompt generator designed for creators, designers, and artists working with Midjourney V6.0 and DALL-E 3. Build optimized prompts using our industrial-grade synthesis system featuring curated style libraries, technical parameter controls, and pre-configured neural blueprints. Perfect for prompt engineering, AI art generation, and creative workflows requiring precise natural language processing.</p>
                     </div>
 
-                    <!-- Keyword-Rich Navigation -->
                     <nav class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
                         <div>
                             <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Tools</h3>
@@ -392,6 +461,16 @@
 
     <!-- Toast -->
     <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 translate-y-20 px-8 py-4 rounded-full text-xs font-bold transition-all duration-500 opacity-0 z-50">String Copied to Clipboard</div>
+
+    <!-- SVG Gradient Definition for Strength Ring -->
+    <svg width="0" height="0" style="position: absolute;">
+        <defs>
+            <linearGradient id="strengthGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#00ff88;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#00cc6a;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+    </svg>
 
     <script src="script.js"></script>
 </body>

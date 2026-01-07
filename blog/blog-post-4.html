@@ -3,27 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+    
     <!-- Primary SEO Meta Tags -->
     <title>Color Theory for AI Art: Creating Harmonious Palettes | Prompt Architect</title>
-    <meta name="description" content="Learn how to use color theory principles in your AI art prompts for professional-looking results. Coming soon - expert guide on creating harmonious color palettes.">
-    <meta name="keywords" content="color theory AI art, color palettes, AI art techniques, harmonious colors, professional AI art">
-
+    <meta name="description" content="Master color theory principles for AI art generation. Learn how to create harmonious color palettes in Midjourney and DALL-E using professional color schemes and prompt techniques.">
+    <meta name="keywords" content="color theory AI art, Midjourney color palette, DALL-E colors, AI art color schemes, complementary colors AI, analogous colors prompts, color harmony AI generation">
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article">
     <meta property="og:title" content="Color Theory for AI Art: Creating Harmonious Palettes">
-    <meta property="og:description" content="Learn how to use color theory principles in your AI art prompts for professional-looking results.">
-
+    <meta property="og:description" content="Learn professional color theory techniques for stunning AI art. Master complementary, analogous, and triadic color schemes in your prompts.">
+    <meta property="og:image" content="https://promptsarchitect.com/blog/post-4.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Color Theory for AI Art: Creating Harmonious Palettes">
+    <meta name="twitter:description" content="Master color theory principles for AI art generation with professional palette techniques.">
+    
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
     <link rel="apple-touch-icon" href="../favicon.png">
-
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles.css">
-
+    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WY34XWK7V2"></script>
     <script>
@@ -32,52 +38,301 @@
       gtag('js', new Date());
       gtag('config', 'G-WY34XWK7V2');
     </script>
-
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Color Theory for AI Art: Creating Harmonious Palettes",
+      "description": "Master color theory principles for AI art generation. Learn how to create harmonious color palettes in Midjourney and DALL-E using professional color schemes and prompt techniques.",
+      "url": "https://promptsarchitect.com/blog/blog-post-4.html",
+      "image": "https://promptsarchitect.com/blog/post-4.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "Prompt Architect Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Prompt Architect",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://promptsarchitect.com/favicon.png"
+        }
+      },
+      "datePublished": "2026-01-03",
+      "dateModified": "2026-01-03",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://promptsarchitect.com/blog/blog-post-4.html"
+      },
+      "keywords": ["Color Theory", "AI Art", "Midjourney", "DALL-E", "Color Palettes", "Prompt Engineering"],
+      "articleSection": "Pro Tips",
+      "wordCount": 2600
+    }
+    </script>
+    
     <style>
-        /* Article-specific styles */
         .article-content {
             max-width: 800px;
             margin: 0 auto;
         }
-
-        .coming-soon {
-            background: rgba(21, 21, 21, 0.6);
-            border: 2px solid #00ff88;
-            border-radius: 1.5rem;
-            padding: 3rem;
-            text-align: center;
-            backdrop-filter: blur(20px);
+        
+        .article-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 3rem 0 1.5rem;
+            color: #ffffff;
+            line-height: 1.3;
+            position: relative;
+            padding-left: 20px;
         }
-
-        .coming-soon-icon {
+        
+        .article-content h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 4px;
+            height: 32px;
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            border-radius: 2px;
+        }
+        
+        .article-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: #ffffff;
+        }
+        
+        .article-content p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #cccccc;
+        }
+        
+        .article-content strong {
+            color: #00ff88;
+            font-weight: 600;
+        }
+        
+        .article-content ul {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        .article-content li {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: #cccccc;
+        }
+        
+        .article-content li::marker {
+            color: #00ff88;
+        }
+        
+        .code-block {
+            background: rgba(21, 21, 21, 0.8);
+            border: 1px solid #252525;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            overflow-x: auto;
+        }
+        
+        .code-block code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9375rem;
+            color: #00ff88;
+            line-height: 1.6;
+            white-space: pre;
+        }
+        
+        .color-palette-box {
+            background: rgba(21, 21, 21, 0.8);
+            border: 1px solid #252525;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .color-swatch {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .color-box {
             width: 80px;
             height: 80px;
-            margin: 0 auto 2rem;
-            background: linear-gradient(135deg, #00ff88 0%, #ffffff 100%);
-            border-radius: 50%;
+            border-radius: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .info-box, .warning-box {
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+        }
+        
+        .warning-box {
+            background: rgba(255, 136, 0, 0.05);
+            border-color: rgba(255, 136, 0, 0.2);
+        }
+        
+        .info-box-title, .warning-box-title {
+            color: #00ff88;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            animation: pulse 2s infinite;
+            gap: 0.5rem;
         }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        
+        .warning-box-title {
+            color: #ff8800;
+        }
+        
+        .info-box p, .warning-box p {
+            font-size: 1rem;
+            margin: 0;
+        }
+        
+        .toc {
+            background: rgba(21, 21, 21, 0.6);
+            border: 1px solid #252525;
+            border-radius: 1rem;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 5rem;
+        }
+        
+        .toc h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1.25rem;
+            color: #00ff88;
+            font-weight: 600;
+        }
+        
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .toc a {
+            color: #888888;
+            text-decoration: none;
+            font-size: 0.9375rem;
+            transition: all 0.3s;
+            display: block;
+            padding-left: 1rem;
+            border-left: 2px solid transparent;
+        }
+        
+        .toc a:hover {
+            color: #00ff88;
+            border-left-color: #00ff88;
+            padding-left: 1.5rem;
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 0.75rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .share-btn {
+            background: rgba(21, 21, 21, 0.8);
+            border: 1px solid #252525;
+            border-radius: 12px;
+            padding: 0.75rem 1.5rem;
+            color: #888888;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .share-btn:hover {
+            border-color: #00ff88;
+            color: #00ff88;
+            transform: translateY(-2px);
+        }
+        
+        .related-posts {
+            background: rgba(21, 21, 21, 0.6);
+            border: 1px solid #252525;
+            border-radius: 1rem;
+            padding: 3rem;
+            margin: 4rem 0;
+            backdrop-filter: blur(20px);
+        }
+        
+        .related-post-card {
+            background: rgba(21, 21, 21, 0.8);
+            border: 1px solid #252525;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .related-post-card:hover {
+            border-color: #00ff88;
+            transform: translateY(-4px);
+        }
+        
+        @media (max-width: 768px) {
+            .article-content h2 {
+                font-size: 1.625rem;
+                margin: 2rem 0 1rem;
+            }
+            
+            .article-content h3 {
+                font-size: 1.25rem;
+            }
+            
+            .article-content p,
+            .article-content li {
+                font-size: 1rem;
+            }
+            
+            .toc {
+                position: static;
+            }
+            
+            .color-box {
+                width: 60px;
+                height: 60px;
+            }
         }
     </style>
 </head>
 <body class="flex flex-col items-center pb-10 pt-12">
-    <!-- Background Effects -->
     <div class="hero-bg"></div>
     <div class="particles" id="particles"></div>
 
     <div class="content-wrapper w-full">
-        <!-- Navigation -->
         <nav class="w-full max-w-6xl px-4 mx-auto flex justify-between items-end mb-20 reveal" style="animation-delay: 0.1s;">
             <div>
-                <a href="/">
+                <a href="../index.html">
                     <h1 class="text-2xl font-bold tracking-tighter leading-none" style="background: linear-gradient(135deg, #00ff88 0%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ARCHITECT</h1>
                     <p class="text-[9px] text-neutral-500 uppercase tracking-[0.25em] font-bold mt-2">v6.0 Build System</p>
                 </a>
@@ -92,103 +347,495 @@
         </nav>
 
         <main class="w-full max-w-6xl px-4 mx-auto space-y-20">
-
-            <!-- Article Header -->
+            
             <section class="reveal text-center space-y-6" style="animation-delay: 0.2s;">
                 <div class="text-[9px] text-neutral-500 uppercase tracking-widest">
-                    <a href="/" class="hover:text-green-400 transition-colors">Home</a> /
-                    <a href="blog.html" class="hover:text-green-400 transition-colors">Blog</a> /
-                    <span class="text-green-400">Color Theory Guide</span>
+                    <a href="../index.html" class="hover:text-green-400 transition-colors">Home</a> / 
+                    <a href="blog.html" class="hover:text-green-400 transition-colors">Blog</a> / 
+                    <span class="text-green-400">Color Theory for AI Art</span>
                 </div>
-
+                
                 <span class="inline-block bg-green-500 text-black px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider">Pro Tips</span>
-
-                <h1 class="text-4xl md:text-6xl font-[200] tracking-tighter" style="background: linear-gradient(135deg, #00ff88 0%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                
+                <h1 class="text-4xl md:text-5xl font-[200] tracking-tighter" style="background: linear-gradient(135deg, #00ff88 0%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                     Color Theory for AI Art: Creating Harmonious Palettes
                 </h1>
-
-                <p class="text-xl text-neutral-400 max-w-3xl mx-auto">
-                    Learn how to use color theory principles in your AI art prompts for professional-looking results
+                
+                <p class="text-xl text-neutral-400">
+                    Learn how to use professional color theory principles in your AI art prompts for stunning, harmonious results
                 </p>
-
+                
                 <div class="flex items-center justify-center gap-6 text-neutral-500 text-sm">
-                    <span>By Prompt Architect Team</span>
+                    <span>January 3, 2026</span>
                     <span>•</span>
-                    <span>Coming Soon</span>
+                    <span>9 min read</span>
                 </div>
             </section>
 
-            <!-- Coming Soon Content -->
-            <section class="reveal article-content" style="animation-delay: 0.3s;">
-                <div class="coming-soon">
-                    <div class="coming-soon-icon">
-                        🎨
+            <div class="reveal grid grid-cols-1 lg:grid-cols-12 gap-12" style="animation-delay: 0.3s;">
+                
+                <!-- Sidebar - Table of Contents -->
+                <aside class="lg:col-span-3 mb-12 lg:mb-0">
+                    <div class="toc">
+                        <h2>Table of Contents</h2>
+                        <ul>
+                            <li><a href="#introduction">Introduction</a></li>
+                            <li><a href="#basics">Color Wheel Basics</a></li>
+                            <li><a href="#harmony-schemes">Color Harmony Schemes</a></li>
+                            <li><a href="#temperature">Color Temperature</a></li>
+                            <li><a href="#advanced">Advanced Techniques</a></li>
+                            <li><a href="#practical">Practical Formulas</a></li>
+                            <li><a href="#common-mistakes">Common Mistakes</a></li>
+                            <li><a href="#seasonal">Seasonal Palettes</a></li>
+                            <li><a href="#industry">Industry Colors</a></li>
+                            <li><a href="#testing">Testing & Refining</a></li>
+                            <li><a href="#conclusion">Conclusion</a></li>
+                        </ul>
                     </div>
-                    <h2 class="text-3xl font-bold mb-4 text-white">Coming Soon</h2>
-                    <p class="text-lg text-neutral-300 mb-6 leading-relaxed">
-                        We're crafting an in-depth guide on using color theory principles to create stunning, harmonious AI art.
-                        This comprehensive tutorial will cover:
-                    </p>
-                    <div class="grid md:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3">
-                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-                                <span class="text-neutral-300">Color wheel fundamentals</span>
+                </aside>
+                
+                <!-- Main Article Content -->
+                <div class="lg:col-span-9">
+                <div class="article-content">
+                    
+                    <section id="introduction">
+                        <p>Color is the silent language of emotion in art. Whether you're generating landscapes in Midjourney or portraits in DALL-E, understanding color theory transforms good AI art into exceptional visual experiences that resonate with viewers on an instinctive level.</p>
+                        
+                        <p>This guide demystifies professional color theory and shows you exactly how to implement harmonious color schemes in your AI art prompts for consistently stunning results.</p>
+                    </section>
+                    
+                    <div class="share-buttons">
+                        <a href="#" class="share-btn haptic-btn" onclick="shareOnTwitter(); return false;">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                            </svg>
+                            Share
+                        </a>
+                        <a href="#" class="share-btn haptic-btn" onclick="copyLink(); return false;">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                            </svg>
+                            Copy Link
+                        </a>
+                    </div>
+                    
+                    <section id="basics">
+                        <h2>Understanding the Color Wheel</h2>
+                        
+                        <p>The color wheel is your foundational tool for creating harmonious palettes. It organizes colors in a circular format that reveals natural relationships and harmonies between hues.</p>
+                        
+                        <h3>Primary, Secondary, and Tertiary Colors</h3>
+                        
+                        <ul>
+                            <li><strong>Primary Colors:</strong> Red, Blue, Yellow—cannot be created by mixing other colors</li>
+                            <li><strong>Secondary Colors:</strong> Orange (red + yellow), Green (blue + yellow), Purple (red + blue)</li>
+                            <li><strong>Tertiary Colors:</strong> Created by mixing primary and secondary colors (red-orange, yellow-green, etc.)</li>
+                        </ul>
+                        
+                        <div class="info-box">
+                            <div class="info-box-title">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                Pro Tip
                             </div>
-                            <div class="flex items-center gap-3">
-                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-                                <span class="text-neutral-300">Harmony techniques</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-                                <span class="text-neutral-300">Prompt engineering for colors</span>
+                            <p>When prompting AI models, you can reference these color relationships directly: "complementary color scheme" or "analogous palette" will guide the AI toward harmonious color choices.</p>
+                        </div>
+                    </section>
+                    
+                    <section id="harmony-schemes">
+                        <h2>Classic Color Harmony Schemes</h2>
+                        
+                        <h3>1. Complementary Colors</h3>
+                        
+                        <p>Complementary colors sit directly opposite each other on the color wheel, creating maximum contrast and visual vibration when placed side by side.</p>
+                        
+                        <div class="color-palette-box">
+                            <p class="text-sm text-neutral-400 mb-3">Example: Blue & Orange</p>
+                            <div class="color-swatch">
+                                <div class="color-box" style="background: #0066CC;"></div>
+                                <div class="color-box" style="background: #FF6600;"></div>
                             </div>
                         </div>
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3">
-                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-                                <span class="text-neutral-300">Professional color palettes</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-                                <span class="text-neutral-300">Mood and atmosphere control</span>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-                                <span class="text-neutral-300">Real-world examples</span>
+                        
+                        <div class="code-block">
+                            <code>// Complementary scheme prompt
+sunset landscape with deep blue sky and warm orange clouds, 
+complementary color palette, high contrast --ar 16:9 --v 6.0</code>
+                        </div>
+                        
+                        <p><strong>Best for:</strong> Dynamic, energetic compositions, sports imagery, bold graphic designs</p>
+                        
+                        <h3>2. Analogous Colors</h3>
+                        
+                        <p>Analogous colors are neighbors on the color wheel—typically three adjacent colors. This creates harmonious, serene compositions with natural flow.</p>
+                        
+                        <div class="color-palette-box">
+                            <p class="text-sm text-neutral-400 mb-3">Example: Blue, Blue-Green, Green</p>
+                            <div class="color-swatch">
+                                <div class="color-box" style="background: #0066CC;"></div>
+                                <div class="color-box" style="background: #00AA99;"></div>
+                                <div class="color-box" style="background: #00CC66;"></div>
                             </div>
                         </div>
-                    </div>
-                    <p class="text-neutral-400 mt-6">
-                        Follow us on social media to get notified when this guide is published!
-                    </p>
-                </div>
-            </section>
+                        
+                        <div class="code-block">
+                            <code>// Analogous scheme prompt
+peaceful forest scene, analogous blue-green color palette, 
+tranquil atmosphere, soft natural lighting --ar 16:9 --v 6.0</code>
+                        </div>
+                        
+                        <p><strong>Best for:</strong> Nature scenes, calming imagery, cohesive brand aesthetics</p>
+                        
+                        <h3>3. Triadic Colors</h3>
+                        
+                        <p>Triadic schemes use three colors evenly spaced around the color wheel, creating vibrant yet balanced compositions with visual interest.</p>
+                        
+                        <div class="color-palette-box">
+                            <p class="text-sm text-neutral-400 mb-3">Example: Red, Yellow, Blue</p>
+                            <div class="color-swatch">
+                                <div class="color-box" style="background: #CC0000;"></div>
+                                <div class="color-box" style="background: #FFCC00;"></div>
+                                <div class="color-box" style="background: #0066CC;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="code-block">
+                            <code>// Triadic scheme prompt
+vibrant modern art piece, triadic color scheme with red yellow blue, 
+balanced composition, bold geometric shapes --ar 1:1 --v 6.0</code>
+                        </div>
+                        
+                        <p><strong>Best for:</strong> Playful designs, children's content, eye-catching graphics</p>
+                        
+                        <h3>4. Monochromatic</h3>
+                        
+                        <p>Monochromatic palettes use variations of a single hue—different tints, tones, and shades—creating sophisticated, unified compositions.</p>
+                        
+                        <div class="code-block">
+                            <code>// Monochromatic scheme prompt
+elegant portrait, monochromatic blue palette, various shades from 
+navy to powder blue, sophisticated mood --ar 4:5 --s 200 --v 6.0</code>
+                        </div>
+                        
+                        <p><strong>Best for:</strong> Minimalist designs, elegant photography, fashion imagery</p>
+                    </section>
+                    
+                    <section id="temperature">
+                        <h2>Color Temperature and Mood</h2>
+                        
+                        <p>Color temperature dramatically affects the emotional impact of your AI art. Understanding warm and cool colors is essential for conveying specific moods.</p>
+                        
+                        <h3>Warm Colors (Reds, Oranges, Yellows)</h3>
+                        
+                        <ul>
+                            <li><strong>Emotional Effect:</strong> Energy, passion, warmth, excitement</li>
+                            <li><strong>Psychological Impact:</strong> Stimulating, attention-grabbing, appetite-inducing</li>
+                            <li><strong>Best Use Cases:</strong> Action scenes, sunset imagery, cozy interiors</li>
+                        </ul>
+                        
+                        <div class="code-block">
+                            <code>// Warm color palette prompt
+cozy coffee shop interior, warm color palette with golden yellows 
+and rust oranges, inviting atmosphere, soft afternoon light --ar 16:9 --v 6.0</code>
+                        </div>
+                        
+                        <h3>Cool Colors (Blues, Greens, Purples)</h3>
+                        
+                        <ul>
+                            <li><strong>Emotional Effect:</strong> Calm, serenity, professionalism, tranquility</li>
+                            <li><strong>Psychological Impact:</strong> Relaxing, trustworthy, sophisticated</li>
+                            <li><strong>Best Use Cases:</strong> Corporate imagery, spa environments, night scenes</li>
+                        </ul>
+                        
+                        <div class="code-block">
+                            <code>// Cool color palette prompt
+modern tech office, cool blue and teal color scheme, professional 
+atmosphere, minimalist design, natural daylight --ar 16:9 --v 6.0</code>
+                        </div>
+                        
+                        <div class="warning-box">
+                            <div class="warning-box-title">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                </svg>
+                                Common Mistake
+                            </div>
+                            <p>Avoid mixing too many warm and cool colors without intention. Unless you're deliberately creating contrast, stick predominantly to one temperature range for cohesive results.</p>
+                        </div>
+                    </section>
+                    
+                    <section id="advanced">
+                        <h2>Advanced Color Techniques</h2>
+                        
+                        <h3>Split-Complementary Scheme</h3>
+                        
+                        <p>A sophisticated variation of complementary colors. Instead of using direct opposites, you use one base color and the two colors adjacent to its complement.</p>
+                        
+                        <div class="code-block">
+                            <code>// Split-complementary prompt
+fashion portrait, split-complementary color scheme with blue, 
+yellow-orange and red-orange accents, dynamic yet balanced --ar 4:5 --v 6.0</code>
+                        </div>
+                        
+                        <h3>Color Dominance and Accent</h3>
+                        
+                        <p>Professional designers use the 60-30-10 rule: 60% dominant color, 30% secondary color, 10% accent color.</p>
+                        
+                        <div class="code-block">
+                            <code>// Dominant color prompt with accents
+minimalist living room, 60% soft gray tones, 30% warm beige, 
+10% vibrant teal accent pieces, balanced composition --ar 16:9 --v 6.0</code>
+                        </div>
+                        
+                        <h3>Saturation and Value Control</h3>
+                        
+                        <p>Control visual impact through saturation (color intensity) and value (lightness/darkness).</p>
+                        
+                        <ul>
+                            <li><strong>Desaturated/Muted:</strong> Sophisticated, vintage, calming</li>
+                            <li><strong>Highly Saturated/Vibrant:</strong> Energetic, modern, attention-grabbing</li>
+                            <li><strong>High Contrast (value):</strong> Dramatic, bold</li>
+                            <li><strong>Low Contrast:</strong> Subtle, ethereal, dreamy</li>
+                        </ul>
+                        
+                        <div class="code-block">
+                            <code>// Saturation control prompt
+vintage poster design, muted pastel color palette, low saturation, 
+soft nostalgic feel, gentle tones --ar 2:3 --s 300 --v 6.0
 
-            <!-- Back to Blog -->
-            <section class="text-center">
-                <a href="blog.html" class="inline-flex items-center gap-3 px-6 py-3 bg-green-500 text-black font-bold rounded-full hover:bg-green-400 transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-                    </svg>
-                    Back to Blog
-                </a>
-            </section>
+// High saturation alternative
+vibrant street art mural, highly saturated bold colors, 
+maximum color intensity, eye-catching --ar 16:9 --s 600 --v 6.0</code>
+                        </div>
+                    </section>
+                    
+                    <section id="practical">
+                        <h2>Practical Prompt Formulas</h2>
+                        
+                        <h3>Formula 1: Named Color Palette</h3>
+                        
+                        <div class="code-block">
+                            <code>[Subject] + [specific color names] + color palette + [mood]
+
+Example:
+mountain landscape, sage green and dusty rose color palette, 
+serene and peaceful atmosphere --ar 16:9 --v 6.0</code>
+                        </div>
+                        
+                        <h3>Formula 2: Color Harmony Scheme</h3>
+                        
+                        <div class="code-block">
+                            <code>[Subject] + [harmony type] color scheme + [additional modifiers]
+
+Example:
+abstract art, complementary color scheme with purple and yellow, 
+high contrast, modern composition --ar 1:1 --s 500 --v 6.0</code>
+                        </div>
+                        
+                        <h3>Formula 3: Temperature-Based</h3>
+                        
+                        <div class="code-block">
+                            <code>[Subject] + [warm/cool] color palette + [specific hues]
+
+Example:
+cozy bedroom, warm color palette with terracotta and gold tones, 
+inviting atmosphere --ar 16:9 --v 6.0</code>
+                        </div>
+                    </section>
+                    
+                    <section id="common-mistakes">
+                        <h2>Common Color Mistakes to Avoid</h2>
+                        
+                        <h3>1. Too Many Competing Colors</h3>
+                        <p>Limit your palette to 2-4 main colors plus neutrals. More colors create visual chaos unless you're deliberately seeking that effect.</p>
+                        
+                        <h3>2. Ignoring Neutrals</h3>
+                        <p>Always include neutral spaces (whites, grays, blacks) to let your color palette breathe and create visual hierarchy.</p>
+                        
+                        <h3>3. Inconsistent Saturation</h3>
+                        <p>Maintain consistent saturation levels across your palette for cohesion. Don't mix muted pastels with neon brights unless you're intentionally creating jarring contrast.</p>
+                        
+                        <div class="code-block">
+                            <code>// Bad: Inconsistent saturation
+pastel pink flowers with neon green leaves, vintage aesthetic
+
+// Good: Consistent saturation
+pastel pink flowers with soft sage green leaves, vintage aesthetic</code>
+                        </div>
+                    </section>
+                    
+                    <section id="seasonal">
+                        <h2>Seasonal Color Palettes</h2>
+                        
+                        <p>Seasonal palettes tap into universal psychological associations, making them powerful tools for evoking specific moods.</p>
+                        
+                        <h3>Spring Palette</h3>
+                        <div class="code-block">
+                            <code>spring garden scene, fresh spring color palette with soft pastels, 
+cherry blossom pink and mint green, renewal and growth --ar 16:9 --v 6.0</code>
+                        </div>
+                        
+                        <h3>Summer Palette</h3>
+                        <div class="code-block">
+                            <code>beach scene, vibrant summer colors, turquoise blue and sunny yellow, 
+bright saturated tones, energetic atmosphere --ar 16:9 --v 6.0</code>
+                        </div>
+                        
+                        <h3>Autumn Palette</h3>
+                        <div class="code-block">
+                            <code>autumn forest, warm fall color palette with burnt orange rust and 
+golden amber, cozy nostalgic mood --ar 16:9 --v 6.0</code>
+                        </div>
+                        
+                        <h3>Winter Palette</h3>
+                        <div class="code-block">
+                            <code>winter landscape, cool winter color scheme with icy blues and 
+silver whites, crisp and serene atmosphere --ar 16:9 --v 6.0</code>
+                        </div>
+                    </section>
+                    
+                    <section id="industry">
+                        <h2>Industry-Specific Color Psychology</h2>
+                        
+                        <p>Different industries leverage color psychology to evoke specific emotional responses and brand associations.</p>
+                        
+                        <h3>Tech & Innovation</h3>
+                        <ul>
+                            <li><strong>Colors:</strong> Blues, teals, silvers</li>
+                            <li><strong>Psychology:</strong> Trust, innovation, intelligence</li>
+                        </ul>
+                        
+                        <div class="code-block">
+                            <code>tech startup office, modern blue and silver color scheme, 
+innovative atmosphere, clean professional design --ar 16:9 --v 6.0</code>
+                        </div>
+                        
+                        <h3>Health & Wellness</h3>
+                        <ul>
+                            <li><strong>Colors:</strong> Greens, soft blues, whites</li>
+                            <li><strong>Psychology:</strong> Healing, nature, purity</li>
+                        </ul>
+                        
+                        <h3>Food & Beverage</h3>
+                        <ul>
+                            <li><strong>Colors:</strong> Reds, oranges, warm yellows</li>
+                            <li><strong>Psychology:</strong> Appetite stimulation, energy</li>
+                        </ul>
+                        
+                        <h3>Luxury & Premium</h3>
+                        <ul>
+                            <li><strong>Colors:</strong> Deep purples, golds, blacks</li>
+                            <li><strong>Psychology:</strong> Sophistication, exclusivity</li>
+                        </ul>
+                        
+                        <div class="code-block">
+                            <code>luxury product photography, rich deep purple and gold color palette, 
+premium sophisticated feel, dramatic lighting --ar 4:5 --s 200 --v 6.0</code>
+                        </div>
+                    </section>
+                    
+                    <section id="testing">
+                        <h2>Testing and Refining Your Color Palettes</h2>
+                        
+                        <p>Color selection is iterative. Use these strategies to refine your palettes for optimal results.</p>
+                        
+                        <h3>The Variation Method</h3>
+                        <p>Generate multiple versions with slight color adjustments to compare effectiveness.</p>
+                        
+                        <div class="code-block">
+                            <code>// Test 1: Warmer
+portrait, warm terracotta and golden amber palette --ar 4:5 --v 6.0
+
+// Test 2: Cooler
+portrait, cool slate blue and silver palette --ar 4:5 --v 6.0
+
+// Test 3: Balanced
+portrait, balanced warm beige and cool gray palette --ar 4:5 --v 6.0</code>
+                        </div>
+                        
+                        <h3>The Chaos Parameter for Color Variety</h3>
+                        <p>Use the chaos parameter to explore different color interpretations of the same palette.</p>
+                        
+                        <div class="code-block">
+                            <code>abstract art, complementary color scheme --c 50 --v 6.0
+// Higher chaos gives more color variation and experimentation</code>
+                        </div>
+                        
+                        <div class="info-box">
+                            <div class="info-box-title">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                                Quick Tip
+                            </div>
+                            <p>Use the <a href="../index.html" class="text-[#00ff88] underline">Prompt Architect tool</a> to quickly test different color palette combinations with our pre-configured color chips and real-time preview.</p>
+                        </div>
+                    </section>
+                    
+                    <section id="conclusion">
+                        <h2>Mastering Color in AI Art</h2>
+                        
+                        <p>Color theory transforms your AI art from random generation to intentional, emotionally resonant creation. By understanding color relationships, temperature, and psychological impact, you gain unprecedented control over the mood and message of your work.</p>
+                        
+                        <p>Remember these key principles:</p>
+                        
+                        <ul>
+                            <li>Start with a clear color harmony scheme (complementary, analogous, triadic, or monochromatic)</li>
+                            <li>Consider color temperature and its emotional impact</li>
+                            <li>Use the 60-30-10 rule for balanced compositions</li>
+                            <li>Maintain consistent saturation levels across your palette</li>
+                            <li>Test variations to find the perfect balance</li>
+                        </ul>
+                        
+                        <p>The most powerful aspect of mastering color theory for AI art is that once you understand these principles, you can communicate exactly what you want to any AI model—Midjourney, DALL-E, or future tools—with precision and confidence.</p>
+                        
+                        <p>Your next masterpiece is waiting. Choose your palette wisely.</p>
+                    </section>
+                    
+                </div>
+                </div>
+            </div>
+            
+            <div class="reveal related-posts" style="animation-delay: 0.4s;">
+                <h2 class="text-3xl font-bold mb-8 text-white">Related Articles</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <a href="blog-post-1.html" class="related-post-card">
+                        <span class="inline-block bg-[#00ff88] bg-opacity-20 text-[#00ff88] px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-3">Tutorial</span>
+                        <h3 class="text-lg font-bold text-white mb-2">The Ultimate Guide to Midjourney V6 Prompts</h3>
+                        <p class="text-sm text-neutral-400">Master advanced prompt engineering for stunning AI art.</p>
+                    </a>
+                    
+                    <a href="blog-post-3.html" class="related-post-card">
+                        <span class="inline-block bg-[#00ff88] bg-opacity-20 text-[#00ff88] px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-3">Pro Tips</span>
+                        <h3 class="text-lg font-bold text-white mb-2">10 Pro Tips for Cinematic AI Art</h3>
+                        <p class="text-sm text-neutral-400">Professional techniques for stunning cinematic imagery.</p>
+                    </a>
+                    
+                    <a href="blog.html" class="related-post-card">
+                        <span class="inline-block bg-[#00ff88] bg-opacity-20 text-[#00ff88] px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-3">Guide</span>
+                        <h3 class="text-lg font-bold text-white mb-2">More AI Art Tutorials</h3>
+                        <p class="text-sm text-neutral-400">Explore our complete collection of guides and tips.</p>
+                    </a>
+                    
+                </div>
+            </div>
+            
         </main>
 
-        <!-- Footer (exact same as other pages) -->
         <footer class="w-full max-w-6xl px-4 mx-auto mt-32 mb-10">
             <div class="mb-12 pb-8 border-b border-neutral-800">
                 <div class="space-y-6">
                     <div class="text-sm text-neutral-400 leading-relaxed">
-                        <p><strong class="text-neutral-300">Prompt Architect</strong> is a professional AI prompt generator designed for creators, designers, and artists working with Midjourney V6.0 and DALL-E 3. Build optimized prompts using our advanced synthesis system featuring curated style libraries, technical parameter controls, and pre-configured neural blueprints. Perfect for prompt engineering, AI art generation, and creative workflows requiring precise natural language processing.</p>
+                        <p><strong class="text-neutral-300">Prompt Architect</strong> is a professional AI prompt generator designed for creators, designers, and artists working with Midjourney V6.0 and DALL-E 3.</p>
                     </div>
 
                     <nav class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
                         <div>
                             <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Tools</h3>
                             <ul class="space-y-2">
-                                <li><a href="/" class="text-neutral-400 hover:text-green-400 transition-colors">AI Prompt Builder</a></li>
+                                <li><a href="../index.html" class="text-neutral-400 hover:text-green-400 transition-colors">AI Prompt Builder</a></li>
                                 <li><a href="../gallery.html" class="text-neutral-400 hover:text-green-400 transition-colors">Generated Image Gallery</a></li>
                             </ul>
                         </div>
@@ -197,30 +844,120 @@
                             <ul class="space-y-2">
                                 <li><a href="blog.html" class="text-neutral-400 hover:text-green-400 transition-colors">AI Art Blog</a></li>
                                 <li><a href="../faq.html" class="text-neutral-400 hover:text-green-400 transition-colors">Prompt Engineering FAQ</a></li>
-                                <li><a href="../about.html" class="text-neutral-400 hover:text-green-400 transition-colors">About Midjourney Optimization</a></li>
+                                <li><a href="../about.html" class="text-neutral-400 hover:text-green-400 transition-colors">About</a></li>
                             </ul>
                         </div>
                         <div>
                             <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Connect</h3>
                             <ul class="space-y-2">
                                 <li><a href="../contact.html" class="text-neutral-400 hover:text-green-400 transition-colors">Contact & Support</a></li>
-                                <li><a href="https://instagram.com/prompts.architect" target="_blank" rel="noopener" class="text-neutral-400 hover:text-green-400 transition-colors">Instagram Showcase</a></li>
+                                <li><a href="https://instagram.com/prompts.architect" target="_blank" rel="noopener" class="text-neutral-400 hover:text-green-400 transition-colors">Instagram</a></li>
                             </ul>
                         </div>
                     </nav>
+                </div>
+            </div>
 
-                    <div class="flex flex-wrap gap-4 text-xs text-neutral-500">
-                        <span>© 2025 Prompt Architect</span>
-                        <span>•</span>
-                        <a href="#" class="hover:text-green-400 transition-colors">Privacy Policy</a>
-                        <span>•</span>
-                        <a href="#" class="hover:text-green-400 transition-colors">Terms of Service</a>
-                    </div>
+            <div class="text-[9px] text-neutral-500 uppercase tracking-[0.2em] font-bold flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>© 2025 PROMPT ARCHITECT</div>
+                <div class="flex space-x-6">
+                    <button onclick="openModal('privacy')" class="hover:text-green-400 transition-colors">Privacy</button>
+                    <button onclick="openModal('terms')" class="hover:text-green-400 transition-colors">Terms</button>
                 </div>
             </div>
         </footer>
     </div>
 
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content space-y-6 text-neutral-400 pb-20">
+            <h2 class="text-3xl font-bold text-white tracking-tighter">Privacy Policy</h2>
+            <p class="text-[11px] uppercase tracking-widest text-neutral-500">Effective Date: January 2025</p>
+            
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">1. Data Collection</h3>
+                <p class="text-sm">Prompt Architect is a static, client-side application. We do not host databases or store your personal information. All prompt generation occurs locally within your browser's memory.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">2. Cookies and Advertising</h3>
+                <p class="text-sm">We use Google AdSense to serve advertisements. Google, as a third-party vendor, uses cookies to serve ads on our site. Google's use of advertising cookies enables it and its partners to serve ads based on your visit to this site and/or other sites on the Internet.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">3. Third Party Services</h3>
+                <p class="text-sm">You may opt out of personalized advertising by visiting Ads Settings or www.aboutads.info. We do not control the practices of third-party advertisers.</p>
+            </section>
+
+            <button onclick="closeModal('privacy')" class="bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest haptic-btn">Return to System</button>
+        </div>
+    </div>
+
+    <div id="terms-modal" class="modal">
+        <div class="modal-content space-y-6 text-neutral-400 pb-20">
+            <h2 class="text-3xl font-bold text-white tracking-tighter">Terms of Service</h2>
+            <p class="text-[11px] uppercase tracking-widest text-neutral-500">Agreement v1.0</p>
+            
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">1. Use of Service</h3>
+                <p class="text-sm">By accessing Prompt Architect, you agree to use the tool for legal, creative purposes. You are responsible for the inputs you provide and the outputs you generate using third-party AI models.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">2. Intellectual Property</h3>
+                <p class="text-sm">The 'Architect Build System' UI, logic, and code are the intellectual property of Prompt Architect. Users retain ownership of the specific strings they construct using our interface.</p>
+            </section>
+
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">3. Limitation of Liability</h3>
+                <p class="text-sm">The tool is provided "as is" without warranty of any kind. We are not liable for any discrepancies between our synthesized strings and the final results produced by generative AI platforms.</p>
+            </section>
+
+            <button onclick="closeModal('terms')" class="bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest haptic-btn">Return to System</button>
+        </div>
+    </div>
+
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 translate-y-20 px-8 py-4 rounded-full text-xs font-bold transition-all duration-500 opacity-0 z-50">Link Copied to Clipboard</div>
+
     <script src="../script.js"></script>
+    <script>
+        function shareOnTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent("Learn color theory for AI art! Master harmonious palettes in Midjourney and DALL-E. #AIArt #ColorTheory #Midjourney");
+            window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                showToast('Link copied to clipboard!');
+            });
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.opacity = '1';
+            toast.style.transform = 'translate(-50%, 0)';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translate(-50%, 20px)';
+            }, 3000);
+        }
+
+        function openModal(id) {
+            const modal = document.getElementById(id + '-modal');
+            if (modal) modal.style.display = 'block';
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id + '-modal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) modal.style.display = 'none';
+            });
+        });
+    </script>
 </body>
 </html>
