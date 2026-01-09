@@ -1,4 +1,19 @@
 User-agent: *
 Allow: /
 
+# Allow important assets
+Allow: /favicon.ico
+Allow: /favicon.png
+Allow: /apple-touch-icon.png
+Allow: /og-image.png
+
+# Allow CSS and JS for better crawling
+Allow: /styles.css
+Allow: /script.js
+
+# Disallow admin or sensitive areas (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location
 Sitemap: https://promptsarchitect.com/sitemap.xml
