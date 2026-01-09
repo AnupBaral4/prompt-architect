@@ -666,6 +666,7 @@ function showToast(message) {
     }, 2500);
 }
 
+
 function openModal(id) {
     const modal = document.getElementById(id + '-modal');
     if (modal) modal.style.display = 'block';
