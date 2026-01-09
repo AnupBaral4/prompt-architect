@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Blog | Prompt Architect v6.0</title>
+    <meta name="description" content="Expert guides, tutorials, and insights on AI art generation, Midjourney prompts, DALL-E techniques, and prompt engineering for creators.">
+    <meta name="keywords" content="AI art blog, Midjourney tutorials, DALL-E guides, prompt engineering, AI image generation, Midjourney V6, AI art tips">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://promptsarchitect.com/blog">
+    <meta property="og:title" content="AI Art Blog - Prompt Architect | Tutorials & Guides">
+    <meta property="og:description" content="Master AI art generation with expert tutorials on Midjourney, DALL-E, and prompt engineering techniques.">
+    
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../favicon.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WY34XWK7V2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WY34XWK7V2');
+    </script>
+    
+    <style>
+        .blog-card {
+            background: rgba(21, 21, 21, 0.6);
+            border: 1px solid #252525;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(20px);
+            display: block;
+            opacity: 1;
+            position: relative;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-8px);
+            border-color: #00ff88;
+            box-shadow: 0 20px 60px rgba(0, 255, 136, 0.15);
+        }
+        
+        .blog-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .blog-card:hover .blog-image {
+            transform: scale(1.08);
+        }
+        
+        .blog-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-category {
+            display: inline-block;
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .blog-title {
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1rem 0 0.75rem;
+            line-height: 1.3;
+            transition: color 0.3s ease;
+        }
+        
+        .blog-card:hover .blog-title {
+            color: #00ff88;
+        }
+        
+        .blog-excerpt {
+            color: #888888;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1rem;
+            border-top: 1px solid #252525;
+            font-size: 0.75rem;
+            color: #666666;
+        }
+        
+        .read-more {
+            color: #00ff88;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.3s ease;
+        }
+        
+        .blog-card:hover .read-more {
+            gap: 12px;
+        }
+        
+        .featured-post {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(21, 21, 21, 0.8) 100%);
+            border: 2px solid #00ff88;
+        }
+        
+        .featured-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #00ff88;
+            color: #0a0a0a;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 10;
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .search-wrapper {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-input {
+            background: rgba(21, 21, 21, 0.6);
+            border: 2px solid #252525;
+            color: #ffffff;
+            padding: 1rem 1.5rem 1rem 3.5rem;
+            border-radius: 50px;
+            width: 100%;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-size: 0.95rem;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #00ff88;
+            box-shadow: 0 0 0 4px rgba(0, 255, 136, 0.1);
+            background: rgba(21, 21, 21, 0.9);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888888;
+            transition: color 0.3s ease;
+        }
+        
+        .search-input:focus + .search-icon {
+            color: #00ff88;
+        }
+        
+        .category-pill {
+            background: rgba(21, 21, 21, 0.6);
+            border: 1px solid #252525;
+            color: #888888;
+            padding: 0.625rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .category-pill:hover,
+        .category-pill.active {
+            background: rgba(0, 255, 136, 0.1);
+            border-color: #00ff88;
+            color: #00ff88;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 255, 136, 0.2);
+        }
+        
+        .category-pill:active {
+            transform: translateY(0) scale(0.95);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #00ff88 0%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #666;
+        }
+        
+        .no-results-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-image {
+                height: 180px;
+            }
+            
+            .blog-title {
+                font-size: 1.1rem;
+            }
+            
+            .blog-content {
+                padding: 1.25rem;
+            }
+            
+            .category-pill {
+                padding: 0.5rem 1rem;
+                font-size: 10px;
+            }
+            
+            .featured-post {
+                grid-column: span 1;
+            }
+            
+            .search-input {
+                font-size: 0.875rem;
+                padding: 0.875rem 1.25rem 0.875rem 3rem;
+            }
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center pb-10 pt-12">
+    <div class="hero-bg"></div>
+    <div class="particles" id="particles"></div>
+
+    <div class="content-wrapper w-full">
+        <nav class="w-full max-w-2xl px-4 mx-auto flex justify-between items-end mb-20 reveal" style="animation-delay: 0.1s;">
+            <div>
+                <a href="../index.html">
+                    <h1 class="text-2xl font-bold tracking-tighter leading-none hero-gradient">ARCHITECT</h1>
+                    <p class="text-[9px] text-neutral-500 uppercase tracking-[0.25em] font-bold mt-2">v6.0 Build System</p>
+                </a>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="../about.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">About</a>
+                <a href="../gallery.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">Gallery</a>
+                <a href="blog.html" class="text-[10px] text-green-400 uppercase tracking-widest font-bold transition-colors">Blog</a>
+                <a href="../faq.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">FAQ</a>
+                <a href="../contact.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">Contact</a>
+            </div>
+        </nav>
+
+        <main class="w-full max-w-2xl px-4 mx-auto space-y-20">
+            
+            <section class="reveal text-center space-y-6" style="animation-delay: 0.2s;">
+                <div>
+                    <h1 class="text-4xl md:text-6xl font-[200] tracking-tighter mb-4 hero-gradient">
+                        AI Art Insights
+                    </h1>
+                    <p class="text-lg md:text-xl text-neutral-400 leading-relaxed">
+                        Expert tutorials, guides, and techniques for mastering AI art
+                    </p>
+                </div>
+                
+                <div class="search-wrapper">
+                    <input type="text" class="search-input" placeholder="Search articles..." id="searchInput">
+                    <svg class="search-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </div>
+            </section>
+
+            <section class="reveal" style="animation-delay: 0.3s;">
+                <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500 mb-6 block">Article Categories</label>
+                <div class="flex flex-wrap gap-3 justify-center">
+                    <button class="category-pill active haptic-btn" data-category="all">All Posts</button>
+                    <button class="category-pill haptic-btn" data-category="tutorials">Tutorials</button>
+                    <button class="category-pill haptic-btn" data-category="guides">Guides</button>
+                    <button class="category-pill haptic-btn" data-category="comparison">Comparisons</button>
+                    <button class="category-pill haptic-btn" data-category="tips">Pro Tips</button>
+                    <button class="category-pill haptic-btn" data-category="news">AI News</button>
+                </div>
+            </section>
+
+            <section class="reveal space-y-8" style="animation-delay: 0.4s;">
+                <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500 block">Latest Articles</label>
+                
+                <div class="grid grid-cols-1 gap-6" id="blogGrid">
+                    
+                    <article class="blog-card featured-post relative" data-category="tutorials">
+                        <span class="featured-badge">FEATURED</span>
+                        <a href="blog-post-1.html">
+                            <div class="overflow-hidden">
+                                <img src="post-1.jpg" alt="Midjourney V6 Tutorial" class="blog-image" loading="lazy">
+                            </div>
+                            <div class="blog-content">
+                                <span class="blog-category">Tutorial</span>
+                                <h2 class="blog-title">The Ultimate Guide to Midjourney V6 Prompts: Master AI Art Generation</h2>
+                                <p class="blog-excerpt">
+                                    Learn advanced prompt engineering techniques for Midjourney V6. Discover how to craft perfect prompts using parameters, modifiers, and professional strategies.
+                                </p>
+                                <div class="blog-meta">
+                                    <div>
+                                        <span>Dec 28, 2025</span>
+                                        <span class="mx-2 text-[#252525]">•</span>
+                                        <span>12 min read</span>
+                                    </div>
+                                    <span class="read-more">
+                                        Read Article
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="blog-card" data-category="comparison">
+                        <a href="blog-post-2.html">
+                            <div class="overflow-hidden">
+                                <img src="post-2.jpg" alt="DALL-E vs Midjourney" class="blog-image" loading="lazy">
+                            </div>
+                            <div class="blog-content">
+                                <span class="blog-category">Comparison</span>
+                                <h2 class="blog-title">DALL-E 3 vs Midjourney V6: Complete Comparison Guide</h2>
+                                <p class="blog-excerpt">
+                                    Comprehensive comparison of DALL-E 3 and Midjourney V6. Which AI art tool delivers better results for your needs?
+                                </p>
+                                <div class="blog-meta">
+                                    <div>
+                                        <span>Dec 25, 2025</span>
+                                        <span class="mx-2 text-[#252525]">•</span>
+                                        <span>10 min read</span>
+                                    </div>
+                                    <span class="read-more">
+                                        Read Article
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="blog-card" data-category="tips">
+                        <a href="blog-post-3.html">
+                            <div class="overflow-hidden">
+                                <img src="post-3.jpg" alt="Cinematic AI Art Tips" class="blog-image" loading="lazy">
+                            </div>
+                            <div class="blog-content">
+                                <span class="blog-category">Pro Tips</span>
+                                <h2 class="blog-title">10 Pro Tips for Creating Cinematic AI Art</h2>
+                                <p class="blog-excerpt">
+                                    Master the art of cinematic AI imagery with professional techniques for lighting, composition, and atmosphere.
+                                </p>
+                                <div class="blog-meta">
+                                    <div>
+                                        <span>Dec 22, 2025</span>
+                                        <span class="mx-2 text-[#252525]">•</span>
+                                        <span>8 min read</span>
+                                    </div>
+                                    <span class="read-more">
+                                        Read Article
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="blog-card" data-category="tips">
+                        <a href="blog-post-4.html">
+                            <div class="overflow-hidden">
+                                <img src="post-4.jpg" alt="Color Theory AI" class="blog-image" loading="lazy">
+                            </div>
+                            <div class="blog-content">
+                                <span class="blog-category">Pro Tips</span>
+                                <h2 class="blog-title">Color Theory for AI Art: Creating Harmonious Palettes</h2>
+                                <p class="blog-excerpt">
+                                    Learn how to use color theory principles in your AI art prompts for professional-looking results.
+                                </p>
+                                <div class="blog-meta">
+                                    <div>
+                                        <span>Jan 3, 2026</span>
+                                        <span class="mx-2 text-[#252525]">•</span>
+                                        <span>9 min read</span>
+                                    </div>
+                                    <span class="read-more">
+                                        Read Article
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="blog-card" data-category="guides">
+                        <a href="blog-post-5.html">
+                            <div class="overflow-hidden">
+                                <img src="post-5.jpg" alt="AI Art Monetization" class="blog-image" loading="lazy">
+                            </div>
+                            <div class="blog-content">
+                                <span class="blog-category">Business Guide</span>
+                                <h2 class="blog-title">How to Monetize AI Art: 7 Proven Strategies to Earn $5K+ Monthly</h2>
+                                <p class="blog-excerpt">
+                                    Discover professional strategies to turn your AI art into consistent income. Learn what top earners do differently.
+                                </p>
+                                <div class="blog-meta">
+                                    <div>
+                                        <span>Jan 5, 2026</span>
+                                        <span class="mx-2 text-[#252525]">•</span>
+                                        <span>14 min read</span>
+                                    </div>
+                                    <span class="read-more">
+                                        Read Article
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="blog-card" data-category="guides">
+    <a href="blog-post-6.html">
+        <div class="overflow-hidden">
+            <img src="post-6.jpg" alt="Best AI Tools for Creators" class="blog-image" loading="lazy">
+        </div>
+        <div class="blog-content">
+            <span class="blog-category">Tools Guide</span>
+            <h2 class="blog-title">7 Must-Have AI Tools Every Content Creator Needs in 2026</h2>
+            <p class="blog-excerpt">
+                Discover the essential AI tools that top creators use to streamline their workflow, from writing and design to image generation and productivity.
+            </p>
+            <div class="blog-meta">
+                <div>
+                    <span>Jan 7, 2026</span>
+                    <span class="mx-2 text-[#252525]">•</span>
+                    <span>11 min read</span>
+                </div>
+                <span class="read-more">
+                    Read Article
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </span>
+            </div>
+        </div>
+    </a>
+</article>
+
+                </div>
+                
+                <div id="noResults" class="no-results" style="display: none;">
+                    <div class="no-results-icon">🔍</div>
+                    <h3 class="text-xl font-bold text-neutral-400 mb-2">No articles found</h3>
+                    <p class="text-neutral-600">Try adjusting your search or filter</p>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="w-full max-w-2xl px-4 mx-auto mt-32 mb-10">
+            <div class="mb-12 pb-8 border-b border-neutral-800">
+                <div class="space-y-6">
+                    <div class="text-sm text-neutral-400 leading-relaxed">
+                        <p><strong class="text-neutral-300">Prompt Architect</strong> is a professional AI prompt generator designed for creators, designers, and artists working with Midjourney V6.0 and DALL-E 3.</p>
+                    </div>
+
+                    <nav class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+                        <div>
+                            <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Tools</h3>
+                            <ul class="space-y-2">
+                                <li><a href="../index.html" class="text-neutral-400 hover:text-green-400 transition-colors">AI Prompt Builder</a></li>
+                                <li><a href="../gallery.html" class="text-neutral-400 hover:text-green-400 transition-colors">Generated Image Gallery</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Learn</h3>
+                            <ul class="space-y-2">
+                                <li><a href="blog.html" class="text-neutral-400 hover:text-green-400 transition-colors">AI Art Blog</a></li>
+                                <li><a href="../faq.html" class="text-neutral-400 hover:text-green-400 transition-colors">Prompt Engineering FAQ</a></li>
+                                <li><a href="../about.html" class="text-neutral-400 hover:text-green-400 transition-colors">About</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Connect</h3>
+                            <ul class="space-y-2">
+                                <li><a href="../contact.html" class="text-neutral-400 hover:text-green-400 transition-colors">Contact & Support</a></li>
+                                <li><a href="https://instagram.com/prompts.architect" target="_blank" rel="noopener" class="text-neutral-400 hover:text-green-400 transition-colors">Instagram</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="text-[9px] text-neutral-500 uppercase tracking-[0.2em] font-bold flex flex-col md:flex-row justify-between items-center gap-4">
+                <div>© 2025 PROMPT ARCHITECT</div>
+                <div class="flex space-x-6">
+                    <button onclick="openModal('privacy')" class="hover:text-green-400 transition-colors">Privacy</button>
+                    <button onclick="openModal('terms')" class="hover:text-green-400 transition-colors">Terms</button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content space-y-6 text-neutral-400 pb-20">
+            <h2 class="text-3xl font-bold text-white tracking-tighter">Privacy Policy</h2>
+            <p class="text-[11px] uppercase tracking-widest text-neutral-500">Effective Date: January 2025</p>
+            
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">1. Data Collection</h3>
+                <p class="text-sm">Prompt Architect is a static, client-side application. We do not host databases or store your personal information.</p>
+            </section>
+
+            <button onclick="closeModal('privacy')" class="bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest haptic-btn">Return to System</button>
+        </div>
+    </div>
+
+    <div id="terms-modal" class="modal">
+        <div class="modal-content space-y-6 text-neutral-400 pb-20">
+            <h2 class="text-3xl font-bold text-white tracking-tighter">Terms of Service</h2>
+            <p class="text-[11px] uppercase tracking-widest text-neutral-500">Agreement v1.0</p>
+            
+            <section class="space-y-3">
+                <h3 class="text-white font-bold">1. Use of Service</h3>
+                <p class="text-sm">By accessing Prompt Architect, you agree to use the tool for legal, creative purposes.</p>
+            </section>
+
+            <button onclick="closeModal('terms')" class="bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest haptic-btn">Return to System</button>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        const categoryBtns = document.querySelectorAll('.category-pill');
+        const blogCards = document.querySelectorAll('.blog-card');
+        const searchInput = document.getElementById('searchInput');
+        const noResults = document.getElementById('noResults');
+        
+        function checkResults() {
+            const visibleCards = Array.from(blogCards).filter(card => card.style.display !== 'none');
+            noResults.style.display = visibleCards.length === 0 ? 'block' : 'none';
+        }
+        
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const category = btn.dataset.category;
+                
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                searchInput.value = '';
+                
+                blogCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                        setTimeout(() => card.style.opacity = '1', 10);
+                    } else {
+                        card.style.opacity = '0';
+                        setTimeout(() => card.style.display = 'none', 300);
+                    }
+                });
+                
+                setTimeout(checkResults, 350);
+            });
+        });
+        
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            categoryBtns.forEach(b => b.classList.remove('active'));
+            categoryBtns[0].classList.add('active');
+            
+            blogCards.forEach(card => {
+                const title = card.querySelector('.blog-title').textContent.toLowerCase();
+                const excerpt = card.querySelector('.blog-excerpt').textContent.toLowerCase();
+                const category = card.querySelector('.blog-category').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || excerpt.includes(searchTerm) || category.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    setTimeout(() => card.style.opacity = '1', 10);
+                } else {
+                    card.style.opacity = '0';
+                    setTimeout(() => card.style.display = 'none', 300);
+                }
+            });
+            
+            setTimeout(checkResults, 350);
+        });
+    </script>
+</body>
+</html>
