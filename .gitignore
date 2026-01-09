@@ -1,0 +1,6 @@
+# Add blog files to gitignore
+echo "blog/blog-post-6.html" >> .gitignore
+echo "blog/blog.html" >> .gitignore
+
+# Or if you have multiple unfinished blog posts
+# echo "blog/*-draft.html" >> .gitignore
