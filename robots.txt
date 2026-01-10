@@ -16,4 +16,4 @@ Allow: /script.js
 # Disallow: /private/
 
 # Sitemap location
-Sitemap: https://promptsarchitect.com/sitemap.xml
+Sitemap: https://www.promptsarchitect.com/sitemap.xml
