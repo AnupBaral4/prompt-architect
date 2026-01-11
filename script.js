@@ -686,3 +686,141 @@ document.querySelectorAll('.modal').forEach(modal => {
 init();
 buildPrompt();
 updatePromptStrength();
+// ============================================
+// AI ENHANCEMENT FEATURE
+// ============================================
+
+const WORKER_URL = 'https://gemini-proxy.anupbaral-new.workers.dev/'; // ⚠️ REPLACE THIS
+let enhancedPromptText = '';
+
+// Get user fingerprint for rate limiting
+function getUserFingerprint() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.textBaseline = 'top';
+    ctx.font = '14px Arial';
+    ctx.fillText('fingerprint', 2, 2);
+    return canvas.toDataURL().slice(-50);
+}
+
+// Check rate limit
+function checkRateLimit() {
+    const fingerprint = getUserFingerprint();
+    const today = new Date().toDateString();
+    const storageKey = `enhance_${fingerprint}_${today}`;
+    const count = parseInt(localStorage.getItem(storageKey) || '0');
+    return { remaining: Math.max(0, 3 - count), used: count };
+}
+
+// Increment rate limit
+function incrementRateLimit() {
+    const fingerprint = getUserFingerprint();
+    const today = new Date().toDateString();
+    const storageKey = `enhance_${fingerprint}_${today}`;
+    const count = parseInt(localStorage.getItem(storageKey) || '0');
+    localStorage.setItem(storageKey, (count + 1).toString());
+}
+
+// Open enhancement modal
+async function enhanceWithAI() {
+    const outputText = document.getElementById('output-text');
+    if (!outputText || outputText.innerText.includes('Ready for')) {
+        showToast('⚠️ Create a prompt first!');
+        return;
+    }
+
+    // Check rate limit
+    const { remaining } = checkRateLimit();
+    if (remaining <= 0) {
+        showToast('⚠️ Daily limit reached. Try again tomorrow!');
+        return;
+    }
+
+    // Open modal
+    const modal = document.getElementById('enhance-modal');
+    const originalPromptEl = document.getElementById('original-prompt');
+    const enhancedTextEl = document.getElementById('enhanced-text');
+    const remainingCountEl = document.getElementById('remaining-count');
+    const useEnhancedBtn = document.getElementById('use-enhanced-btn');
+    const errorDiv = document.getElementById('enhance-error');
+
+    if (modal) modal.style.display = 'block';
+    if (originalPromptEl) originalPromptEl.textContent = outputText.innerText;
+    if (enhancedTextEl) enhancedTextEl.textContent = 'Enhanced version will appear here...';
+    if (remainingCountEl) remainingCountEl.textContent = remaining;
+    if (useEnhancedBtn) useEnhancedBtn.disabled = true;
+    if (errorDiv) errorDiv.style.display = 'none';
+
+    // Show loading
+    const loadingDiv = document.getElementById('enhance-loading');
+    if (loadingDiv) loadingDiv.style.display = 'flex';
+
+    try {
+        const response = await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                prompt: outputText.innerText,
+                userFingerprint: getUserFingerprint()
+            })
+        });
+
+        const data = await response.json();
+
+        if (loadingDiv) loadingDiv.style.display = 'none';
+
+        if (!response.ok) {
+            throw new Error(data.error || 'Enhancement failed');
+        }
+
+        enhancedPromptText = data.enhanced;
+        if (enhancedTextEl) {
+            enhancedTextEl.textContent = enhancedPromptText;
+            enhancedTextEl.classList.remove('text-neutral-600', 'italic');
+            enhancedTextEl.classList.add('text-white');
+        }
+        if (useEnhancedBtn) useEnhancedBtn.disabled = false;
+
+        // Increment rate limit
+        incrementRateLimit();
+        const newRemaining = checkRateLimit().remaining;
+        if (remainingCountEl) remainingCountEl.textContent = newRemaining;
+
+    } catch (error) {
+        console.error('Enhancement error:', error);
+        if (loadingDiv) loadingDiv.style.display = 'none';
+        if (errorDiv) {
+            errorDiv.style.display = 'block';
+            document.getElementById('error-message').textContent = error.message;
+        }
+    }
+}
+
+// Use enhanced prompt
+function useEnhanced() {
+    if (!enhancedPromptText) return;
+
+    const outputText = document.getElementById('output-text');
+    if (outputText) {
+        outputText.innerHTML = enhancedPromptText
+            .split(',')
+            .map(part => {
+                part = part.trim();
+                if (part.startsWith('--')) {
+                    return `<span class="token-param">${part}</span>`;
+                }
+                return `<span class="token-modifier">${part}</span>`;
+            })
+            .join(', ');
+    }
+
+    closeEnhanceModal();
+    showToast('✨ Enhanced prompt applied!');
+}
+
+// Close modal
+function closeEnhanceModal() {
+    const modal = document.getElementById('enhance-modal');
+    if (modal) modal.style.display = 'none';
+    enhancedPromptText = '';
+}

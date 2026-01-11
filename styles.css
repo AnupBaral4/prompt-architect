@@ -1023,3 +1023,39 @@ body {
         grid-template-columns: 1fr;
     }
 }
+/* AI Enhancement Modal Styles */
+#enhance-modal .modal-content {
+    max-width: 900px;
+}
+
+#enhance-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+#enhance-btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 30%, rgba(168, 85, 247, 0.2) 50%, transparent 70%);
+    animation: shimmer 3s infinite;
+}
+
+#enhance-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#use-enhanced-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #333;
+}
+
+.mono {
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.8;
+}
