@@ -721,9 +721,32 @@ function incrementRateLimit() {
     localStorage.setItem(storageKey, (count + 1).toString());
 }
 
-// Open enhancement modal
+// Update enhance counter badge
+function updateEnhanceCounter() {
+    const { remaining } = checkRateLimit();
+    const counter = document.getElementById('enhance-counter');
+    const countEl = document.getElementById('enhance-count');
+    
+    if (counter && countEl) {
+        counter.classList.remove('hidden');
+        countEl.textContent = remaining;
+        
+        if (remaining === 0) {
+            document.getElementById('enhance-btn').disabled = true;
+            countEl.classList.remove('text-green-500');
+            countEl.classList.add('text-red-500');
+        }
+    }
+}
+
+// ============================================
+// ENHANCED AI BUTTON WITH LOADING STATE - ONLY ONE VERSION
+// ============================================
 async function enhanceWithAI() {
     const outputText = document.getElementById('output-text');
+    const btn = document.getElementById('enhance-btn');
+    const btnText = document.getElementById('enhance-btn-text');
+    
     if (!outputText || outputText.innerText.includes('Ready for')) {
         showToast('⚠️ Create a prompt first!');
         return;
@@ -736,7 +759,14 @@ async function enhanceWithAI() {
         return;
     }
 
-    // Open modal
+    // Show loading state
+    btn.classList.add('loading');
+    btn.disabled = true;
+    const originalHTML = btnText.innerHTML;
+    btnText.innerHTML = 'ENHANCING...';
+    btn.classList.add('animate-pulse');
+
+    // Open modal immediately
     const modal = document.getElementById('enhance-modal');
     const originalPromptEl = document.getElementById('original-prompt');
     const enhancedTextEl = document.getElementById('enhanced-text');
@@ -746,7 +776,11 @@ async function enhanceWithAI() {
 
     if (modal) modal.style.display = 'block';
     if (originalPromptEl) originalPromptEl.textContent = outputText.innerText;
-    if (enhancedTextEl) enhancedTextEl.textContent = 'Enhanced version will appear here...';
+    if (enhancedTextEl) {
+        enhancedTextEl.textContent = 'Enhanced version will appear here...';
+        enhancedTextEl.classList.add('text-neutral-600', 'italic');
+        enhancedTextEl.classList.remove('text-white');
+    }
     if (remainingCountEl) remainingCountEl.textContent = remaining;
     if (useEnhancedBtn) useEnhancedBtn.disabled = true;
     if (errorDiv) errorDiv.style.display = 'none';
@@ -770,7 +804,7 @@ async function enhanceWithAI() {
         if (loadingDiv) loadingDiv.style.display = 'none';
 
         if (!response.ok) {
-            throw new Error(data.error || 'Enhancement failed');
+            throw new Error(data.error || data.message || 'Enhancement failed');
         }
 
         enhancedPromptText = data.enhanced;
@@ -785,6 +819,9 @@ async function enhanceWithAI() {
         incrementRateLimit();
         const newRemaining = checkRateLimit().remaining;
         if (remainingCountEl) remainingCountEl.textContent = newRemaining;
+        
+        // Update counter badge
+        updateEnhanceCounter();
 
     } catch (error) {
         console.error('Enhancement error:', error);
@@ -793,12 +830,20 @@ async function enhanceWithAI() {
             errorDiv.style.display = 'block';
             document.getElementById('error-message').textContent = error.message;
         }
+    } finally {
+        // Reset button
+        btn.classList.remove('loading', 'animate-pulse');
+        btn.disabled = false;
+        btnText.innerHTML = originalHTML;
     }
 }
 
 // Use enhanced prompt
 function useEnhanced() {
-    if (!enhancedPromptText) return;
+    if (!enhancedPromptText) {
+        showToast('⚠️ No enhanced prompt available');
+        return;
+    }
 
     const outputText = document.getElementById('output-text');
     if (outputText) {
@@ -816,6 +861,8 @@ function useEnhanced() {
 
     closeEnhanceModal();
     showToast('✨ Enhanced prompt applied!');
+    
+    updateFloatingPreview();
 }
 
 // Close modal
@@ -824,3 +871,331 @@ function closeEnhanceModal() {
     if (modal) modal.style.display = 'none';
     enhancedPromptText = '';
 }
+
+// ============================================
+// WELCOME MODAL
+// ============================================
+function initWelcomeModal() {
+    if (!localStorage.getItem('welcomeShown')) {
+        setTimeout(() => {
+            document.getElementById('welcome-modal').style.display = 'block';
+        }, 500); // Show after half second
+    }
+}
+
+function closeWelcome() {
+    if (document.getElementById('dont-show-again').checked) {
+        localStorage.setItem('welcomeShown', 'true');
+    }
+    document.getElementById('welcome-modal').style.display = 'none';
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', initWelcomeModal);
+
+
+// ============================================
+// MORE ACTIONS DROPDOWN - FIXED
+// ============================================
+let moreActionsTimeout;
+
+function showMoreActions() {
+    clearTimeout(moreActionsTimeout);
+    const menu = document.getElementById('more-actions-menu');
+    if (menu) {
+        menu.classList.add('visible');
+    }
+}
+
+function hideMoreActionsDelayed() {
+    moreActionsTimeout = setTimeout(() => {
+        hideMoreActions();
+    }, 200);
+}
+
+function hideMoreActions() {
+    const menu = document.getElementById('more-actions-menu');
+    if (menu) {
+        menu.classList.remove('visible');
+    }
+}
+
+// ============================================
+// VISUAL REFERENCE PREVIEW - SINGLE IMAGE
+// ============================================
+
+function generatePreview() {
+    const container = document.getElementById('preview-container');
+    if (!container) {
+        console.error('Preview container not found!');
+        return;
+    }
+    
+    const subject = state.subject || 'abstract art';
+    console.log('Generating preview for:', subject);
+    
+    // Show loading with progress bar
+    container.innerHTML = `
+        <div class="preview-loading">
+            <div class="preview-spinner"></div>
+            <p class="text-sm text-green-400 font-bold">Loading reference...</p>
+            <div class="loading-progress-bar">
+                <div class="loading-progress-fill" style="width: 0%;"></div>
+            </div>
+        </div>
+    `;
+    
+    // Animate progress bar
+    setTimeout(() => {
+        const progressBar = container.querySelector('.loading-progress-fill');
+        if (progressBar) progressBar.style.width = '30%';
+    }, 100);
+    
+    setTimeout(() => {
+        const progressBar = container.querySelector('.loading-progress-fill');
+        if (progressBar) progressBar.style.width = '60%';
+    }, 500);
+    
+    setTimeout(() => {
+        const progressBar = container.querySelector('.loading-progress-fill');
+        if (progressBar) progressBar.style.width = '90%';
+    }, 900);
+    
+    // Generate image URL
+    const query = encodeURIComponent(subject);
+    const timestamp = Date.now();
+    const imageUrl = `https://source.unsplash.com/800x600/?${query}&sig=${timestamp}`;
+    
+    console.log('Loading image from:', imageUrl);
+    
+    // Preload image
+    const img = new Image();
+    
+    img.onload = function() {
+        console.log('Image loaded successfully');
+        const progressBar = container.querySelector('.loading-progress-fill');
+        if (progressBar) progressBar.style.width = '100%';
+        
+        setTimeout(() => {
+            container.innerHTML = `<img src="${imageUrl}" alt="Reference for ${subject}">`;
+            console.log('Image inserted into DOM');
+            showToast('Reference loaded! 🖼️');
+        }, 200);
+    };
+    
+    img.onerror = function() {
+        console.warn('Primary image failed, using fallback');
+        const fallbackUrl = `https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=800&h=600&fit=crop&sig=${timestamp}`;
+        container.innerHTML = `<img src="${fallbackUrl}" alt="Reference image">`;
+        showToast('Reference loaded! 🖼️');
+    };
+    
+    img.src = imageUrl;
+}
+
+function clearPreview() {
+    const container = document.getElementById('preview-container');
+    if (!container) return;
+    
+    container.innerHTML = `
+        <div class="preview-placeholder">
+            <svg class="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <span class="text-sm">Reference Image</span>
+        </div>
+    `;
+    showToast('Preview cleared');
+}
+
+// ============================================
+// FLOATING PREVIEW WIDGET - FIXED VERSION
+// ============================================
+
+let floatingPreviewVisible = false;
+let lastPromptUpdate = 0;
+let shakeInterval = null;
+let shakeCount = 0;
+let originalBuildPromptFunction = null;
+
+// FIXED: Proper initialization
+function initializeFloatingPreview() {
+    if (!originalBuildPromptFunction && typeof buildPrompt === 'function') {
+        originalBuildPromptFunction = buildPrompt;
+        
+        window.buildPrompt = function() {
+            originalBuildPromptFunction.apply(this, arguments);
+            setTimeout(updateFloatingPreview, 100);
+        };
+        
+        console.log('✅ Floating preview initialized');
+    }
+}
+
+// Update floating preview when prompt changes
+function updateFloatingPreview() {
+    const outputText = document.getElementById('output-text');
+    const floatingPreview = document.getElementById('floating-preview');
+    const floatingText = document.getElementById('floating-preview-text');
+    const floatingFull = document.getElementById('floating-preview-full');
+    const floatingCount = document.getElementById('floating-word-count');
+    
+    if (!outputText || !floatingPreview) {
+        return;
+    }
+    
+    const promptText = outputText.innerText || outputText.textContent || '';
+    
+    // Don't show if empty or default text
+    if (!promptText || promptText.includes('Ready for architectural')) {
+        floatingPreview.classList.add('hidden');
+        floatingPreviewVisible = false;
+        return;
+    }
+    
+    // Show widget with dramatic entrance
+    if (!floatingPreviewVisible) {
+        floatingPreview.classList.remove('hidden');
+        floatingPreview.style.animation = 'dramaticEntrance 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        floatingPreviewVisible = true;
+        
+        // First-time user experience
+        if (!localStorage.getItem('floatingPreviewSeen')) {
+            // Show pointer after entrance animation
+            setTimeout(() => {
+                const pointer = document.getElementById('first-time-pointer');
+                if (pointer) pointer.classList.remove('hidden');
+                
+                // Auto-hide pointer after 8 seconds
+                setTimeout(() => {
+                    if (pointer && !pointer.classList.contains('hidden')) {
+                        pointer.style.animation = 'fadeOut 0.5s ease forwards';
+                        setTimeout(() => pointer.classList.add('hidden'), 500);
+                    }
+                }, 8000);
+            }, 800);
+            
+            // Shake attention every 8 seconds (3 times max)
+            shakeCount = 0;
+            if (shakeInterval) clearInterval(shakeInterval);
+            shakeInterval = setInterval(() => {
+                if (shakeCount >= 3) {
+                    clearInterval(shakeInterval);
+                    return;
+                }
+                floatingPreview.classList.add('attention');
+                setTimeout(() => floatingPreview.classList.remove('attention'), 500);
+                shakeCount++;
+            }, 8000);
+        }
+    }
+    
+    // Update content
+    const wordCount = promptText.trim().split(/\s+/).filter(w => w.length > 0).length;
+    const truncated = promptText.length > 50 ? promptText.substring(0, 50) + '...' : promptText;
+    
+    if (floatingText) floatingText.textContent = truncated;
+    if (floatingFull) floatingFull.textContent = promptText;
+    if (floatingCount) floatingCount.textContent = `${wordCount}w`;
+    
+    // Pulse animation for new updates
+    const now = Date.now();
+    if (now - lastPromptUpdate > 500) {
+        floatingPreview.classList.add('pulse');
+        setTimeout(() => floatingPreview.classList.remove('pulse'), 500);
+    }
+    lastPromptUpdate = now;
+}
+
+// Scroll to synthesis box smoothly
+function scrollToSynthesis() {
+    const synthesisSection = document.querySelector('#output-text')?.closest('section');
+    if (synthesisSection) {
+        synthesisSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // Mark as seen
+        markPreviewAsSeen();
+    }
+}
+
+// Mark preview as seen (first-time experience complete)
+function markPreviewAsSeen() {
+    localStorage.setItem('floatingPreviewSeen', 'true');
+    
+    // Hide pointer and badge
+    const pointer = document.getElementById('first-time-pointer');
+    const badge = document.getElementById('new-badge');
+    const arrowIndicator = document.getElementById('floating-arrow-indicator');
+    
+    if (pointer && !pointer.classList.contains('hidden')) {
+        pointer.style.animation = 'fadeOut 0.3s ease forwards';
+        setTimeout(() => pointer.classList.add('hidden'), 300);
+    }
+    
+    if (badge && !badge.classList.contains('hidden')) {
+        badge.style.animation = 'fadeOut 0.3s ease forwards';
+        setTimeout(() => badge.classList.add('hidden'), 300);
+    }
+    
+    // Hide arrow indicator
+    if (arrowIndicator) {
+        arrowIndicator.style.animation = 'fadeOutArrow 0.5s ease forwards';
+        setTimeout(() => arrowIndicator.style.display = 'none', 500);
+    }
+    
+    // Stop shake animations
+    if (shakeInterval) {
+        clearInterval(shakeInterval);
+        shakeInterval = null;
+    }
+    
+    // Mark floating preview as arrow-seen
+    const floatingPreview = document.getElementById('floating-preview');
+    if (floatingPreview) {
+        floatingPreview.classList.add('arrow-seen');
+    }
+}
+
+// Hide widget when user is at synthesis section
+function checkSynthesisVisibility() {
+    const synthesisSection = document.querySelector('#output-text')?.closest('section');
+    const floatingPreview = document.getElementById('floating-preview');
+    
+    if (!synthesisSection || !floatingPreview) return;
+    
+    const rect = synthesisSection.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    
+    // Check if synthesis section is visible in viewport
+    const isVisible = rect.top < windowHeight && rect.bottom > 0;
+    
+    if (isVisible) {
+        floatingPreview.classList.add('at-synthesis');
+    } else {
+        floatingPreview.classList.remove('at-synthesis');
+    }
+}
+
+// Mark as seen when user clicks widget
+const floatingPreviewEl = document.getElementById('floating-preview');
+if (floatingPreviewEl) {
+    floatingPreviewEl.addEventListener('click', markPreviewAsSeen);
+}
+
+// Check visibility on scroll
+window.addEventListener('scroll', checkSynthesisVisibility);
+
+// FIXED: Initialize after DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Initializing all features...');
+    
+    // Initialize floating preview properly
+    setTimeout(() => {
+        initializeFloatingPreview();
+        updateFloatingPreview();
+        checkSynthesisVisibility();
+        updateEnhanceCounter();
+    }, 500);
+    
+    console.log('✅ All features initialized');
+});

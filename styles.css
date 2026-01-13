@@ -328,20 +328,6 @@ body {
     backdrop-filter: blur(10px);
 }
 
-/* Chip Styles */
-.chip {
-    background: rgba(21, 21, 21, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-}
-
-.chip:hover {
-    border-color: rgba(0, 255, 136, 0.5);
-    background: rgba(0, 255, 136, 0.1);
-    transform: translateY(-2px);
-}
-
 /* --- Industrial Stream Animation for Copy Button --- */
 .btn-stream {
     position: relative;
@@ -694,178 +680,271 @@ body {
 
 /* Mobile Optimizations */
 @media (max-width: 768px) {
-    /* Adjust hero background for mobile */
     .hero-bg {
         height: 40vh;
     }
-
-    /* Better spacing for mobile */
+    
     body {
         padding-top: 2rem;
         padding-bottom: 2rem;
     }
-
-    /* Navigation improvements */
+    
     nav {
         flex-direction: column;
         align-items: flex-start !important;
         gap: 1rem;
         margin-bottom: 3rem !important;
     }
-
+    
     nav > div:last-child {
         width: 100%;
         justify-content: space-between;
         flex-wrap: wrap;
         gap: 0.75rem;
     }
-
+    
     nav a {
         font-size: 9px;
     }
-
-    /* Input field adjustments */
+    
     .product-input {
         font-size: 2rem !important;
         padding: 0.75rem 0 !important;
     }
-
-    /* Smart core sizing */
+    
     .smart-core {
         width: 36px;
         height: 36px;
     }
-
+    
     .core-face {
         border-width: 1.5px;
     }
-
+    
     .face-1 { transform: rotateY(0deg) translateZ(18px); }
     .face-2 { transform: rotateY(90deg) translateZ(18px); }
     .face-3 { transform: rotateY(180deg) translateZ(18px); }
     .face-4 { transform: rotateY(-90deg) translateZ(18px); }
     .face-5 { transform: rotateX(90deg) translateZ(18px); }
     .face-6 { transform: rotateX(-90deg) translateZ(18px); }
-
-    /* Synthesis box mobile */
+    
     .synthesis-box {
         padding: 1.5rem !important;
         border-radius: 1.5rem !important;
+        overflow: visible !important;
     }
-
+    
     #output-text {
         font-size: 1rem !important;
         line-height: 1.5 !important;
         min-height: 80px !important;
     }
-
-    /* ONLY FIX: Make button container scrollable to prevent overflow */
+    
     .synthesis-box .mt-14 {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
+        overflow: visible !important;
     }
-
+    
     .synthesis-box .flex.gap-3 {
-        flex-wrap: nowrap;
-        min-width: min-content;
+        flex-wrap: wrap !important;
+        gap: 0.5rem !important;
+        justify-content: center !important;
     }
-
-    /* Button adjustments */
-    #copy-btn {
-        padding: 0.875rem 1.5rem !important;
+    
+    #enhance-btn,
+    #copy-btn,
+    #more-actions-container button {
+        padding: 0.75rem 1rem !important;
         font-size: 10px !important;
     }
-
-    /* Category sections */
+    
     .category-section {
         padding: 1rem;
         border-radius: 1rem;
     }
-
+    
     .category-section h2 {
         font-size: 8px;
     }
-
-    /* Chips mobile sizing */
+    
     .chip {
         padding: 0.5rem 0.75rem;
         font-size: 10px;
     }
-
-    /* Modal mobile */
+    
     .modal {
         padding: 2rem 1rem;
     }
-
+    
     .modal-content {
         padding: 0 0.5rem;
     }
-
+    
     .modal h2 {
         font-size: 1.75rem;
     }
-
-    /* FAQ mobile */
+    
     .faq-item {
         padding: 1.25rem !important;
     }
-
+    
     .faq-question h3 {
         font-size: 1rem !important;
         line-height: 1.4;
     }
-
+    
     .faq-answer {
         font-size: 0.875rem;
     }
-
-    /* Footer mobile */
+    
     footer {
         font-size: 8px;
         margin-top: 4rem !important;
     }
-
-    /* Spacing adjustments */
+    
     main {
         gap: 3rem !important;
     }
-
+    
     section {
         gap: 1.5rem !important;
     }
-
-    /* Hero titles mobile */
+    
     h1 {
         font-size: 2.5rem !important;
         line-height: 1.1 !important;
     }
-
-    /* Contact form mobile */
+    
     #contact-form input,
     #contact-form textarea {
         font-size: 1rem;
     }
-
-    /* About page feature cards */
+    
     .category-section .space-y-4 {
         gap: 0.75rem;
     }
-
-    /* Reduce particle count on mobile */
+    
     .particle:nth-child(n+16) {
         display: none;
     }
-
-    /* Blueprint cards mobile */
+    
     .blueprint-card {
         padding: 1.25rem;
     }
-
+    
     .blueprint-card h3 {
         font-size: 1rem;
     }
 }
-/* Live Preview Styles - Moved from inline CSS */
+
+/* ============================================
+   MOBILE FIXES FOR NEW FEATURES - 640px
+   ============================================ */
+
+@media (max-width: 640px) {
+    .floating-preview {
+        position: fixed !important;
+        bottom: 20px !important;
+        right: 10px !important;
+        left: 10px !important;
+        width: auto !important;
+        max-width: none !important;
+        z-index: 998 !important;
+    }
+    
+    .floating-preview-content {
+        padding: 14px 16px !important;
+        border-radius: 16px !important;
+    }
+    
+    #floating-preview-text {
+        font-size: 13px !important;
+        font-weight: 500 !important;
+    }
+    
+    #floating-word-count {
+        font-size: 10px !important;
+    }
+    
+    .floating-preview-expanded {
+        max-height: 200px !important;
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
+    
+    .new-badge,
+    .first-time-pointer {
+        display: none !important;
+    }
+    
+    #more-actions-menu {
+        position: fixed !important;
+        left: 10px !important;
+        right: 10px !important;
+        top: auto !important;
+        bottom: 80px !important;
+        width: calc(100vw - 20px) !important;
+        min-width: auto !important;
+        z-index: 999 !important;
+    }
+    
+    #more-actions-container {
+        position: static !important;
+    }
+    
+    #enhance-counter {
+        display: none !important;
+    }
+    
+    #enhance-btn {
+        padding: 0.75rem !important;
+        font-size: 10px !important;
+    }
+    
+    #enhance-btn span {
+        display: inline !important;
+        font-size: 9px !important;
+    }
+    
+    #copy-btn {
+        padding: 0.75rem 1rem !important;
+    }
+    
+    #copy-btn #btn-text {
+        display: none !important;
+    }
+    
+    #copy-btn #btn-icon {
+        display: block !important;
+    }
+    
+    #enhance-btn .absolute.bottom-full {
+        display: none !important;
+    }
+    
+    #enhance-modal .modal-content {
+        max-width: 100% !important;
+        padding: 1rem !important;
+    }
+    
+    #enhance-modal .grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    
+    .synthesis-box {
+        overflow: visible !important;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .synthesis-box .space-y-4 {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+/* Live Preview Styles */
 .preview-section {
     background: linear-gradient(135deg, rgba(21, 21, 21, 0.95) 0%, rgba(26, 26, 46, 0.95) 100%);
     border: 1px solid rgba(0, 255, 136, 0.2);
@@ -892,6 +971,49 @@ body {
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 255, 136, 0.2);
 }
 
+/* SINGLE IMAGE LAYOUT */
+.preview-image-slot-single {
+    aspect-ratio: 16/9;
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+    min-height: 300px; /* Ensure minimum height */
+}
+
+.preview-image-slot-single:hover {
+    border-color: rgba(0, 255, 136, 0.3);
+    transform: scale(1.02);
+}
+
+/* Make sure inner container takes full space */
+.preview-image-slot-single > div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.preview-image-slot-single img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.preview-image-slot-single:hover img {
+    transform: scale(1.05);
+}
+
+/* Old grid layout (keeping for compatibility with existing preview.js) */
 .preview-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1022,31 +1144,24 @@ body {
     .preview-grid {
         grid-template-columns: 1fr;
     }
+    
+    .preview-image-slot-single {
+        aspect-ratio: 4/3;
+    }
 }
+
 /* AI Enhancement Modal Styles */
 #enhance-modal .modal-content {
     max-width: 900px;
 }
 
-#enhance-btn {
-    position: relative;
-    overflow: hidden;
-}
-
-#enhance-btn::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent 30%, rgba(168, 85, 247, 0.2) 50%, transparent 70%);
-    animation: shimmer 3s infinite;
-}
-
 #enhance-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+#enhance-btn.loading {
+    pointer-events: none;
 }
 
 #use-enhanced-btn:disabled {
@@ -1055,7 +1170,414 @@ body {
     background: #333;
 }
 
-.mono {
-    font-family: 'JetBrains Mono', monospace;
-    line-height: 1.8;
+/* Welcome Modal Specific Styles */
+#welcome-modal .modal-content {
+    animation: slideUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Enhance counter badge */
+#enhance-counter {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Tooltip pointer fix */
+.group:hover .hidden {
+    display: block;
+    animation: tooltipFade 0.2s ease;
+}
+
+@keyframes tooltipFade {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   FLOATING PREVIEW WIDGET - FIXED
+   ============================================ */
+
+/* Arrow Indicator Pointing to Floating Widget */
+.floating-arrow-indicator {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-right: 1rem;
+    pointer-events: none;
+    z-index: 999;
+    animation: floatingArrowPulse 2s ease-in-out infinite;
+}
+
+.arrow-pointer {
+    color: #00ff88;
+    filter: drop-shadow(0 0 15px rgba(0, 255, 136, 0.8));
+    animation: arrowSlide 1.5s ease-in-out infinite;
+}
+
+.arrow-label-floating {
+    background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+    color: #000;
+    padding: 0.625rem 1rem;
+    border-radius: 0.75rem;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 1.3;
+    box-shadow: 0 0 25px rgba(0, 255, 136, 0.5);
+    white-space: nowrap;
+    animation: labelBounce 2s ease-in-out infinite;
+}
+
+@keyframes floatingArrowPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes arrowSlide {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+}
+
+@keyframes labelBounce {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 25px rgba(0, 255, 136, 0.5);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 35px rgba(0, 255, 136, 0.8);
+    }
+}
+
+/* Hide arrow after user interacts with floating preview */
+.floating-preview.arrow-seen .floating-arrow-indicator {
+    animation: fadeOutArrow 0.5s ease forwards;
+}
+
+@keyframes fadeOutArrow {
+    to {
+        opacity: 0;
+        transform: translateY(-50%) translateX(20px);
+    }
+}
+
+/* Hide on small screens or when floating preview is hidden */
+@media (max-width: 768px) {
+    .floating-arrow-indicator {
+        display: none;
+    }
+}
+
+.floating-preview.hidden .floating-arrow-indicator {
+    display: none;
+}
+
+.floating-preview.at-synthesis .floating-arrow-indicator {
+    display: none;
+}
+
+/* ============================================
+   FLOATING PREVIEW WIDGET - FIXED
+   ============================================ */
+
+.floating-preview {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 400px;
+    max-width: calc(100vw - 60px);
+    z-index: 998;
+    cursor: pointer;
+}
+
+.floating-preview.hidden {
+    display: none;
+}
+
+.floating-preview-content {
+    background: linear-gradient(135deg, rgba(21, 21, 21, 0.98) 0%, rgba(26, 26, 46, 0.98) 100%);
+    border: 2px solid rgba(0, 255, 136, 0.5);
+    border-radius: 20px;
+    padding: 18px 22px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 255, 136, 0.3);
+    backdrop-filter: blur(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-preview:hover .floating-preview-content {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 255, 136, 0.3);
+    border-color: rgba(0, 255, 136, 0.6);
+}
+
+.floating-preview-expanded {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, rgba(21, 21, 21, 0.98) 0%, rgba(26, 26, 46, 0.98) 100%);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 136, 0.2);
+    backdrop-filter: blur(20px);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-preview:hover .floating-preview-expanded {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.floating-preview-expanded > div:nth-child(2)::-webkit-scrollbar {
+    width: 4px;
+}
+
+.floating-preview-expanded > div:nth-child(2)::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 136, 0.3);
+    border-radius: 2px;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.floating-preview.pulse {
+    animation: pulseWidget 0.5s ease;
+}
+
+@keyframes pulseWidget {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* FIXED: Removed aggressive transition */
+.floating-preview.at-synthesis {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#floating-preview-text {
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    line-height: 1.5;
+}
+
+#floating-word-count {
+    font-size: 12px !important;
+    font-weight: 600;
+}
+
+.floating-preview-content .text-\[8px\] {
+    font-size: 10px !important;
+}
+
+/* ============================================
+   FLOATING PREVIEW ENHANCEMENTS
+   ============================================ */
+
+@keyframes dramaticEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(100px);
+    }
+    60% {
+        transform: scale(1.1) translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.floating-preview.attention {
+    animation: shakeAttention 0.5s ease;
+}
+
+@keyframes shakeAttention {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(0); }
+    75% { transform: translateX(10px); }
+}
+
+.first-time-pointer {
+    position: absolute;
+    bottom: calc(100% + 20px);
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    z-index: 10;
+    animation: fadeInBounce 0.6s ease both;
+}
+
+.first-time-pointer.hidden {
+    display: none;
+}
+
+.pointer-label {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+    animation: labelPulse 2s ease infinite;
+}
+
+.pointer-arrow {
+    color: #8b5cf6;
+    animation: arrowBounce 1.5s ease infinite;
+    filter: drop-shadow(0 2px 8px rgba(139, 92, 246, 0.4));
+}
+
+@keyframes fadeInBounce {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes labelPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes arrowBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+}
+
+.new-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    font-size: 9px;
+    font-weight: 900;
+    padding: 4px 8px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+    animation: badgeWiggle 0.5s ease infinite;
+    z-index: 10;
+}
+
+.new-badge.hidden {
+    display: none;
+}
+
+@keyframes badgeWiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* ============================================
+   MORE ACTIONS DROPDOWN MENU - FIXED
+   ============================================ */
+
+#more-actions-menu {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 8px);
+    background: #18181b;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 12px;
+    min-width: 180px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+#more-actions-menu.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+#more-actions-menu button {
+    width: 100%;
+    text-align: left;
+    padding: 12px 16px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#more-actions-menu button:hover {
+    background: rgba(0, 255, 136, 0.1);
+}
+
+#more-actions-menu button:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#more-actions-container {
+    position: relative;
+}
+
+/* ============================================
+   ENHANCE BUTTON FIX
+   ============================================ */
+
+#enhance-btn {
+    position: relative !important;
+    overflow: visible !important;
+    z-index: 10 !important;
+}
+
+#enhance-btn::before {
+    display: none !important;
+}
+
+@media (min-width: 641px) {
+    #enhance-btn:hover .absolute.bottom-full {
+        display: block !important;
+    }
 }

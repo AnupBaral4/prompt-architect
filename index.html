@@ -1,58 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>Prompt Architect | Professional AI Prompt Generator v6.0</title>
-    <meta name="description" content="Professional Industrial Edition Prompt Architect. Build optimized Midjourney v6.0 and DALL-E prompts using our advanced synthesis system.">
-    <meta name="keywords" content="AI Prompt Generator, Midjourney v6, Prompt Engineering, DALL-E 3, Image Generation Tool, Prompt Architect">
-<link rel="canonical" href="https://www.promptsarchitect.com/" />    
-   <!-- 1. Google Search & Browser Tabs (96x96 - Multiple of 48) -->
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
-<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <meta name="description"
+        content="Professional Industrial Edition Prompt Architect. Build optimized Midjourney v6.0 and DALL-E prompts using our advanced synthesis system.">
+    <meta name="keywords"
+        content="AI Prompt Generator, Midjourney v6, Prompt Engineering, DALL-E 3, Image Generation Tool, Prompt Architect">
+    <link rel="canonical" href="https://www.promptsarchitect.com/" />
+    <!-- 1. Google Search & Browser Tabs (96x96 - Multiple of 48) -->
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-<!-- 2. Apple / iOS (180x180) -->
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- 2. Apple / iOS (180x180) -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-<!-- 3. Social Media Previews (High-Res Square Card) -->
-<meta property="og:title" content="Prompt Architect | Midjourney v6 Guide">
-<meta property="og:description" content="Professional AI Prompt Generation system.">
-<meta property="og:url" content="https://www.promptsarchitect.com/">
-<meta property="og:image" content="https://www.promptsarchitect.com/og-image.png">
-<meta property="og:image:width" content="1024">
-<meta property="og:image:height" content="1024">
+    <!-- 3. Social Media Previews (High-Res Square Card) -->
+    <meta property="og:title" content="Prompt Architect | Midjourney v6 Guide">
+    <meta property="og:description" content="Professional AI Prompt Generation system.">
+    <meta property="og:url" content="https://www.promptsarchitect.com/">
+    <meta property="og:image" content="https://www.promptsarchitect.com/og-image.png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
 
-<!-- 2. Twitter / X -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Prompt Architect | Midjourney v6 Guide">
-<meta name="twitter:description" content="Professional AI Prompt Generation system.">
-<meta name="twitter:image" content="https://www.promptsarchitect.com/og-image.png">
+    <!-- 2. Twitter / X -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Prompt Architect | Midjourney v6 Guide">
+    <meta name="twitter:description" content="Professional AI Prompt Generation system.">
+    <meta name="twitter:image" content="https://www.promptsarchitect.com/og-image.png">
 
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WY34XWK7V2"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-WY34XWK7V2');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-WY34XWK7V2');
     </script>
 </head>
+
 <body class="flex flex-col items-center pb-10 pt-12">
     <div class="hero-bg"></div>
     <div class="particles" id="particles"></div>
+    <!-- Welcome Modal for First-Time Users -->
+    <div id="welcome-modal" class="modal" style="display: none;">
+        <div class="modal-content max-w-xl space-y-6 text-neutral-400">
+            <div class="text-center">
+                <div class="text-5xl mb-4">🎨</div>
+                <h2 class="text-3xl font-bold text-white tracking-tighter mb-2">Welcome to Prompt Architect!</h2>
+                <p class="text-sm text-neutral-500 uppercase tracking-widest">Your AI-Powered Prompt Generator</p>
+            </div>
 
+            <div class="space-y-4 text-sm bg-zinc-900/50 border border-zinc-800 rounded-xl p-6">
+                <div class="flex gap-4">
+                    <div
+                        class="flex-shrink-0 w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 font-bold">
+                        1</div>
+                    <div>
+                        <p class="text-white font-bold mb-1">Enter Your Subject</p>
+                        <p class="text-neutral-400">Type what you want to create (e.g., "cyberpunk city", "portrait")
+                        </p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div
+                        class="flex-shrink-0 w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 font-bold">
+                        2</div>
+                    <div>
+                        <p class="text-white font-bold mb-1">Select Style Attributes</p>
+                        <p class="text-neutral-400">Choose art style, lighting, mood, and technical parameters</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div
+                        class="flex-shrink-0 w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-500 font-bold">
+                        ✨</div>
+                    <div>
+                        <p class="text-white font-bold mb-1">Enhance with AI (New!)</p>
+                        <p class="text-neutral-400">Click <span class="text-purple-400 font-bold">"ENHANCE WITH
+                                AI"</span> to add vivid, professional details</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div
+                        class="flex-shrink-0 w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-500 font-bold">
+                        4</div>
+                    <div>
+                        <p class="text-white font-bold mb-1">Copy & Create</p>
+                        <p class="text-neutral-400">Copy your prompt and paste into Midjourney or DALL-E</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <button onclick="closeWelcome()"
+                    class="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest haptic-btn glow-hover">
+                    Let's Get Started! 🚀
+                </button>
+                <label class="flex items-center justify-center gap-2 text-xs text-neutral-500 cursor-pointer">
+                    <input type="checkbox" id="dont-show-again" class="rounded">
+                    Don't show this again
+                </label>
+            </div>
+        </div>
+    </div>
     <!-- History Sidebar (Initially Hidden) -->
     <div id="history-sidebar" class="history-sidebar">
         <div class="p-6 border-b border-neutral-800">
             <div class="flex justify-between items-center mb-2">
                 <h3 class="text-sm font-bold text-white tracking-tight">PROMPT HISTORY</h3>
                 <button onclick="closeHistory()" class="text-neutral-500 hover:text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
                         <path d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
@@ -63,43 +131,62 @@
             <!-- History items will be inserted here -->
         </div>
         <div class="p-4 border-t border-neutral-800">
-            <button onclick="clearHistory()" class="w-full text-[10px] text-red-400 hover:text-red-300 uppercase tracking-widest font-bold">Clear All History</button>
+            <button onclick="clearHistory()"
+                class="w-full text-[10px] text-red-400 hover:text-red-300 uppercase tracking-widest font-bold">Clear All
+                History</button>
         </div>
     </div>
 
     <div class="content-wrapper w-full">
-        <nav class="w-full max-w-2xl px-4 mx-auto flex justify-between items-end mb-20 reveal" style="animation-delay: 0.1s;">
+        <nav class="w-full max-w-2xl px-4 mx-auto flex justify-between items-end mb-20 reveal"
+            style="animation-delay: 0.1s;">
             <div>
                 <a href="/">
-                    <h1 class="text-2xl font-bold tracking-tighter leading-none" style="background: linear-gradient(135deg, #00ff88 0%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ARCHITECT</h1>
-                    <p class="text-[9px] text-neutral-500 uppercase tracking-[0.25em] font-bold mt-2">v6.0 Build System</p>
+                    <h1 class="text-2xl font-bold tracking-tighter leading-none"
+                        style="background: linear-gradient(135deg, #00ff88 0%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        ARCHITECT</h1>
+                    <p class="text-[9px] text-neutral-500 uppercase tracking-[0.25em] font-bold mt-2">v6.0 Build System
+                    </p>
                 </a>
             </div>
             <div class="flex items-center gap-6">
-                <a href="about.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">About</a>
-                <a href="gallery.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">Gallery</a>
-                <a href="blog/blog.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400">Blog</a>
-                <a href="faq.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">FAQ</a>
-                <a href="contact.html" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">Contact</a>
+                <a href="about.html"
+                    class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">About</a>
+                <a href="gallery.html"
+                    class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">Gallery</a>
+                <a href="blog/blog.html"
+                    class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400">Blog</a>
+                <a href="faq.html"
+                    class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">FAQ</a>
+                <a href="contact.html"
+                    class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors">Contact</a>
             </div>
         </nav>
 
         <main class="w-full max-w-2xl px-4 mx-auto space-y-20">
-            
-            <div id="adsense-top" class="ad-space w-full text-center py-6 rounded-2xl text-[8px] text-neutral-500 uppercase tracking-widest">Advertisement Space</div>
+
+            <div id="adsense-top"
+                class="ad-space w-full text-center py-6 rounded-2xl text-[8px] text-neutral-500 uppercase tracking-widest">
+                Advertisement Space</div>
 
             <section class="reveal" style="animation-delay: 0.2s;">
                 <div class="flex items-center justify-between mb-6">
-                    <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500">01 / Concept Initialization</label>
+                    <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500">01 / Concept
+                        Initialization</label>
                     <div class="flex items-center gap-6">
-                        <button onclick="toggleHistory()" class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors flex items-center gap-2 haptic-btn group relative">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <button onclick="toggleHistory()"
+                            class="text-[10px] text-neutral-400 uppercase tracking-widest font-bold hover:text-green-400 transition-colors flex items-center gap-2 haptic-btn group relative">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             History
-                            <span class="absolute -bottom-8 right-0 w-48 text-[8px] text-neutral-600 normal-case tracking-normal font-normal opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Saved locally in your browser</span>
+                            <span
+                                class="absolute -bottom-8 right-0 w-48 text-[8px] text-neutral-600 normal-case tracking-normal font-normal opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Saved
+                                locally in your browser</span>
                         </button>
-                        <div class="text-[9px] text-neutral-500 uppercase tracking-widest font-bold flex items-center gap-2">
+                        <div
+                            class="text-[9px] text-neutral-500 uppercase tracking-widest font-bold flex items-center gap-2">
                             <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
                             Synthesis Mode
                         </div>
@@ -108,65 +195,82 @@
                 <div class="input-wrapper flex items-center space-x-6">
                     <div class="flex-shrink-0 relative">
                         <!-- Prompt Strength Ring -->
-                        <svg class="strength-ring" width="80" height="80" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                        <svg class="strength-ring" width="80" height="80"
+                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
                             <circle class="strength-ring-bg" cx="40" cy="40" r="35" />
                             <circle id="strength-ring-progress" class="strength-ring-progress" cx="40" cy="40" r="35" />
                         </svg>
                         <div class="smart-core" id="smart-core">
-                            <div class="core-face face-1"></div><div class="core-face face-2"></div>
-                            <div class="core-face face-3"></div><div class="core-face face-4"></div>
-                            <div class="core-face face-5"></div><div class="core-face face-6"></div>
+                            <div class="core-face face-1"></div>
+                            <div class="core-face face-2"></div>
+                            <div class="core-face face-3"></div>
+                            <div class="core-face face-4"></div>
+                            <div class="core-face face-5"></div>
+                            <div class="core-face face-6"></div>
                         </div>
                         <div id="strength-badge" class="strength-badge">0%</div>
                     </div>
                     <div class="flex-grow relative">
-                        <input type="text" id="subject-input" placeholder="Define subject..." class="w-full text-3xl md:text-5xl font-[200] py-4 bg-transparent product-input text-white placeholder:text-neutral-700 focus:placeholder:opacity-0 transition-all">
+                        <input type="text" id="subject-input" placeholder="Define subject..."
+                            class="w-full text-3xl md:text-5xl font-[200] py-4 bg-transparent product-input text-white placeholder:text-neutral-700 focus:placeholder:opacity-0 transition-all">
                         <div class="input-underline"></div>
                         <!-- Character counter -->
-                        <div id="char-counter" class="absolute -bottom-6 right-0 text-[9px] text-neutral-600 mono opacity-0 transition-opacity">
+                        <div id="char-counter"
+                            class="absolute -bottom-6 right-0 text-[9px] text-neutral-600 mono opacity-0 transition-opacity">
                             <span id="char-count">0</span> characters
                         </div>
                     </div>
                 </div>
                 <!-- Prompt Quality Indicator -->
-                <div id="quality-indicator" class="mt-6 flex items-center justify-between px-4 py-3 bg-zinc-900/50 border border-zinc-800 rounded-xl opacity-0 transition-all">
+                <div id="quality-indicator"
+                    class="mt-6 flex items-center justify-between px-4 py-3 bg-zinc-900/50 border border-zinc-800 rounded-xl opacity-0 transition-all">
                     <div class="flex items-center gap-3">
-                        <div id="quality-icon" class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center">
+                        <div id="quality-icon"
+                            class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center">
                             <span class="text-lg">🎯</span>
                         </div>
                         <div>
                             <div id="quality-title" class="text-xs font-bold text-neutral-400">PROMPT STRENGTH</div>
-                            <div id="quality-desc" class="text-[10px] text-neutral-600">Add attributes to improve...</div>
+                            <div id="quality-desc" class="text-[10px] text-neutral-600">Add attributes to improve...
+                            </div>
                         </div>
                     </div>
                     <div id="quality-score" class="text-2xl font-bold text-green-500 mono">0%</div>
                 </div>
             </section>
 
-            <div id="categories-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal" style="animation-delay: 0.3s;"></div>
+            <div id="categories-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal"
+                style="animation-delay: 0.3s;"></div>
 
             <section class="reveal pt-6" style="animation-delay: 0.35s;">
-                <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500 mb-6 block">Technical Tuning / Advanced Parameters</label>
-                
+                <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500 mb-6 block">Technical
+                    Tuning / Advanced Parameters</label>
+
                 <div class="category-section space-y-6">
                     <div>
-                        <h3 class="text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-500 mb-3">Aspect Ratio (--ar)</h3>
+                        <h3 class="text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-500 mb-3">Aspect Ratio
+                            (--ar)</h3>
                         <div class="flex gap-2">
-                            <button onclick="selectAspectRatio('1:1')" data-aspect="1:1" class="aspect-btn chip haptic-btn px-6 py-3 text-[11px] font-medium">1:1</button>
-                            <button onclick="selectAspectRatio('4:5')" data-aspect="4:5" class="aspect-btn chip haptic-btn px-6 py-3 text-[11px] font-medium">4:5</button>
-                            <button onclick="selectAspectRatio('16:9')" data-aspect="16:9" class="aspect-btn chip haptic-btn px-6 py-3 text-[11px] font-medium">16:9</button>
-                            <button onclick="selectAspectRatio('9:16')" data-aspect="9:16" class="aspect-btn chip haptic-btn px-6 py-3 text-[11px] font-medium">9:16</button>
+                            <button onclick="selectAspectRatio('1:1')" data-aspect="1:1"
+                                class="aspect-btn chip haptic-btn px-6 py-3 text-[11px] font-medium">1:1</button>
+                            <button onclick="selectAspectRatio('4:5')" data-aspect="4:5"
+                                class="aspect-btn chip haptic-btn px-6 py-3 text-[11px] font-medium">4:5</button>
+                            <button onclick="selectAspectRatio('16:9')" data-aspect="16:9"
+                                class="aspect-btn chip haptic-btn px-6 py-3 text-[11px] font-medium">16:9</button>
+                            <button onclick="selectAspectRatio('9:16')" data-aspect="9:16"
+                                class="aspect-btn chip haptic-btn px-6 py-3 text-[11px] font-medium">9:16</button>
                         </div>
                     </div>
 
                     <div>
                         <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-500">Stylize (--s)</h3>
+                            <h3 class="text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-500">Stylize (--s)
+                            </h3>
                             <span id="stylize-value" class="mono text-sm text-emerald-500 font-bold">100</span>
                         </div>
-                        <input type="range" id="stylize-slider" min="0" max="1000" value="100" step="50" 
-                               oninput="updateStylize(this.value)" 
-                               class="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer slider-thumb">
+                        <input type="range" id="stylize-slider" min="0" max="1000" value="100" step="50"
+                            oninput="updateStylize(this.value)"
+                            class="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer slider-thumb">
                         <div class="flex justify-between text-[8px] text-neutral-600 mt-1">
                             <span>0</span>
                             <span>500</span>
@@ -176,12 +280,13 @@
 
                     <div>
                         <div class="flex justify-between items-center mb-3">
-                            <h3 class="text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-500">Chaos (--c)</h3>
+                            <h3 class="text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-500">Chaos (--c)
+                            </h3>
                             <span id="chaos-value" class="mono text-sm text-emerald-500 font-bold">0</span>
                         </div>
-                        <input type="range" id="chaos-slider" min="0" max="100" value="0" step="10" 
-                               oninput="updateChaos(this.value)" 
-                               class="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer slider-thumb">
+                        <input type="range" id="chaos-slider" min="0" max="100" value="0" step="10"
+                            oninput="updateChaos(this.value)"
+                            class="w-full h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer slider-thumb">
                         <div class="flex justify-between text-[8px] text-neutral-600 mt-1">
                             <span>0</span>
                             <span>50</span>
@@ -190,11 +295,12 @@
                     </div>
 
                     <div>
-                        <h3 class="text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-500 mb-3">Exclusion Parameters (--no)</h3>
+                        <h3 class="text-[9px] uppercase tracking-[0.2em] font-bold text-neutral-500 mb-3">Exclusion
+                            Parameters (--no)</h3>
                         <div class="input-wrapper relative">
-                            <input type="text" id="negative-input" placeholder="blur, distorted, low quality..." 
-                                   oninput="updateNegative(this.value)"
-                                   class="w-full text-sm py-3 px-4 bg-transparent border-2 border-neutral-700 focus:border-emerald-500 outline-none text-white placeholder:text-neutral-600 transition-all rounded-lg">
+                            <input type="text" id="negative-input" placeholder="blur, distorted, low quality..."
+                                oninput="updateNegative(this.value)"
+                                class="w-full text-sm py-3 px-4 bg-transparent border-2 border-neutral-700 focus:border-emerald-500 outline-none text-white placeholder:text-neutral-600 transition-all rounded-lg">
                         </div>
                     </div>
                 </div>
@@ -202,23 +308,132 @@
 
             <!-- Random Generator Button -->
             <section class="reveal text-center" style="animation-delay: 0.38s;">
-                <button onclick="randomizePrompt()" class="surprise-btn group relative overflow-hidden px-12 py-6 rounded-2xl border-2 border-purple-500/30 bg-gradient-to-r from-purple-900/20 to-pink-900/20 hover:border-purple-500 transition-all">
+                <button onclick="randomizePrompt()"
+                    class="surprise-btn group relative overflow-hidden px-12 py-6 rounded-2xl border-2 border-purple-500/30 bg-gradient-to-r from-purple-900/20 to-pink-900/20 hover:border-purple-500 transition-all">
                     <div class="surprise-shimmer"></div>
                     <div class="relative z-10 flex items-center justify-center gap-4">
                         <span class="text-3xl">🎲</span>
                         <div class="text-left">
                             <div class="text-sm font-bold text-white tracking-tight">SURPRISE ME</div>
-                            <div class="text-[9px] text-purple-400 uppercase tracking-widest">Random Prompt Generator</div>
+                            <div class="text-[9px] text-purple-400 uppercase tracking-widest">Random Prompt Generator
+                            </div>
                         </div>
-                        <svg class="w-6 h-6 text-purple-400 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <svg class="w-6 h-6 text-purple-400 group-hover:translate-x-2 transition-transform" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
                         </svg>
                     </div>
                 </button>
             </section>
 
-            <!-- LIVE PREVIEW SECTION -->
-            <section class="reveal pt-6" style="animation-delay: 0.39s;">
+            <section class="reveal pt-6" style="animation-delay: 0.4s;">
+                <div class="flex items-center justify-between mb-4">
+                    <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500">02 / Prompt
+                        Synthesis</label>
+                    <div class="flex items-center gap-3">
+                        <!-- Show remaining uses badge -->
+                        <span id="enhance-counter"
+                            class="text-[9px] text-neutral-500 uppercase tracking-widest font-bold hidden">
+                            <span id="enhance-count" class="text-green-500">3</span> AI uses left
+                        </span>
+                        <button id="clear-btn"
+                            class="text-[9px] uppercase font-bold text-neutral-500 hover:text-red-400 transition-colors haptic-btn">Reset
+                            All</button>
+                    </div>
+                </div>
+
+                <div class="synthesis-box rounded-[2.5rem] p-10 md:p-14 relative overflow-hidden group">
+                    <div id="output-text"
+                        class="mono text-xl md:text-2xl leading-[1.6] text-white min-h-[100px] break-words relative z-10">
+                        <span class="text-neutral-600 italic font-light tracking-tight">Ready for architectural
+                            parameters...</span>
+                    </div>
+
+                    <div class="mt-14 border-t border-neutral-800 pt-8 relative z-10 space-y-4">
+                        <!-- Action buttons row -->
+                        <div class="flex gap-3 flex-wrap">
+                            <!-- ENHANCE WITH AI BUTTON -->
+                            <button id="enhance-btn" onclick="enhanceWithAI()"
+                                class="group relative btn-secondary haptic-btn bg-purple-900/30 hover:bg-purple-800/50 border border-purple-500/30 hover:border-purple-500 text-purple-300 px-6 py-3 rounded-full text-[10px] font-bold transition-all flex items-center gap-2 overflow-visible">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                                <span id="enhance-btn-text" class="tracking-widest">ENHANCE WITH AI</span>
+                                <!-- Tooltip -->
+                                <div
+                                    class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-zinc-900 px-4 py-2 rounded-lg text-xs whitespace-nowrap shadow-xl border border-purple-500/30 z-50">
+                                    ✨ AI adds vivid details to your prompt
+                                    <div
+                                        class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-zinc-900">
+                                    </div>
+                                </div>
+                            </button>
+
+                            <!-- COPY BUTTON -->
+                            <button id="copy-btn" onclick="copyToClipboard(event)"
+                                class="btn-stream group haptic-btn glow-hover bg-gradient-to-r from-green-500 to-emerald-500 text-black px-6 md:px-10 py-3 rounded-full text-[10px] md:text-[11px] font-bold transition-all flex items-center justify-center gap-2 md:gap-3 border-2 border-green-500">
+                                <div class="stream-progress"></div>
+                                <span id="btn-icon" class="z-10">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path
+                                            d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3" />
+                                    </svg>
+                                </span>
+                                <span id="btn-text" class="z-10 tracking-widest">COPY</span>
+                            </button>
+
+                            <!-- MORE ACTIONS DROPDOWN (THREE DOTS) -->
+                            <div class="relative" id="more-actions-container">
+                                <button onmouseenter="showMoreActions()" onmouseleave="hideMoreActionsDelayed()"
+                                    class="btn-secondary haptic-btn bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-3 rounded-full text-[10px] font-bold transition-all flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path
+                                            d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                    </svg>
+                                </button>
+                                <div id="more-actions-menu" onmouseenter="showMoreActions()"
+                                    onmouseleave="hideMoreActionsDelayed()"
+                                    class="absolute left-0 top-full mt-2 bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden shadow-xl min-w-[180px] z-50 opacity-0 pointer-events-none transition-all duration-200"
+                                    style="transform: translateY(-10px);">
+                                    <button onclick="downloadPrompt(); hideMoreActions();"
+                                        class="w-full text-left px-4 py-3 hover:bg-zinc-800 text-sm flex items-center gap-3 text-white transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                        </svg>
+                                        <span>Download</span>
+                                    </button>
+                                    <button onclick="saveToHistory(); hideMoreActions();"
+                                        class="w-full text-left px-4 py-3 hover:bg-zinc-800 text-sm flex items-center gap-3 text-white transition-colors border-t border-zinc-800">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                                        </svg>
+                                        <span>Save to History</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Status indicator -->
+                        <div class="flex items-center space-x-3 pt-2">
+                            <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse glow-accent"></div>
+                            <span class="text-[8px] text-neutral-500 uppercase tracking-[0.2em] font-bold">Optimized for
+                                V6.0</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div id="adsense-bottom"
+                class="ad-space w-full text-center py-6 rounded-2xl text-[8px] text-neutral-500 uppercase tracking-widest">
+                Advertisement Space</div>
+
+            <!-- VISUAL REFERENCE PREVIEW - SINGLE IMAGE -->
+            <section class="reveal pt-6" style="animation-delay: 0.55s;">
                 <div class="flex items-center justify-between mb-6">
                     <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500">Visual Reference Preview</label>
                     <div class="flex items-center gap-3">
@@ -229,199 +444,160 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="preview-section rounded-[2.5rem] p-10 md:p-14 relative">
                     <div class="relative z-10 space-y-6">
-                        <!-- Preview Description -->
                         <div class="text-center space-y-2 mb-8">
                             <h3 class="text-2xl font-bold text-white tracking-tight">Visual Reference Library</h3>
                             <p class="text-sm text-neutral-400">Get instant visual inspiration based on your prompt subject</p>
                         </div>
-                        
-                        <!-- Model Selection -->
-                        <div class="flex justify-center gap-3 mb-6">
-                            <button onclick="selectPreviewModel('reference')" id="preview-btn-midjourney" class="preview-control-btn active">
-                                <svg class="inline w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                                </svg>
-                                Reference Images
-                            </button>
-                            <button onclick="selectPreviewModel('styled')" id="preview-btn-dalle" class="preview-control-btn">
-                                <svg class="inline w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
-                                </svg>
-                                Styled Reference
-                            </button>
-                        </div>
-                        
-                        <!-- Preview Grid (2 Images) -->
-                        <div id="preview-grid" class="preview-grid">
-                            <!-- Slot 1 -->
-                            <div class="preview-image-slot">
+
+                        <!-- Single Image Slot -->
+                        <div class="preview-image-slot-single">
+                            <div id="preview-container">
                                 <div class="preview-placeholder">
-                                    <svg class="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                                        <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                    <svg class="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+                                        <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                     </svg>
-                                    <span class="text-xs">Reference 1</span>
-                                </div>
-                            </div>
-                            
-                            <!-- Slot 2 -->
-                            <div class="preview-image-slot">
-                                <div class="preview-placeholder">
-                                    <svg class="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                                        <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                                    </svg>
-                                    <span class="text-xs">Reference 2</span>
+                                    <span class="text-sm">Reference Image</span>
                                 </div>
                             </div>
                         </div>
-                        
-                        <!-- Preview Controls -->
+
+                        <!-- Controls -->
                         <div class="flex justify-center gap-4 pt-6 border-t border-neutral-800">
                             <button onclick="generatePreview()" class="preview-control-btn active">
                                 <svg class="inline w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                                    <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                                 </svg>
-                                Load References
+                                Load Reference
                             </button>
                             <button onclick="clearPreview()" class="preview-control-btn">
                                 <svg class="inline w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                    <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                 </svg>
                                 Clear
                             </button>
                         </div>
-                        
-                        <!-- Disclaimer Message -->
+
                         <div class="text-center text-[10px] text-neutral-600 uppercase tracking-widest mt-4 px-4">
                             <svg class="inline w-3 h-3 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            ⚠️ Experimental Preview Feature • Images are reference photos, NOT AI-generated • For visual inspiration only
+                            ⚠️ Experimental Feature • Reference photo for visual inspiration only
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="reveal pt-6" style="animation-delay: 0.4s;">
-                <div class="flex items-center justify-between mb-4">
-                    <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500">02 / Prompt Synthesis</label>
-                    <button id="clear-btn" class="text-[9px] uppercase font-bold text-neutral-500 hover:text-red-400 transition-colors haptic-btn">Reset All</button>
-                </div>
-                <div class="synthesis-box rounded-[2.5rem] p-10 md:p-14 relative overflow-hidden group">
-                    <div id="output-text" class="mono text-xl md:text-2xl leading-[1.6] text-white min-h-[100px] break-words relative z-10">
-                        <span class="text-neutral-600 italic font-light tracking-tight">Ready for architectural parameters...</span>
-                    </div>
-                    <div class="mt-14 flex items-center justify-between border-t border-neutral-800 pt-8 relative z-10 flex-wrap gap-4">
-    <div class="flex items-center space-x-3">
-        <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse glow-accent"></div>
-        <span class="text-[8px] text-neutral-500 uppercase tracking-[0.2em] font-bold">Optimized for V6.0</span>
-    </div>
-    <div class="flex gap-3 flex-wrap justify-end">
-        <button id="enhance-btn" onclick="enhanceWithAI()" class="btn-secondary haptic-btn bg-purple-900/30 hover:bg-purple-800/50 border border-purple-500/30 hover:border-purple-500 text-purple-300 px-4 md:px-6 py-3 rounded-full text-[10px] font-bold transition-all flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-            <span class="tracking-widest">ENHANCE</span>
-        </button>
-        <button id="copy-btn" onclick="copyToClipboard(event)" 
-                class="btn-stream group haptic-btn glow-hover bg-gradient-to-r from-green-500 to-emerald-500 text-black px-6 md:px-10 py-3 md:py-4 rounded-full text-[10px] md:text-[11px] font-bold transition-all flex items-center justify-center gap-2 md:gap-3 border-2 border-green-500">
-            <div class="stream-progress"></div>
-            <span id="btn-icon" class="z-10">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3" />
-                </svg>
-            </span>
-            <span id="btn-text" class="z-10 tracking-widest">COPY</span>
-        </button>
-    </div>
-</div>
-                </div>
-            </section>
-
-            <div id="adsense-bottom" class="ad-space w-full text-center py-6 rounded-2xl text-[8px] text-neutral-500 uppercase tracking-widest">Advertisement Space</div>
-
             <section class="reveal pt-20 border-t border-neutral-800" style="animation-delay: 0.6s;">
                 <div class="flex items-center justify-between mb-8">
                     <div>
-                        <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500 block mb-2">03 / Neural Blueprints</label>
+                        <label class="text-[9px] uppercase tracking-[0.3em] font-bold text-neutral-500 block mb-2">03 /
+                            Neural Blueprints</label>
                         <p class="text-sm text-neutral-400">Pre-configured synthesis templates</p>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <button onclick="loadNeuralBlueprint('neon-lit cyberpunk street at night', 'Cyberpunk', 'Cyber Neon', 'Dark', '16:9', 600, 30, 'blurry, daylight')" 
-                            class="neural-card text-left bg-zinc-900 border border-zinc-800 hover:border-emerald-500 p-6 transition-all duration-300 group relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <button
+                        onclick="loadNeuralBlueprint('neon-lit cyberpunk street at night', 'Cyberpunk', 'Cyber Neon', 'Dark', '16:9', 600, 30, 'blurry, daylight')"
+                        class="neural-card text-left bg-zinc-900 border border-zinc-800 hover:border-emerald-500 p-6 transition-all duration-300 group relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
                         <div class="relative z-10">
                             <div class="flex items-start justify-between mb-4">
                                 <div class="space-y-1">
-                                    <div class="text-[8px] text-zinc-600 uppercase tracking-[0.2em] font-bold mono">NEURAL_001</div>
-                                    <div class="text-[8px] text-emerald-500 uppercase tracking-[0.2em] font-bold mono">CYBERPUNK</div>
+                                    <div class="text-[8px] text-zinc-600 uppercase tracking-[0.2em] font-bold mono">
+                                        NEURAL_001</div>
+                                    <div class="text-[8px] text-emerald-500 uppercase tracking-[0.2em] font-bold mono">
+                                        CYBERPUNK</div>
                                 </div>
-                                <div class="w-12 h-12 border-2 border-zinc-800 group-hover:border-emerald-500 flex items-center justify-center transition-colors bg-zinc-900">
+                                <div
+                                    class="w-12 h-12 border-2 border-zinc-800 group-hover:border-emerald-500 flex items-center justify-center transition-colors bg-zinc-900">
                                     <span class="text-2xl">🌃</span>
                                 </div>
                             </div>
                             <h3 class="text-white font-bold text-xl mb-3 mono tracking-tight">CYBER_CITY</h3>
-                            <p class="text-zinc-500 text-xs leading-relaxed mb-4">High-contrast neon dystopia with volumetric fog and rain-slicked reflections</p>
+                            <p class="text-zinc-500 text-xs leading-relaxed mb-4">High-contrast neon dystopia with
+                                volumetric fog and rain-slicked reflections</p>
                             <div class="space-y-1 text-[9px] text-zinc-600 mono">
                                 <div>AR: 16:9 | STYLIZE: 600 | CHAOS: 30</div>
                                 <div>MOOD: Dark + Cyber Neon</div>
                             </div>
                             <div class="mt-4 pt-4 border-t border-zinc-800">
-                                <span class="text-[8px] text-emerald-500 uppercase tracking-[0.2em] font-bold group-hover:text-emerald-400">LOAD NEURAL NET →</span>
+                                <span
+                                    class="text-[8px] text-emerald-500 uppercase tracking-[0.2em] font-bold group-hover:text-emerald-400">LOAD
+                                    NEURAL NET →</span>
                             </div>
                         </div>
                     </button>
 
-                    <button onclick="loadNeuralBlueprint('ethereal portrait with flowing fabric', 'Surrealism', 'Soft Sunlight', 'Ethereal', '4:5', 800, 10, 'harsh lighting, dark')" 
-                            class="neural-card text-left bg-zinc-900 border border-zinc-800 hover:border-emerald-500 p-6 transition-all duration-300 group relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <button
+                        onclick="loadNeuralBlueprint('ethereal portrait with flowing fabric', 'Surrealism', 'Soft Sunlight', 'Ethereal', '4:5', 800, 10, 'harsh lighting, dark')"
+                        class="neural-card text-left bg-zinc-900 border border-zinc-800 hover:border-emerald-500 p-6 transition-all duration-300 group relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
                         <div class="relative z-10">
                             <div class="flex items-start justify-between mb-4">
                                 <div class="space-y-1">
-                                    <div class="text-[8px] text-zinc-600 uppercase tracking-[0.2em] font-bold mono">NEURAL_002</div>
-                                    <div class="text-[8px] text-emerald-500 uppercase tracking-[0.2em] font-bold mono">PORTRAIT</div>
+                                    <div class="text-[8px] text-zinc-600 uppercase tracking-[0.2em] font-bold mono">
+                                        NEURAL_002</div>
+                                    <div class="text-[8px] text-emerald-500 uppercase tracking-[0.2em] font-bold mono">
+                                        PORTRAIT</div>
                                 </div>
-                                <div class="w-12 h-12 border-2 border-zinc-800 group-hover:border-emerald-500 flex items-center justify-center transition-colors bg-zinc-900">
+                                <div
+                                    class="w-12 h-12 border-2 border-zinc-800 group-hover:border-emerald-500 flex items-center justify-center transition-colors bg-zinc-900">
                                     <span class="text-2xl">✨</span>
                                 </div>
                             </div>
                             <h3 class="text-white font-bold text-xl mb-3 mono tracking-tight">ETHEREAL_SOUL</h3>
-                            <p class="text-zinc-500 text-xs leading-relaxed mb-4">Dreamlike portrait with soft focus and otherworldly atmosphere</p>
+                            <p class="text-zinc-500 text-xs leading-relaxed mb-4">Dreamlike portrait with soft focus and
+                                otherworldly atmosphere</p>
                             <div class="space-y-1 text-[9px] text-zinc-600 mono">
                                 <div>AR: 4:5 | STYLIZE: 800 | CHAOS: 10</div>
                                 <div>MOOD: Ethereal + Soft Light</div>
                             </div>
                             <div class="mt-4 pt-4 border-t border-zinc-800">
-                                <span class="text-[8px] text-emerald-500 uppercase tracking-[0.2em] font-bold group-hover:text-emerald-400">LOAD NEURAL NET →</span>
+                                <span
+                                    class="text-[8px] text-emerald-500 uppercase tracking-[0.2em] font-bold group-hover:text-emerald-400">LOAD
+                                    NEURAL NET →</span>
                             </div>
                         </div>
                     </button>
 
-                    <button onclick="loadNeuralBlueprint('minimalist concrete architecture', 'Minimalism', 'Hard Shadows', 'Peaceful', '1:1', 200, 0, 'clutter, decorations')" 
-                            class="neural-card text-left bg-zinc-900 border border-zinc-800 hover:border-emerald-500 p-6 transition-all duration-300 group relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <button
+                        onclick="loadNeuralBlueprint('minimalist concrete architecture', 'Minimalism', 'Hard Shadows', 'Peaceful', '1:1', 200, 0, 'clutter, decorations')"
+                        class="neural-card text-left bg-zinc-900 border border-zinc-800 hover:border-emerald-500 p-6 transition-all duration-300 group relative overflow-hidden">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
                         <div class="relative z-10">
                             <div class="flex items-start justify-between mb-4">
                                 <div class="space-y-1">
-                                    <div class="text-[8px] text-zinc-600 uppercase tracking-[0.2em] font-bold mono">NEURAL_003</div>
-                                    <div class="text-[8px] text-emerald-500 uppercase tracking-[0.2em] font-bold mono">MINIMAL</div>
+                                    <div class="text-[8px] text-zinc-600 uppercase tracking-[0.2em] font-bold mono">
+                                        NEURAL_003</div>
+                                    <div class="text-[8px] text-emerald-500 uppercase tracking-[0.2em] font-bold mono">
+                                        MINIMAL</div>
                                 </div>
-                                <div class="w-12 h-12 border-2 border-zinc-800 group-hover:border-emerald-500 flex items-center justify-center transition-colors bg-zinc-900">
+                                <div
+                                    class="w-12 h-12 border-2 border-zinc-800 group-hover:border-emerald-500 flex items-center justify-center transition-colors bg-zinc-900">
                                     <span class="text-2xl">🏛️</span>
                                 </div>
                             </div>
                             <h3 class="text-white font-bold text-xl mb-3 mono tracking-tight">BRUTALIST_FORM</h3>
-                            <p class="text-zinc-500 text-xs leading-relaxed mb-4">Clean geometric architecture with strong shadows and minimal palette</p>
+                            <p class="text-zinc-500 text-xs leading-relaxed mb-4">Clean geometric architecture with
+                                strong shadows and minimal palette</p>
                             <div class="space-y-1 text-[9px] text-zinc-600 mono">
                                 <div>AR: 1:1 | STYLIZE: 200 | CHAOS: 0</div>
                                 <div>MOOD: Peaceful + Hard Shadows</div>
                             </div>
                             <div class="mt-4 pt-4 border-t border-zinc-800">
-                                <span class="text-[8px] text-emerald-500 uppercase tracking-[0.2em] font-bold group-hover:text-emerald-400">LOAD NEURAL NET →</span>
+                                <span
+                                    class="text-[8px] text-emerald-500 uppercase tracking-[0.2em] font-bold group-hover:text-emerald-400">LOAD
+                                    NEURAL NET →</span>
                             </div>
                         </div>
                     </button>
@@ -432,16 +608,26 @@
                 <h2 class="text-xs font-bold uppercase tracking-widest text-white">Architectural Guide</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-[13px] leading-relaxed text-neutral-400">
                     <div class="space-y-4">
-                        <p><strong class="text-white">What is Prompt Architect?</strong><br>Our system is an industrial-grade build environment designed to synthesize complex natural language into optimized parameters for Midjourney V6.0 and DALL-E 3 Art Models.</p>
-                        <p><strong class="text-white">How to use?</strong><br>Simply initialize your concept in the subject field. Our Smart Core graphic indicates the active synthesis state. Select modular attributes from our curated library to refine the visual output.</p>
+                        <p><strong class="text-white">What is Prompt Architect?</strong><br>Our system is an
+                            industrial-grade build environment designed to synthesize complex natural language into
+                            optimized parameters for Midjourney V6.0 and DALL-E 3 Art Models.</p>
+                        <p><strong class="text-white">How to use?</strong><br>Simply initialize your concept in the
+                            subject field. Our Smart Core graphic indicates the active synthesis state. Select modular
+                            attributes from our curated library to refine the visual output.</p>
                     </div>
                     <div class="space-y-4">
-                        <p><strong class="text-white">V6.0 Optimization</strong><br>The output string is engineered to follow the specific grammatical structure preferred by the latest generative models, emphasizing subject-first logic followed by stylistic modifiers.</p>
-                        <p><strong class="text-white">Global Accessibility</strong><br>Built for the global AI community, the Prompt Architect operates entirely client-side, ensuring maximum speed and zero data retention for professional creators.</p>
+                        <p><strong class="text-white">V6.0 Optimization</strong><br>The output string is engineered to
+                            follow the specific grammatical structure preferred by the latest generative models,
+                            emphasizing subject-first logic followed by stylistic modifiers.</p>
+                        <p><strong class="text-white">Global Accessibility</strong><br>Built for the global AI
+                            community, the Prompt Architect operates entirely client-side, ensuring maximum speed and
+                            zero data retention for professional creators.</p>
                     </div>
                 </div>
                 <div class="text-center mt-8">
-                    <a href="faq.html" class="inline-block text-green-400 font-bold hover:text-green-300 transition-colors text-sm">View Complete FAQ →</a>
+                    <a href="faq.html"
+                        class="inline-block text-green-400 font-bold hover:text-green-300 transition-colors text-sm">View
+                        Complete FAQ →</a>
                 </div>
             </section>
         </main>
@@ -450,159 +636,212 @@
             <div class="mb-12 pb-8 border-b border-neutral-800">
                 <div class="space-y-6">
                     <div class="text-sm text-neutral-400 leading-relaxed">
-                        <p><strong class="text-neutral-300">Prompt Architect</strong> is a professional AI prompt generator designed for creators, designers, and artists working with Midjourney V6.0 and DALL-E 3. Build optimized prompts using our industrial-grade synthesis system featuring curated style libraries, technical parameter controls, and pre-configured neural blueprints. Perfect for prompt engineering, AI art generation, and creative workflows requiring precise natural language processing.</p>
+                        <p><strong class="text-neutral-300">Prompt Architect</strong> is a professional AI prompt
+                            generator designed for creators, designers, and artists working with Midjourney V6.0 and
+                            DALL-E 3. Build optimized prompts using our industrial-grade synthesis system featuring
+                            curated style libraries, technical parameter controls, and pre-configured neural blueprints.
+                            Perfect for prompt engineering, AI art generation, and creative workflows requiring precise
+                            natural language processing.</p>
                     </div>
 
                     <nav class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
                         <div>
                             <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Tools</h3>
                             <ul class="space-y-2">
-                                <li><a href="/" class="text-neutral-400 hover:text-green-400 transition-colors">AI Prompt Builder</a></li>
-                                <li><a href="gallery.html" class="text-neutral-400 hover:text-green-400 transition-colors">Generated Image Gallery</a></li>
+                                <li><a href="/" class="text-neutral-400 hover:text-green-400 transition-colors">AI
+                                        Prompt Builder</a></li>
+                                <li><a href="gallery.html"
+                                        class="text-neutral-400 hover:text-green-400 transition-colors">Generated Image
+                                        Gallery</a></li>
                             </ul>
                         </div>
                         <div>
                             <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Learn</h3>
                             <ul class="space-y-2">
-                                <li><a href="blog/blog.html" class="text-neutral-400 hover:text-green-400 transition-colors">AI Art Blog</a></li>
-                                <li><a href="faq.html" class="text-neutral-400 hover:text-green-400 transition-colors">Prompt Engineering FAQ</a></li>
-                                <li><a href="about.html" class="text-neutral-400 hover:text-green-400 transition-colors">About Midjourney Optimization</a></li>
+                                <li><a href="blog/blog.html"
+                                        class="text-neutral-400 hover:text-green-400 transition-colors">AI Art Blog</a>
+                                </li>
+                                <li><a href="faq.html"
+                                        class="text-neutral-400 hover:text-green-400 transition-colors">Prompt
+                                        Engineering FAQ</a></li>
+                                <li><a href="about.html"
+                                        class="text-neutral-400 hover:text-green-400 transition-colors">About Midjourney
+                                        Optimization</a></li>
                             </ul>
                         </div>
                         <div>
-                            <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Connect</h3>
+                            <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold mb-3">Connect
+                            </h3>
                             <ul class="space-y-2">
-                                <li><a href="contact.html" class="text-neutral-400 hover:text-green-400 transition-colors">Contact & Support</a></li>
-                                <li><a href="https://instagram.com/prompts.architect" target="_blank" rel="noopener" class="text-neutral-400 hover:text-green-400 transition-colors">Instagram Showcase</a></li>
+                                <li><a href="contact.html"
+                                        class="text-neutral-400 hover:text-green-400 transition-colors">Contact &
+                                        Support</a></li>
+                                <li><a href="https://instagram.com/prompts.architect" target="_blank" rel="noopener"
+                                        class="text-neutral-400 hover:text-green-400 transition-colors">Instagram
+                                        Showcase</a></li>
                             </ul>
                         </div>
                     </nav>
 
                     <div class="flex flex-wrap gap-4 text-xs text-neutral-500">
                         <span class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                            </svg>
                             100% Client-Side Processing
                         </span>
                         <span class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"/></svg>
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" />
+                            </svg>
                             Privacy-Focused, No Data Stored
                         </span>
                         <span class="flex items-center gap-2">
-                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"/></svg>
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" />
+                            </svg>
                             Fast, Lightweight & Accessible
                         </span>
                     </div>
                 </div>
             </div>
 
-            <div class="text-[9px] text-neutral-500 uppercase tracking-[0.2em] font-bold flex flex-col md:flex-row justify-between items-center gap-4">
+            <div
+                class="text-[9px] text-neutral-500 uppercase tracking-[0.2em] font-bold flex flex-col md:flex-row justify-between items-center gap-4">
                 <div>© 2025 PROMPT ARCHITECT | AI PROMPT GENERATION TOOL</div>
                 <div class="flex space-x-6">
-                    <button onclick="openModal('privacy')" class="hover:text-green-400 transition-colors">Privacy Policy</button>
-                    <button onclick="openModal('terms')" class="hover:text-green-400 transition-colors">Terms of Service</button>
+                    <button onclick="openModal('privacy')" class="hover:text-green-400 transition-colors">Privacy
+                        Policy</button>
+                    <button onclick="openModal('terms')" class="hover:text-green-400 transition-colors">Terms of
+                        Service</button>
                 </div>
             </div>
         </footer>
     </div>
     <!-- AI Enhancement Modal -->
-<div id="enhance-modal" class="modal">
-    <div class="modal-content max-w-4xl space-y-6 text-neutral-400 pb-20">
-        <div class="flex justify-between items-start mb-6">
-            <div>
-                <h2 class="text-3xl font-bold text-white tracking-tighter">AI Prompt Enhancement</h2>
-                <p class="text-[11px] uppercase tracking-widest text-purple-500 mt-2">Powered by Gemini AI</p>
+    <div id="enhance-modal" class="modal">
+        <div class="modal-content max-w-4xl space-y-6 text-neutral-400 pb-20">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h2 class="text-3xl font-bold text-white tracking-tighter">AI Prompt Enhancement</h2>
+                    <p class="text-[11px] uppercase tracking-widest text-purple-500 mt-2">Powered by Gemini AI</p>
+                </div>
+                <button onclick="closeEnhanceModal()" class="text-neutral-500 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             </div>
-            <button onclick="closeEnhanceModal()" class="text-neutral-500 hover:text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path d="M6 18L18 6M6 6l12 12" />
+
+            <!-- Rate Limit Info -->
+            <div id="rate-limit-info"
+                class="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4 flex items-center gap-3">
+                <svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-            </button>
-        </div>
-
-        <!-- Rate Limit Info -->
-        <div id="rate-limit-info" class="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4 flex items-center gap-3">
-            <svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <div class="text-sm">
-                <span class="text-white font-bold">Enhancements remaining today: </span>
-                <span id="remaining-count" class="text-green-500 font-bold">3</span>
-                <span class="text-neutral-500"> / 3</span>
-            </div>
-        </div>
-
-        <!-- Comparison View -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Original -->
-            <div class="space-y-3">
-                <div class="flex items-center gap-2">
-                    <div class="w-3 h-3 rounded-full bg-neutral-500"></div>
-                    <h3 class="text-sm font-bold text-neutral-400 uppercase tracking-widest">Original Prompt</h3>
-                </div>
-                <div id="original-prompt" class="bg-zinc-900/80 border border-zinc-800 rounded-xl p-6 min-h-[200px] text-sm text-neutral-300 mono leading-relaxed">
-                    Your current prompt will appear here...
+                <div class="text-sm">
+                    <span class="text-white font-bold">Enhancements remaining today: </span>
+                    <span id="remaining-count" class="text-green-500 font-bold">3</span>
+                    <span class="text-neutral-500"> / 3</span>
                 </div>
             </div>
 
-            <!-- Enhanced -->
-            <div class="space-y-3">
-                <div class="flex items-center gap-2">
-                    <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
-                    <h3 class="text-sm font-bold text-green-400 uppercase tracking-widest">AI Enhanced</h3>
-                </div>
-                <div id="enhanced-prompt" class="bg-gradient-to-br from-purple-900/20 to-green-900/20 border-2 border-green-500/30 rounded-xl p-6 min-h-[200px] text-sm text-white mono leading-relaxed relative">
-                    <div id="enhance-loading" class="absolute inset-0 flex flex-col items-center justify-center bg-zinc-900/95 rounded-xl" style="display: none;">
-                        <div class="w-12 h-12 border-4 border-green-500/20 border-t-green-500 rounded-full animate-spin mb-4"></div>
-                        <p class="text-sm text-green-400 font-bold">Enhancing with AI...</p>
+            <!-- Comparison View -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Original -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-neutral-500"></div>
+                        <h3 class="text-sm font-bold text-neutral-400 uppercase tracking-widest">Original Prompt</h3>
                     </div>
-                    <span id="enhanced-text" class="text-neutral-600 italic">Enhanced version will appear here...</span>
+                    <div id="original-prompt"
+                        class="bg-zinc-900/80 border border-zinc-800 rounded-xl p-6 min-h-[200px] text-sm text-neutral-300 mono leading-relaxed">
+                        Your current prompt will appear here...
+                    </div>
+                </div>
+
+                <!-- Enhanced -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
+                        <h3 class="text-sm font-bold text-green-400 uppercase tracking-widest">AI Enhanced</h3>
+                    </div>
+                    <div id="enhanced-prompt"
+                        class="bg-gradient-to-br from-purple-900/20 to-green-900/20 border-2 border-green-500/30 rounded-xl p-6 min-h-[200px] text-sm text-white mono leading-relaxed relative">
+                        <div id="enhance-loading"
+                            class="absolute inset-0 flex flex-col items-center justify-center bg-zinc-900/95 rounded-xl"
+                            style="display: none;">
+                            <div
+                                class="w-12 h-12 border-4 border-green-500/20 border-t-green-500 rounded-full animate-spin mb-4">
+                            </div>
+                            <p class="text-sm text-green-400 font-bold">Enhancing with AI...</p>
+                        </div>
+                        <span id="enhanced-text" class="text-neutral-600 italic">Enhanced version will appear
+                            here...</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Error Message -->
-        <div id="enhance-error" class="bg-red-900/20 border border-red-500/30 rounded-xl p-4 text-red-400 text-sm" style="display: none;">
-            <div class="flex items-start gap-3">
-                <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <span id="error-message"></span>
+            <!-- Error Message -->
+            <div id="enhance-error" class="bg-red-900/20 border border-red-500/30 rounded-xl p-4 text-red-400 text-sm"
+                style="display: none;">
+                <div class="flex items-start gap-3">
+                    <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span id="error-message"></span>
+                </div>
             </div>
-        </div>
 
-        <!-- Actions -->
-        <div class="flex gap-4 pt-4">
-            <button onclick="useEnhanced()" id="use-enhanced-btn" class="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-4 rounded-full text-[11px] font-bold uppercase tracking-widest haptic-btn glow-hover" disabled>
-                Use Enhanced Prompt
-            </button>
-            <button onclick="closeEnhanceModal()" class="flex-1 bg-zinc-800 hover:bg-zinc-700 text-white px-8 py-4 rounded-full text-[11px] font-bold uppercase tracking-widest haptic-btn">
-                Cancel
-            </button>
+            <!-- Actions -->
+            <div class="flex gap-4 pt-4">
+                <button onclick="useEnhanced()" id="use-enhanced-btn"
+                    class="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-4 rounded-full text-[11px] font-bold uppercase tracking-widest haptic-btn glow-hover"
+                    disabled>
+                    Use Enhanced Prompt
+                </button>
+                <button onclick="closeEnhanceModal()"
+                    class="flex-1 bg-zinc-800 hover:bg-zinc-700 text-white px-8 py-4 rounded-full text-[11px] font-bold uppercase tracking-widest haptic-btn">
+                    Cancel
+                </button>
+            </div>
         </div>
     </div>
-</div>
     <!-- Privacy Modal -->
     <div id="privacy-modal" class="modal">
         <div class="modal-content space-y-6 text-neutral-400 pb-20">
             <h2 class="text-3xl font-bold text-white tracking-tighter">Privacy Policy</h2>
             <p class="text-[11px] uppercase tracking-widest text-neutral-500">Effective Date: January 2025</p>
-            
+
             <section class="space-y-3">
                 <h3 class="text-white font-bold">1. Data Collection</h3>
-                <p class="text-sm">Prompt Architect is a static, client-side application. We do not host databases or store your personal information. All prompt generation occurs locally within your browser's memory.</p>
+                <p class="text-sm">Prompt Architect is a static, client-side application. We do not host databases or
+                    store your personal information. All prompt generation occurs locally within your browser's memory.
+                </p>
             </section>
 
             <section class="space-y-3">
                 <h3 class="text-white font-bold">2. Cookies and Advertising</h3>
-                <p class="text-sm">We use Google AdSense to serve advertisements. Google, as a third-party vendor, uses cookies to serve ads on our site. Google's use of advertising cookies enables it and its partners to serve ads based on your visit to this site and/or other sites on the Internet.</p>
+                <p class="text-sm">We use Google AdSense to serve advertisements. Google, as a third-party vendor, uses
+                    cookies to serve ads on our site. Google's use of advertising cookies enables it and its partners to
+                    serve ads based on your visit to this site and/or other sites on the Internet.</p>
             </section>
 
             <section class="space-y-3">
                 <h3 class="text-white font-bold">3. Third Party Services</h3>
-                <p class="text-sm">You may opt out of personalized advertising by visiting Ads Settings or www.aboutads.info. We do not control the practices of third-party advertisers.</p>
+                <p class="text-sm">You may opt out of personalized advertising by visiting Ads Settings or
+                    www.aboutads.info. We do not control the practices of third-party advertisers.</p>
             </section>
 
-            <button onclick="closeModal('privacy')" class="bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest haptic-btn">Return to System</button>
+            <button onclick="closeModal('privacy')"
+                class="bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest haptic-btn">Return
+                to System</button>
         </div>
     </div>
 
@@ -611,28 +850,38 @@
         <div class="modal-content space-y-6 text-neutral-400 pb-20">
             <h2 class="text-3xl font-bold text-white tracking-tighter">Terms of Service</h2>
             <p class="text-[11px] uppercase tracking-widest text-neutral-500">Agreement v1.0</p>
-            
+
             <section class="space-y-3">
                 <h3 class="text-white font-bold">1. Use of Service</h3>
-                <p class="text-sm">By accessing Prompt Architect, you agree to use the tool for legal, creative purposes. You are responsible for the inputs you provide and the outputs you generate using third-party AI models.</p>
+                <p class="text-sm">By accessing Prompt Architect, you agree to use the tool for legal, creative
+                    purposes. You are responsible for the inputs you provide and the outputs you generate using
+                    third-party AI models.</p>
             </section>
 
             <section class="space-y-3">
                 <h3 class="text-white font-bold">2. Intellectual Property</h3>
-                <p class="text-sm">The 'Architect Build System' UI, logic, and code are the intellectual property of Prompt Architect. Users retain ownership of the specific strings they construct using our interface.</p>
+                <p class="text-sm">The 'Architect Build System' UI, logic, and code are the intellectual property of
+                    Prompt Architect. Users retain ownership of the specific strings they construct using our interface.
+                </p>
             </section>
 
             <section class="space-y-3">
                 <h3 class="text-white font-bold">3. Limitation of Liability</h3>
-                <p class="text-sm">The tool is provided "as is" without warranty of any kind. We are not liable for any discrepancies between our synthesized strings and the final results produced by generative AI platforms.</p>
+                <p class="text-sm">The tool is provided "as is" without warranty of any kind. We are not liable for any
+                    discrepancies between our synthesized strings and the final results produced by generative AI
+                    platforms.</p>
             </section>
 
-            <button onclick="closeModal('terms')" class="bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest haptic-btn">Return to System</button>
+            <button onclick="closeModal('terms')"
+                class="bg-gradient-to-r from-green-500 to-emerald-500 text-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest haptic-btn">Return
+                to System</button>
         </div>
     </div>
 
     <!-- Toast -->
-    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 translate-y-20 px-8 py-4 rounded-full text-xs font-bold transition-all duration-500 opacity-0 z-50">String Copied to Clipboard</div>
+    <div id="toast"
+        class="fixed bottom-10 left-1/2 -translate-x-1/2 translate-y-20 px-8 py-4 rounded-full text-xs font-bold transition-all duration-500 opacity-0 z-50">
+        String Copied to Clipboard</div>
 
     <!-- SVG Gradient Definition for Strength Ring -->
     <svg width="0" height="0" style="position: absolute;">
@@ -646,5 +895,96 @@
 
     <script src="script.js"></script>
     <script src="preview.js"></script>
+
+    <!-- Floating Prompt Preview Widget -->
+    <div id="floating-preview" class="floating-preview hidden">
+        <!-- Arrow Indicator pointing to floating widget -->
+        <div id="floating-arrow-indicator" class="floating-arrow-indicator">
+            <div class="arrow-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+            </div>
+            <div class="arrow-label-floating">
+                YOUR PROMPT<br>IS HERE! 👉
+            </div>
+        </div>
+        
+        <!-- Main compact view -->
+        <div class="floating-preview-content" onclick="scrollToSynthesis()">
+            <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2 flex-1 min-w-0">
+                    <svg class="flex-shrink-0 w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    <div class="flex-1 min-w-0">
+                        <div class="text-[8px] text-neutral-500 uppercase tracking-widest font-bold mb-0.5">Your Prompt
+                        </div>
+                        <div id="floating-preview-text" class="text-xs text-white truncate font-medium">
+                            Ready to build...
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 flex-shrink-0">
+                    <span id="floating-word-count" class="text-[9px] text-neutral-500 font-mono">0w</span>
+                    <svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expanded view on hover -->
+        <div class="floating-preview-expanded">
+            <div class="text-[8px] text-neutral-500 uppercase tracking-widest font-bold mb-2">Full Preview</div>
+            <div id="floating-preview-full" class="text-xs text-white leading-relaxed mb-3 max-h-32 overflow-y-auto">
+                Your prompt will appear here...
+            </div>
+            <div class="flex gap-2">
+                <button onclick="event.stopPropagation(); enhanceWithAI();"
+                    class="flex-1 bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 px-3 py-2 rounded-lg text-[9px] font-bold transition-all flex items-center justify-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    ENHANCE
+                </button>
+                <button onclick="event.stopPropagation(); copyToClipboard(event);"
+                    class="flex-1 bg-green-500/20 hover:bg-green-500/30 text-green-300 px-3 py-2 rounded-lg text-[9px] font-bold transition-all flex items-center justify-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3" />
+                    </svg>
+                    COPY
+                </button>
+            </div>
+            <div class="text-center mt-2 text-[8px] text-neutral-600 uppercase tracking-widest">
+                Click to view full synthesis →
+            </div>
+        </div>
+
+        <!-- First-time pointer (shows only once) -->
+        <div id="first-time-pointer" class="first-time-pointer hidden">
+            <div class="pointer-label">
+                Your prompt is building here! 👇
+            </div>
+            <svg class="pointer-arrow" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+
+        <!-- NEW badge -->
+        <div id="new-badge" class="new-badge">
+            NEW!
+        </div>
+    </div>
+
 </body>
+</body>
+
 </html>
