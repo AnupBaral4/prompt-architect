@@ -1,4 +1,7 @@
-// Generate animated particles
+// ============================================
+// PARTICLE SYSTEM INITIALIZATION
+// ============================================
+
 function initParticles() {
     const particlesContainer = document.getElementById('particles');
     if (!particlesContainer) return;
@@ -14,6 +17,10 @@ function initParticles() {
     }
 }
 
+// ============================================
+// CATEGORY DATA
+// ============================================
+
 const categories = [
     { id: 'style', name: 'Art Style', chips: ['Minimalism', 'Cinematic', 'Hyper-realistic', 'Analog Film', 'Cyberpunk', 'Surrealism'] },
     { id: 'composition', name: 'Composition', chips: ['Rule of Thirds', 'Bird\'s Eye View', 'Close-up', 'Symmetrical', 'Wide Shot'] },
@@ -22,6 +29,10 @@ const categories = [
     { id: 'color', name: 'Palette', chips: ['Monochrome', 'Pastel', 'Earthy Tones', 'Neon', 'Vibrant', 'Muted'] },
     { id: 'technical', name: 'Quality', chips: ['8k', 'Ray Tracing', 'Masterpiece', 'Intricate Textures', 'Sharp Focus'] }
 ];
+
+// ============================================
+// STATE MANAGEMENT
+// ============================================
 
 const state = { 
     subject: '', 
@@ -33,6 +44,10 @@ const state = {
 };
 
 let subjectInput, outputText, categoriesContainer, toast;
+
+// ============================================
+// INITIALIZATION
+// ============================================
 
 function init() {
     initParticles();
@@ -110,6 +125,10 @@ function init() {
     }
 }
 
+// ============================================
+// ATTRIBUTE SELECTION
+// ============================================
+
 function selectAttribute(catId, value, btn) {
     const siblings = document.querySelectorAll(`button[data-category="${catId}"]`);
     siblings.forEach(s => s.classList.remove('chip-active'));
@@ -123,6 +142,10 @@ function selectAttribute(catId, value, btn) {
     buildPrompt();
     updatePromptStrength();
 }
+
+// ============================================
+// VISUAL EFFECTS
+// ============================================
 
 function createSparkles(element) {
     const rect = element.getBoundingClientRect();
@@ -148,6 +171,10 @@ function createTypingSparkle(element) {
     document.body.appendChild(sparkle);
     setTimeout(() => sparkle.remove(), 800);
 }
+
+// ============================================
+// PROMPT BUILDING
+// ============================================
 
 function buildPrompt() {
     if (!outputText) return;
@@ -182,6 +209,10 @@ function buildPrompt() {
     const paramsStr = params.map(p => `<span class="token-param">${p}</span>`).join(' ');
     outputText.innerHTML = promptParts.join(", ") + ` ${paramsStr}`;
 }
+
+// ============================================
+// PROMPT STRENGTH INDICATOR
+// ============================================
 
 function updatePromptStrength() {
     const totalCategories = 7; // 6 categories + subject
@@ -242,6 +273,10 @@ function updatePromptStrength() {
     }
 }
 
+// ============================================
+// COPY TO CLIPBOARD
+// ============================================
+
 const copyBtn = document.getElementById('copy-btn');
 if (copyBtn) {
     copyBtn.onclick = (e) => copyToClipboard(e);
@@ -287,6 +322,10 @@ function copyToClipboard(e) {
     });
 }
 
+// ============================================
+// TECHNICAL PARAMETERS
+// ============================================
+
 function selectAspectRatio(ratio) {
     const buttons = document.querySelectorAll('.aspect-btn');
     buttons.forEach(btn => btn.classList.remove('chip-active'));
@@ -323,6 +362,10 @@ function updateNegative(value) {
     state.negative = value.trim();
     buildPrompt();
 }
+
+// ============================================
+// RANDOM PROMPT GENERATOR
+// ============================================
 
 function randomizePrompt() {
     if (!subjectInput) return;
@@ -390,6 +433,10 @@ function randomizePrompt() {
         document.getElementById('output-text').scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 600);
 }
+
+// ============================================
+// NEURAL BLUEPRINTS
+// ============================================
 
 function loadNeuralBlueprint(subject, style, lighting, mood, aspectRatio, stylize, chaos, negative) {
     if (!subjectInput) return;
@@ -470,32 +517,56 @@ function loadNeuralBlueprint(subject, style, lighting, mood, aspectRatio, styliz
     }
 }
 
-const clearBtn = document.getElementById('clear-btn');
-if (clearBtn) {
-    clearBtn.onclick = () => {
-        if (!subjectInput) return;
+// ============================================
+// RESET/CLEAR
+// ============================================
 
-        state.subject = '';
-        state.attributes = {};
-        state.aspectRatio = '';
-        state.stylize = 100;
-        state.chaos = 0;
-        state.negative = '';
-        
-        subjectInput.value = '';
-        document.getElementById('negative-input').value = '';
-        document.getElementById('stylize-slider').value = 100;
-        document.getElementById('stylize-value').textContent = 100;
-        document.getElementById('chaos-slider').value = 0;
-        document.getElementById('chaos-value').textContent = 0;
-        
-        document.querySelectorAll('.chip-active').forEach(el => el.classList.remove('chip-active'));
-        buildPrompt();
-        updatePromptStrength();
-    };
+function initResetButton() {
+    const clearBtn = document.getElementById('clear-btn');
+    const subjectInputElement = document.getElementById('subject-input');
+    
+    if (clearBtn) {
+        clearBtn.onclick = () => {
+            if (!subjectInputElement) return;
+
+            state.subject = '';
+            state.attributes = {};
+            state.aspectRatio = '';
+            state.stylize = 100;
+            state.chaos = 0;
+            state.negative = '';
+            
+            subjectInputElement.value = '';
+            
+            const negativeInput = document.getElementById('negative-input');
+            if (negativeInput) negativeInput.value = '';
+            
+            const stylizeSlider = document.getElementById('stylize-slider');
+            const stylizeValue = document.getElementById('stylize-value');
+            if (stylizeSlider) stylizeSlider.value = 100;
+            if (stylizeValue) stylizeValue.textContent = 100;
+            
+            const chaosSlider = document.getElementById('chaos-slider');
+            const chaosValue = document.getElementById('chaos-value');
+            if (chaosSlider) chaosSlider.value = 0;
+            if (chaosValue) chaosValue.textContent = 0;
+            
+            document.querySelectorAll('.chip-active').forEach(el => el.classList.remove('chip-active'));
+            document.querySelectorAll('.aspect-btn').forEach(btn => btn.classList.remove('chip-active'));
+            
+            buildPrompt();
+            updatePromptStrength();
+            
+            // Show success feedback
+            showToast('All settings reset!');
+        };
+    }
 }
 
-// History Functions
+// ============================================
+// HISTORY MANAGEMENT
+// ============================================
+
 function saveToHistory() {
     if (!state.subject && Object.keys(state.attributes).length === 0) return;
     
@@ -621,18 +692,9 @@ function closeHistory() {
     }
 }
 
-function toggleMobileMenu() {
-    const menu = document.getElementById('mobile-menu');
-    if (!menu) return;
-    
-    if (menu.style.maxHeight === '0px' || !menu.style.maxHeight) {
-        menu.style.opacity = '1';
-        menu.style.maxHeight = '500px';
-    } else {
-        menu.style.opacity = '0';
-        menu.style.maxHeight = '0px';
-    }
-}
+// ============================================
+// UTILITY FUNCTIONS
+// ============================================
 
 function downloadPrompt() {
     const text = outputText ? outputText.innerText : '';
@@ -666,7 +728,6 @@ function showToast(message) {
     }, 2500);
 }
 
-
 function openModal(id) {
     const modal = document.getElementById(id + '-modal');
     if (modal) modal.style.display = 'block';
@@ -677,20 +738,18 @@ function closeModal(id) {
     if (modal) modal.style.display = 'none';
 }
 
+// Close modals on outside click
 document.querySelectorAll('.modal').forEach(modal => {
     modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.style.display = 'none';
     });
 });
 
-init();
-buildPrompt();
-updatePromptStrength();
 // ============================================
 // AI ENHANCEMENT FEATURE
 // ============================================
 
-const WORKER_URL = 'https://gemini-proxy.anupbaral-new.workers.dev/'; // ⚠️ REPLACE THIS
+const WORKER_URL = 'https://gemini-proxy.anupbaral-new.workers.dev/';
 let enhancedPromptText = '';
 
 // Get user fingerprint for rate limiting
@@ -739,9 +798,7 @@ function updateEnhanceCounter() {
     }
 }
 
-// ============================================
-// ENHANCED AI BUTTON WITH LOADING STATE - ONLY ONE VERSION
-// ============================================
+// Enhanced AI Button
 async function enhanceWithAI() {
     const outputText = document.getElementById('output-text');
     const btn = document.getElementById('enhance-btn');
@@ -865,7 +922,7 @@ function useEnhanced() {
     updateFloatingPreview();
 }
 
-// Close modal
+// Close enhance modal
 function closeEnhanceModal() {
     const modal = document.getElementById('enhance-modal');
     if (modal) modal.style.display = 'none';
@@ -875,11 +932,12 @@ function closeEnhanceModal() {
 // ============================================
 // WELCOME MODAL
 // ============================================
+
 function initWelcomeModal() {
     if (!localStorage.getItem('welcomeShown')) {
         setTimeout(() => {
             document.getElementById('welcome-modal').style.display = 'block';
-        }, 500); // Show after half second
+        }, 500);
     }
 }
 
@@ -890,13 +948,10 @@ function closeWelcome() {
     document.getElementById('welcome-modal').style.display = 'none';
 }
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', initWelcomeModal);
-
-
 // ============================================
-// MORE ACTIONS DROPDOWN - FIXED
+// MORE ACTIONS DROPDOWN
 // ============================================
+
 let moreActionsTimeout;
 
 function showMoreActions() {
@@ -921,95 +976,7 @@ function hideMoreActions() {
 }
 
 // ============================================
-// VISUAL REFERENCE PREVIEW - SINGLE IMAGE
-// ============================================
-
-function generatePreview() {
-    const container = document.getElementById('preview-container');
-    if (!container) {
-        console.error('Preview container not found!');
-        return;
-    }
-    
-    const subject = state.subject || 'abstract art';
-    console.log('Generating preview for:', subject);
-    
-    // Show loading with progress bar
-    container.innerHTML = `
-        <div class="preview-loading">
-            <div class="preview-spinner"></div>
-            <p class="text-sm text-green-400 font-bold">Loading reference...</p>
-            <div class="loading-progress-bar">
-                <div class="loading-progress-fill" style="width: 0%;"></div>
-            </div>
-        </div>
-    `;
-    
-    // Animate progress bar
-    setTimeout(() => {
-        const progressBar = container.querySelector('.loading-progress-fill');
-        if (progressBar) progressBar.style.width = '30%';
-    }, 100);
-    
-    setTimeout(() => {
-        const progressBar = container.querySelector('.loading-progress-fill');
-        if (progressBar) progressBar.style.width = '60%';
-    }, 500);
-    
-    setTimeout(() => {
-        const progressBar = container.querySelector('.loading-progress-fill');
-        if (progressBar) progressBar.style.width = '90%';
-    }, 900);
-    
-    // Generate image URL
-    const query = encodeURIComponent(subject);
-    const timestamp = Date.now();
-    const imageUrl = `https://source.unsplash.com/800x600/?${query}&sig=${timestamp}`;
-    
-    console.log('Loading image from:', imageUrl);
-    
-    // Preload image
-    const img = new Image();
-    
-    img.onload = function() {
-        console.log('Image loaded successfully');
-        const progressBar = container.querySelector('.loading-progress-fill');
-        if (progressBar) progressBar.style.width = '100%';
-        
-        setTimeout(() => {
-            container.innerHTML = `<img src="${imageUrl}" alt="Reference for ${subject}">`;
-            console.log('Image inserted into DOM');
-            showToast('Reference loaded! 🖼️');
-        }, 200);
-    };
-    
-    img.onerror = function() {
-        console.warn('Primary image failed, using fallback');
-        const fallbackUrl = `https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=800&h=600&fit=crop&sig=${timestamp}`;
-        container.innerHTML = `<img src="${fallbackUrl}" alt="Reference image">`;
-        showToast('Reference loaded! 🖼️');
-    };
-    
-    img.src = imageUrl;
-}
-
-function clearPreview() {
-    const container = document.getElementById('preview-container');
-    if (!container) return;
-    
-    container.innerHTML = `
-        <div class="preview-placeholder">
-            <svg class="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
-                <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            <span class="text-sm">Reference Image</span>
-        </div>
-    `;
-    showToast('Preview cleared');
-}
-
-// ============================================
-// FLOATING PREVIEW WIDGET - FIXED VERSION
+// FLOATING PREVIEW WIDGET
 // ============================================
 
 let floatingPreviewVisible = false;
@@ -1018,7 +985,6 @@ let shakeInterval = null;
 let shakeCount = 0;
 let originalBuildPromptFunction = null;
 
-// FIXED: Proper initialization
 function initializeFloatingPreview() {
     if (!originalBuildPromptFunction && typeof buildPrompt === 'function') {
         originalBuildPromptFunction = buildPrompt;
@@ -1032,7 +998,6 @@ function initializeFloatingPreview() {
     }
 }
 
-// Update floating preview when prompt changes
 function updateFloatingPreview() {
     const outputText = document.getElementById('output-text');
     const floatingPreview = document.getElementById('floating-preview');
@@ -1061,12 +1026,10 @@ function updateFloatingPreview() {
         
         // First-time user experience
         if (!localStorage.getItem('floatingPreviewSeen')) {
-            // Show pointer after entrance animation
             setTimeout(() => {
                 const pointer = document.getElementById('first-time-pointer');
                 if (pointer) pointer.classList.remove('hidden');
                 
-                // Auto-hide pointer after 8 seconds
                 setTimeout(() => {
                     if (pointer && !pointer.classList.contains('hidden')) {
                         pointer.style.animation = 'fadeOut 0.5s ease forwards';
@@ -1107,22 +1070,17 @@ function updateFloatingPreview() {
     lastPromptUpdate = now;
 }
 
-// Scroll to synthesis box smoothly
 function scrollToSynthesis() {
     const synthesisSection = document.querySelector('#output-text')?.closest('section');
     if (synthesisSection) {
         synthesisSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-        // Mark as seen
         markPreviewAsSeen();
     }
 }
 
-// Mark preview as seen (first-time experience complete)
 function markPreviewAsSeen() {
     localStorage.setItem('floatingPreviewSeen', 'true');
     
-    // Hide pointer and badge
     const pointer = document.getElementById('first-time-pointer');
     const badge = document.getElementById('new-badge');
     const arrowIndicator = document.getElementById('floating-arrow-indicator');
@@ -1137,26 +1095,22 @@ function markPreviewAsSeen() {
         setTimeout(() => badge.classList.add('hidden'), 300);
     }
     
-    // Hide arrow indicator
     if (arrowIndicator) {
         arrowIndicator.style.animation = 'fadeOutArrow 0.5s ease forwards';
         setTimeout(() => arrowIndicator.style.display = 'none', 500);
     }
     
-    // Stop shake animations
     if (shakeInterval) {
         clearInterval(shakeInterval);
         shakeInterval = null;
     }
     
-    // Mark floating preview as arrow-seen
     const floatingPreview = document.getElementById('floating-preview');
     if (floatingPreview) {
         floatingPreview.classList.add('arrow-seen');
     }
 }
 
-// Hide widget when user is at synthesis section
 function checkSynthesisVisibility() {
     const synthesisSection = document.querySelector('#output-text')?.closest('section');
     const floatingPreview = document.getElementById('floating-preview');
@@ -1166,7 +1120,6 @@ function checkSynthesisVisibility() {
     const rect = synthesisSection.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     
-    // Check if synthesis section is visible in viewport
     const isVisible = rect.top < windowHeight && rect.bottom > 0;
     
     if (isVisible) {
@@ -1176,18 +1129,210 @@ function checkSynthesisVisibility() {
     }
 }
 
-// Mark as seen when user clicks widget
 const floatingPreviewEl = document.getElementById('floating-preview');
 if (floatingPreviewEl) {
     floatingPreviewEl.addEventListener('click', markPreviewAsSeen);
 }
 
-// Check visibility on scroll
 window.addEventListener('scroll', checkSynthesisVisibility);
 
-// FIXED: Initialize after DOM is ready
+// ============================================
+// GALLERY PAGE FUNCTIONS
+// ============================================
+
+// Gallery data (for gallery.html)
+const galleryData = {
+    1: {
+        title: "CYBER_METROPOLIS",
+        description: "Futuristic cyberpunk city at night",
+        image: "cyberpunk-city-showcase.jpg",
+        prompt: `Futuristic cyberpunk city at night
+Style: Cyberpunk, high-detail, cinematic, neon accents
+Composition: Wide-angle cityscape, strong depth, layered skyline, clear foreground and background separation
+Lighting: Neon signage glow, moody contrast, reflections on wet surfaces
+Environment: Dense urban core, rain-soaked streets, atmospheric haze
+Technical tuning: --ar 16:9 --stylize 150 --chaos 25 --v 6
+Negative prompt: low detail, flat lighting, cartoon style, overexposed highlights, blurry structures`,
+        hasPrompt: true,
+        badge: "GEMINI NANO BANANA"
+    },
+    2: {
+        title: "DAWN_PEAKS",
+        description: "Mountain landscape at sunrise",
+        image: "mountain-sunrise-showcase.jpg",
+        prompt: `Mountain landscape at sunrise
+Style: Natural realism, high detail, photographic look
+Composition: Rule of thirds, wide landscape framing, clear horizon line
+Lighting: Soft golden sunrise light, gentle shadows, subtle contrast
+Environment: Mist-covered mountains, calm atmosphere, open sky
+Technical tuning: --ar 3:2 --stylize 80 --chaos 10 --v 6
+Negative prompt: oversaturated colors, harsh contrast, fantasy elements, artificial lighting`,
+        hasPrompt: true,
+        badge: "GEMINI NANO BANANA"
+    },
+    3: {
+        title: "QUANTUM_BRIDGE",
+        description: "Futuristic sci-fi control room interior",
+        image: "scifi-control-showcase.jpg",
+        prompt: `Futuristic sci-fi control room interior
+Style: Clean sci-fi, minimalistic, high-tech design
+Composition: Symmetrical framing, central focal point, balanced geometry
+Lighting: Cool ambient lighting, soft glow panels, controlled highlights
+Environment: Advanced space station interior, sleek materials, quiet atmosphere
+Technical tuning: --ar 16:9 --stylize 120 --chaos 15 --v 6
+Negative prompt: cluttered layout, retro sci-fi, fantasy elements, excessive neon, distorted perspective`,
+        hasPrompt: true,
+        badge: "GEMINI NANO BANANA"
+    },
+    4: {
+        title: "ARCHITECT_EXCLUSIVE",
+        description: "Premium curated showcase - Prompt not available",
+        image: "featured-exclusive-01.jpg",
+        prompt: null,
+        hasPrompt: false,
+        badge: "EXCLUSIVE"
+    }
+};
+
+function openGalleryModal(id) {
+    const data = galleryData[id];
+    const modal = document.getElementById('gallery-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalDetails = document.getElementById('modal-details');
+
+    modalImage.src = data.image;
+    modalImage.alt = data.title;
+
+    let detailsHTML = `
+        <div class="synthesis-box rounded-3xl p-8">
+            <div class="flex items-start justify-between mb-6">
+                <div>
+                    <h2 class="text-3xl font-bold text-white mono mb-2">${data.title}</h2>
+                    <p class="text-neutral-400">${data.description}</p>
+                </div>
+                <span class="text-[10px] bg-emerald-500/20 text-emerald-500 px-3 py-1 rounded font-bold">${data.badge}</span>
+            </div>
+    `;
+
+    if (data.hasPrompt) {
+        detailsHTML += `
+            <div class="prompt-display">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-[10px] uppercase tracking-widest text-neutral-500 font-bold">Full Synthesis String</h3>
+                    <button onclick="copyPrompt(${id})" class="copy-prompt-btn rounded-full">
+                        <span class="relative z-10">COPY PROMPT</span>
+                    </button>
+                </div>
+                <pre class="text-sm text-neutral-300 leading-relaxed whitespace-pre-wrap mono">${data.prompt}</pre>
+            </div>
+        `;
+    } else {
+        detailsHTML += `
+            <div class="prompt-display text-center py-8">
+                <div class="text-6xl mb-4">🔒</div>
+                <h3 class="text-xl font-bold text-white mb-2">Exclusive Artwork</h3>
+                <p class="text-neutral-400">This is a premium featured piece. Prompt details are not publicly available.</p>
+            </div>
+        `;
+    }
+
+    detailsHTML += `</div>`;
+    modalDetails.innerHTML = detailsHTML;
+    modal.classList.add('active');
+}
+
+function closeGalleryModal() {
+    const modal = document.getElementById('gallery-modal');
+    modal.classList.remove('active');
+}
+
+function copyPrompt(id) {
+    const data = galleryData[id];
+    if (data.hasPrompt) {
+        navigator.clipboard.writeText(data.prompt).then(() => {
+            const btn = event.target.closest('.copy-prompt-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="relative z-10">✓ COPIED!</span>';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+            }, 2000);
+        });
+    }
+}
+
+let currentImageSrc = '';
+
+function openFullscreen(imageSrc) {
+    currentImageSrc = imageSrc;
+    const fullscreenDiv = document.getElementById('image-fullscreen');
+    const fullscreenImg = document.getElementById('fullscreen-image');
+    fullscreenImg.src = imageSrc;
+    fullscreenDiv.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeFullscreen() {
+    const fullscreenDiv = document.getElementById('image-fullscreen');
+    fullscreenDiv.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+function downloadImage() {
+    if (currentImageSrc) {
+        const link = document.createElement('a');
+        link.href = currentImageSrc;
+        link.download = currentImageSrc.split('/').pop();
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+}
+
+// ============================================
+// FAQ PAGE FUNCTIONS
+// ============================================
+
+function toggleFaq(button) {
+    const answer = button.nextElementSibling;
+    const icon = button.querySelector('span');
+    
+    // Close all other FAQs
+    document.querySelectorAll('.faq-answer').forEach(item => {
+        if (item !== answer && !item.classList.contains('hidden')) {
+            item.classList.add('hidden');
+            item.previousElementSibling.querySelector('span').textContent = '+';
+            item.previousElementSibling.querySelector('span').style.transform = 'rotate(0deg)';
+        }
+    });
+    
+    // Toggle current FAQ
+    answer.classList.toggle('hidden');
+    if (answer.classList.contains('hidden')) {
+        icon.textContent = '+';
+        icon.style.transform = 'rotate(0deg)';
+    } else {
+        icon.textContent = '−';
+        icon.style.transform = 'rotate(180deg)';
+    }
+}
+
+// ============================================
+// INITIALIZATION ON DOM READY
+// ============================================
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Initializing all features...');
+    
+    // Initialize main app
+    init();
+    buildPrompt();
+    updatePromptStrength();
+    
+    // Initialize reset button
+    initResetButton();
+    
+    // Initialize welcome modal
+    initWelcomeModal();
     
     // Initialize floating preview properly
     setTimeout(() => {
@@ -1199,3 +1344,118 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('✅ All features initialized');
 });
+
+// Close gallery modal on outside click
+const galleryModal = document.getElementById('gallery-modal');
+if (galleryModal) {
+    galleryModal.addEventListener('click', (e) => {
+        if (e.target === galleryModal) {
+            closeGalleryModal();
+        }
+    });
+}
+
+// Close fullscreen on ESC key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeGalleryModal();
+        closeFullscreen();
+    }
+});
+
+console.log('✅ script.js loaded successfully');
+
+// ============================================
+// BLOG PAGE FUNCTIONALITY
+// ============================================
+
+// Blog Category Filtering (for blog.html)
+function initBlogFilters() {
+    const categoryBtns = document.querySelectorAll('.category-pill');
+    const blogCards = document.querySelectorAll('.blog-card');
+    const searchInput = document.getElementById('searchInput');
+    const noResults = document.getElementById('noResults');
+    
+    if (!categoryBtns.length || !blogCards.length) return;
+    
+    function checkResults() {
+        const visibleCards = Array.from(blogCards).filter(card => card.style.display !== 'none');
+        if (noResults) {
+            noResults.style.display = visibleCards.length === 0 ? 'block' : 'none';
+        }
+    }
+    
+    // Category filter buttons
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const category = btn.dataset.category;
+            
+            categoryBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            if (searchInput) searchInput.value = '';
+            
+            blogCards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => card.style.opacity = '1', 10);
+                } else {
+                    card.style.opacity = '0';
+                    setTimeout(() => card.style.display = 'none', 300);
+                }
+            });
+            
+            setTimeout(checkResults, 350);
+        });
+    });
+    
+    // Search functionality
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            categoryBtns.forEach(b => b.classList.remove('active'));
+            if (categoryBtns[0]) categoryBtns[0].classList.add('active');
+            
+            blogCards.forEach(card => {
+                const title = card.querySelector('.blog-title')?.textContent.toLowerCase() || '';
+                const excerpt = card.querySelector('.blog-excerpt')?.textContent.toLowerCase() || '';
+                const category = card.querySelector('.blog-category')?.textContent.toLowerCase() || '';
+                
+                if (title.includes(searchTerm) || excerpt.includes(searchTerm) || category.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    setTimeout(() => card.style.opacity = '1', 10);
+                } else {
+                    card.style.opacity = '0';
+                    setTimeout(() => card.style.display = 'none', 300);
+                }
+            });
+            
+            setTimeout(checkResults, 350);
+        });
+    }
+}
+
+// Blog Post Share Functions (for individual blog posts)
+function shareOnTwitter() {
+    const url = encodeURIComponent(window.location.href);
+    const title = document.querySelector('h1')?.textContent || 'Check out this article!';
+    const text = encodeURIComponent(title + ' #AIArt #Midjourney #PromptEngineering');
+    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+}
+
+function copyLink() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        showToast('Link copied to clipboard!');
+    }).catch(err => {
+        console.error('Failed to copy:', err);
+        showToast('Failed to copy link');
+    });
+}
+
+// Initialize blog functions when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBlogFilters);
+} else {
+    initBlogFilters();
+}

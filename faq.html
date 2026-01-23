@@ -7,17 +7,19 @@
     <title>FAQ | Prompt Architect v6.0</title>
     <meta name="description" content="Frequently Asked Questions about Prompt Architect">
     <link rel="canonical" href="https://www.promptsarchitect.com/faq.html" />
+    
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
     
+    <!-- Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WY34XWK7V2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -32,6 +34,7 @@
     <div class="particles" id="particles"></div>
 
     <div class="content-wrapper w-full">
+        <!-- Navigation -->
         <nav class="w-full max-w-2xl px-4 mx-auto flex justify-between items-end mb-20 reveal" style="animation-delay: 0.1s;">
             <div>
                 <a href="/">
@@ -50,11 +53,13 @@
 
         <main class="w-full max-w-2xl px-4 mx-auto space-y-20">
             
+            <!-- Page Header -->
             <section class="reveal" style="animation-delay: 0.2s;">
                 <h1 class="text-5xl md:text-7xl font-[200] tracking-tighter mb-8" style="background: linear-gradient(135deg, #00ff88 0%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Frequently Asked Questions</h1>
                 <p class="text-xl text-neutral-400 leading-relaxed">Everything you need to know about Prompt Architect</p>
             </section>
 
+            <!-- Getting Started Section -->
             <section class="reveal space-y-6" style="animation-delay: 0.3s;">
                 <h2 class="text-xs font-bold uppercase tracking-widest text-white">Getting Started</h2>
                 
@@ -95,6 +100,7 @@
                 </div>
             </section>
 
+            <!-- Technical Questions Section -->
             <section class="reveal space-y-6" style="animation-delay: 0.4s;">
                 <h2 class="text-xs font-bold uppercase tracking-widest text-white">Technical Questions</h2>
                 
@@ -134,6 +140,7 @@
                 </div>
             </section>
 
+            <!-- Privacy & Data Section -->
             <section class="reveal space-y-6" style="animation-delay: 0.5s;">
                 <h2 class="text-xs font-bold uppercase tracking-widest text-white">Privacy & Data</h2>
                 
@@ -168,6 +175,7 @@
                 </div>
             </section>
 
+            <!-- Usage & Features Section -->
             <section class="reveal space-y-6" style="animation-delay: 0.6s;">
                 <h2 class="text-xs font-bold uppercase tracking-widest text-white">Usage & Features</h2>
                 
@@ -212,6 +220,7 @@
                 </div>
             </section>
 
+            <!-- Contact CTA Section -->
             <section class="reveal text-center space-y-6 py-20 border-t border-neutral-800" style="animation-delay: 0.7s;">
                 <h2 class="text-3xl font-bold text-white tracking-tight">Still Have Questions?</h2>
                 <p class="text-neutral-400 text-lg">We're here to help! Reach out to us.</p>
@@ -219,6 +228,7 @@
             </section>
         </main>
 
+        <!-- Footer -->
         <footer class="w-full max-w-2xl px-4 mx-auto mt-32 mb-10">
             <!-- SEO Content Section -->
             <div class="mb-12 pb-8 border-b border-neutral-800">
@@ -333,31 +343,7 @@
         </div>
     </div>
 
+    <!-- External JavaScript -->
     <script src="script.js"></script>
-    <script>
-        function toggleFaq(button) {
-            const answer = button.nextElementSibling;
-            const icon = button.querySelector('span');
-            
-            // Close all other FAQs
-            document.querySelectorAll('.faq-answer').forEach(item => {
-                if (item !== answer && !item.classList.contains('hidden')) {
-                    item.classList.add('hidden');
-                    item.previousElementSibling.querySelector('span').textContent = '+';
-                    item.previousElementSibling.querySelector('span').style.transform = 'rotate(0deg)';
-                }
-            });
-            
-            // Toggle current FAQ
-            answer.classList.toggle('hidden');
-            if (answer.classList.contains('hidden')) {
-                icon.textContent = '+';
-                icon.style.transform = 'rotate(0deg)';
-            } else {
-                icon.textContent = '−';
-                icon.style.transform = 'rotate(180deg)';
-            }
-        }
-    </script>
 </body>
 </html>
