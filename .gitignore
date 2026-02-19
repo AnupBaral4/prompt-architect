@@ -1,6 +1,82 @@
-# Add blog files to gitignore
-echo "blog/blog-post-6.html" >> .gitignore
-echo "blog/blog.html" >> .gitignore
+# ============================================
+# OS FILES
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+desktop.ini
+ehthumbs.db
 
-# Or if you have multiple unfinished blog posts
-# echo "blog/*-draft.html" >> .gitignore
+# ============================================
+# EDITOR & IDE
+# ============================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# ============================================
+# NODE / NPM (if used for tooling)
+# ============================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# ============================================
+# ENVIRONMENT & SECRETS
+# ============================================
+.env
+.env.local
+.env.development
+.env.production
+*.pem
+*.key
+
+# ============================================
+# LOGS & TEMP
+# ============================================
+*.log
+*.tmp
+*.temp
+*.cache
+
+# ============================================
+# BUILD OUTPUT
+# ============================================
+dist/
+build/
+out/
+.cache/
+
+# ============================================
+# SCREENSHOTS (dev reference only)
+# ============================================
+screenshots/
+
+# ============================================
+# LARGE / UNOPTIMIZED ASSETS
+# ============================================
+*.psd
+*.ai
+*.sketch
+*.fig
+
+# ============================================
+# CLAUDE CODE
+# ============================================
+.claude/
+
+# ============================================
+# DRAFT / WIP FILES
+# ============================================
+*-draft.html
+*-wip.html
+*.draft.*

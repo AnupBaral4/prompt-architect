@@ -994,7 +994,6 @@ function initializeFloatingPreview() {
             setTimeout(updateFloatingPreview, 100);
         };
         
-        console.log('✅ Floating preview initialized');
     }
 }
 
@@ -1321,8 +1320,6 @@ function toggleFaq(button) {
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🚀 Initializing all features...');
-    
     // Initialize main app
     init();
     buildPrompt();
@@ -1342,7 +1339,6 @@ document.addEventListener('DOMContentLoaded', function() {
         updateEnhanceCounter();
     }, 500);
     
-    console.log('✅ All features initialized');
 });
 
 // Close gallery modal on outside click
@@ -1363,7 +1359,6 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-console.log('✅ script.js loaded successfully');
 
 // ============================================
 // BLOG PAGE FUNCTIONALITY
