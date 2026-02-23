@@ -4,18 +4,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>FAQ | Prompt Architect v6.0</title>
-    <meta name="description" content="Frequently Asked Questions about Prompt Architect">
+    <title>Prompt Generator FAQ — Midjourney & DALL-E 3 Help | Prompt Architect</title>
+    <meta name="description" content="Answers to all your questions about Prompt Architect — the free AI prompt generator for Midjourney V6 and DALL-E 3. No signup needed. Start creating prompts instantly.">
     <link rel="canonical" href="https://www.promptsarchitect.com/faq.html" />
-    
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Prompt Architect">
+    <meta property="og:title" content="Prompt Generator FAQ — Midjourney & DALL-E 3 Help | Prompt Architect">
+    <meta property="og:description" content="Answers to all your questions about Prompt Architect — the free AI prompt generator for Midjourney V6 and DALL-E 3.">
+    <meta property="og:url" content="https://www.promptsarchitect.com/faq.html">
+    <meta property="og:image" content="https://www.promptsarchitect.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Prompt Generator FAQ — Midjourney & DALL-E 3 Help | Prompt Architect">
+    <meta name="twitter:description" content="All your questions about the free AI prompt generator for Midjourney V6 and DALL-E 3 — answered.">
+    <meta name="twitter:image" content="https://www.promptsarchitect.com/og-image.png">
+
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
-    
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is Prompt Architect?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Prompt Architect is a free AI prompt generator designed to create optimized prompts for Midjourney V6.0 and DALL-E 3. It provides a curated library of style, mood, lighting, and composition attributes to help you build professional-quality AI art prompts instantly — no signup required."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I use Prompt Architect?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Type your subject in the input field, select attributes like art style, lighting, mood, and composition, then copy your generated prompt from the Synthesis Box and paste it into Midjourney or DALL-E 3."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is Prompt Architect free to use?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! Prompt Architect is completely free to use. We operate on an ad-supported model, which allows us to provide this professional tool to the global AI community at no cost."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which AI models are supported?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Prompt Architect is optimized for Midjourney V6.0 and DALL-E 3. The prompts also work well with other AI art generators that use natural language processing."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does Prompt Architect work on mobile devices?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely! Prompt Architect is fully responsive and works seamlessly on desktop, tablet, and mobile devices. The interface adapts to your screen size for optimal usability."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you store my prompts?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Prompt Architect operates entirely client-side. All prompt generation occurs locally within your browser's memory. We do not host databases or store your prompts, ensuring maximum privacy and zero data retention."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I need to create an account?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No account needed! You can start using Prompt Architect immediately without any registration. Just visit the site and begin building your prompts."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I save my prompts for later?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! Prompt Architect has a built-in Prompt History feature. Click the History button at the top of the page to view, reload, and manage your saved prompts. Your history is stored locally in your browser — no account needed."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What does V6.0 Optimization mean?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The output prompt is engineered to follow the specific grammatical structure preferred by the latest generative models, emphasizing subject-first logic followed by stylistic modifiers. This helps AI models like Midjourney V6 understand your intent more accurately."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I reset and start over?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Click the Reset All button in the Prompt Synthesis section. This clears your subject input and deselects all attributes, letting you start fresh."
+                }
+            }
+        ]
+    }
+    </script>
+
     <!-- Styles -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/tailwind.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     
@@ -38,7 +144,7 @@
         <nav class="w-full max-w-2xl px-4 mx-auto flex justify-between items-end mb-20 reveal" style="animation-delay: 0.1s;">
             <div>
                 <a href="/">
-                    <h1 class="text-2xl font-bold tracking-tighter leading-none" style="background: linear-gradient(135deg, #00ff88 0%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ARCHITECT</h1>
+                    <div class="text-2xl font-bold tracking-tighter leading-none" style="background: linear-gradient(135deg, #00ff88 0%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ARCHITECT</div>
                     <p class="text-[9px] text-neutral-500 uppercase tracking-[0.25em] font-bold mt-2">v6.0 Build System</p>
                 </a>
             </div>
