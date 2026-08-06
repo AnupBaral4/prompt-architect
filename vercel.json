@@ -8,6 +8,8 @@
     { "source": "/blog/blog-post-6.html", "destination": "/", "permanent": true },
     { "source": "/blog/blog.html", "destination": "/", "permanent": true },
     { "source": "/blog", "destination": "/", "permanent": true },
-    { "source": "/gallery.html", "destination": "/", "permanent": true }
+    { "source": "/gallery.html", "destination": "/", "permanent": true },
+    { "source": "/about.html", "destination": "/", "permanent": true },
+    { "source": "/faq.html", "destination": "/", "permanent": true }
   ]
 }

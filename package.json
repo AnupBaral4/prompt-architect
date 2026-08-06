@@ -1,26 +1,19 @@
 {
-  "name": "testing-architect",
-  "version": "1.0.0",
-  "description": "**Professional AI Prompt Generator for Midjourney V6.0 & DALL-E 3**",
-  "main": "script.js",
+  "name": "prompt-architect",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "build:css": "npx @tailwindcss/cli -i tailwind-input.css -o tailwind.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://AnupBaral4@github.com/AnupBaral4/prompt-architect.git"
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/AnupBaral4/prompt-architect/issues"
-  },
-  "homepage": "https://github.com/AnupBaral4/prompt-architect#readme",
   "devDependencies": {
-    "@tailwindcss/cli": "^4.2.0",
-    "tailwindcss": "^4.1.18"
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.4.0"
   }
 }
