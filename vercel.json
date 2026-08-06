@@ -1,0 +1,13 @@
+{
+  "redirects": [
+    { "source": "/blog/blog-post-1.html", "destination": "/", "permanent": true },
+    { "source": "/blog/blog-post-2.html", "destination": "/", "permanent": true },
+    { "source": "/blog/blog-post-3.html", "destination": "/", "permanent": true },
+    { "source": "/blog/blog-post-4.html", "destination": "/", "permanent": true },
+    { "source": "/blog/blog-post-5.html", "destination": "/", "permanent": true },
+    { "source": "/blog/blog-post-6.html", "destination": "/", "permanent": true },
+    { "source": "/blog/blog.html", "destination": "/", "permanent": true },
+    { "source": "/blog", "destination": "/", "permanent": true },
+    { "source": "/gallery.html", "destination": "/", "permanent": true }
+  ]
+}
