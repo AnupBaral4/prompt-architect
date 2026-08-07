@@ -39,6 +39,16 @@ function ChecklistSection({ title, items }) {
             <div className={styles.checkLabel}>{item.label}</div>
             <div className={styles.checkDetail}>{item.detail}</div>
             {item.fix && <div className={styles.checkFix}>Fix: {item.fix}</div>}
+            {item.label === 'Stock availability' && (
+              <div className={styles.debnixNote}>
+                AI shopping assistants weigh stock accuracy directly — a wrong "in stock" status is
+                worse than none at all.{' '}
+                <a href="https://debnix.com" target="_blank" rel="noopener noreferrer">
+                  Debnix
+                </a>{' '}
+                keeps that data accurate automatically for Shopify stores.
+              </div>
+            )}
           </div>
         </div>
       ))}
@@ -58,6 +68,11 @@ function Report({ result }) {
   return (
     <div className={styles.report}>
       <div className={styles.reportHead}>
+        {result.autoDiscoveredFrom && (
+          <div className={styles.autoDiscoverNote}>
+            You submitted your homepage — we found and scanned this product page instead:
+          </div>
+        )}
         <div className={styles.scannedUrl}>{result.url}</div>
         <div className={styles.overallRow}>
           <div className={`${styles.overallScore} ${styles[`tone_${overall.tone}`]}`}>{result.scores.overall}</div>

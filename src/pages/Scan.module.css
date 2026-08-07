@@ -102,6 +102,12 @@
   margin-bottom: 16px;
 }
 
+.autoDiscoverNote {
+  font-size: 13px;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
 .overallRow {
   display: flex;
   flex-direction: column;
@@ -200,6 +206,25 @@
   font-size: 13px;
   color: var(--accent);
   margin-top: 4px;
+}
+
+.debnixNote {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+  line-height: 1.5;
+}
+
+.debnixNote a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.debnixNote a:hover {
+  text-decoration: underline;
 }
 
 .shareRow {

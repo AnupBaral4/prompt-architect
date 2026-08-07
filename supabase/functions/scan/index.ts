@@ -134,6 +134,20 @@ function findProductSchema(html) {
   return null
 }
 
+// If someone scans a homepage (very common in practice), try to find an actual
+// product page linked from it and scan that instead of just saying "no schema here."
+function findProductLink(html, baseUrl) {
+  const matches = [...html.matchAll(/href=["']([^"'#?]*\/products\/[a-zA-Z0-9\-_%]+)[^"']*["']/gi)]
+  for (const m of matches) {
+    try {
+      return new URL(m[1], baseUrl).toString()
+    } catch {
+      continue
+    }
+  }
+  return null
+}
+
 function textVisibilityCheck(html) {
   const bodyMatch = html.match(/<body[^>]*>([\s\S]*)<\/body>/i)
   const body = bodyMatch ? bodyMatch[1] : html
@@ -202,14 +216,42 @@ Deno.serve(async (req) => {
     const scoreCrawlerAccess = Math.round(((ANSWER_BOTS.length - answerBotsBlocked) / ANSWER_BOTS.length) * 100)
 
     // --- 2. Fetch the actual page ---
-    const pageRes = await fetch(target.toString(), {
+    let scannedUrl = target
+    let pageRes = await fetch(target.toString(), {
       signal: AbortSignal.timeout(10000),
       headers: { 'User-Agent': 'PromptArchitect-Scanner/1.0' },
     })
-    const html = await pageRes.text()
+    let html = await pageRes.text()
 
-    // --- 3. Structured data ---
-    const product = findProductSchema(html)
+    // --- 3. Structured data (with homepage auto-discovery) ---
+    let product = findProductSchema(html)
+    let autoDiscoveredFrom = null
+    const looksLikeHomepage = target.pathname === '/' || target.pathname === ''
+
+    if (!product && looksLikeHomepage) {
+      const discovered = findProductLink(html, target.toString())
+      if (discovered) {
+        try {
+          const discoveredRes = await fetch(discovered, {
+            signal: AbortSignal.timeout(10000),
+            headers: { 'User-Agent': 'PromptArchitect-Scanner/1.0' },
+          })
+          const discoveredHtml = await discoveredRes.text()
+          const discoveredProduct = findProductSchema(discoveredHtml)
+          // Only switch over if the discovered page actually has product schema —
+          // otherwise stick with the original homepage result.
+          if (discoveredProduct) {
+            autoDiscoveredFrom = target.toString()
+            scannedUrl = new URL(discovered)
+            html = discoveredHtml
+            product = discoveredProduct
+          }
+        } catch {
+          // discovered link didn't resolve; fall through to homepage messaging below
+        }
+      }
+    }
+
     let structuredDataEarned = 0
     const structuredDataTotal = SCHEMA_FIELDS.reduce((sum, f) => sum + f.weight, 0)
 
@@ -218,8 +260,12 @@ Deno.serve(async (req) => {
         category: 'structured_data',
         pass: false,
         label: 'Product schema (JSON-LD)',
-        detail: 'No Product schema found on this page at all.',
-        fix: 'Add JSON-LD Product structured data — this is the main way AI shopping assistants read price, stock, and ratings.',
+        detail: looksLikeHomepage
+          ? `This looks like your store's homepage, not a product page — and no linked product page could be found automatically either. Homepages don't carry Product schema, that's expected.`
+          : 'No Product schema found on this page at all.',
+        fix: looksLikeHomepage
+          ? 'Scan a specific product page instead (e.g. yourstore.com/products/some-item) to check its schema.'
+          : 'Add JSON-LD Product structured data — this is the main way AI shopping assistants read price, stock, and ratings.',
       })
     } else {
       for (const field of SCHEMA_FIELDS) {
@@ -279,7 +325,8 @@ Deno.serve(async (req) => {
 
     const result = {
       id,
-      url: target.toString(),
+      url: scannedUrl.toString(),
+      autoDiscoveredFrom,
       scores: {
         overall: scoreOverall,
         crawler_access: scoreCrawlerAccess,
@@ -291,7 +338,7 @@ Deno.serve(async (req) => {
 
     const { error } = await supabase.from('scans').insert({
       id,
-      url: target.toString(),
+      url: scannedUrl.toString(),
       score_overall: scoreOverall,
       score_crawler_access: scoreCrawlerAccess,
       score_structured_data: scoreStructuredData,
