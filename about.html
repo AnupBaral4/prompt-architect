@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>How AI Shopping Assistants See Your Store — Prompt Architect</title>
+    <meta name="description" content="How ChatGPT, Perplexity, and other AI shopping assistants actually read a product page: crawler access, structured data, and the JavaScript-rendering blind spot, explained.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.promptsarchitect.com/about.html" />
+
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Prompt Architect">
+    <meta property="og:title" content="How AI shopping assistants actually see your store">
+    <meta property="og:description" content="Crawler access, structured data, and the JavaScript-rendering blind spot — explained mechanically, not vaguely.">
+    <meta property="og:url" content="https://www.promptsarchitect.com/about.html">
+    <meta property="og:image" content="https://www.promptsarchitect.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How AI shopping assistants actually see your store">
+    <meta name="twitter:image" content="https://www.promptsarchitect.com/og-image.png">
+    <meta name="theme-color" content="#0a0a0a">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How AI shopping assistants actually see your store",
+      "description": "How ChatGPT, Perplexity, and other AI shopping assistants actually read a product page: crawler access, structured data, and the JavaScript-rendering blind spot.",
+      "author": { "@type": "Organization", "name": "Prompt Architect" },
+      "publisher": { "@type": "Organization", "name": "Prompt Architect", "logo": { "@type": "ImageObject", "url": "https://www.promptsarchitect.com/og-image.png" } },
+      "mainEntityOfPage": "https://www.promptsarchitect.com/about.html"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WY34XWK7V2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-WY34XWK7V2');
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <noscript>
+        <div style="font-family: sans-serif; background:#0a0a0a; color:#fff; max-width:680px; margin:0 auto; padding:60px 24px; line-height:1.7;">
+            <div style="color:#00ff88; letter-spacing:0.2em; text-transform:uppercase; font-size:14px; margin-bottom:24px; text-align:center;">Prompt Architect</div>
+            <h1 style="font-size:28px; margin-bottom:20px; text-align:center;">How AI shopping assistants actually see your store</h1>
+            <p style="color:#ccc; margin-bottom:20px;">ChatGPT, Perplexity, and other AI assistants can only recommend products they can read. Three things determine that: whether their crawlers can reach the page, whether the page has structured data describing the product, and whether the content exists in the raw HTML or only appears after JavaScript runs.</p>
+            <p style="color:#ccc; margin-bottom:20px;"><strong>Crawler access:</strong> Answer bots like OAI-SearchBot, ChatGPT-User, and PerplexityBot fetch pages live to answer real questions. Training bots like GPTBot and ClaudeBot are separate and unrelated to today's visibility.</p>
+            <p style="color:#ccc; margin-bottom:20px;"><strong>Structured data:</strong> A Product JSON-LD block should state the name, price, availability, rating, and product ID plainly — without it, assistants are guessing from marketing copy.</p>
+            <p style="color:#ccc; margin-bottom:20px;"><strong>Content visibility:</strong> Most AI crawlers don't execute JavaScript. If your price or description only renders client-side, a human sees a normal page and a crawler sees almost nothing.</p>
+            <a href="/scan.html" style="color:#00ff88;">Scan your store free →</a>
+        </div>
+    </noscript>
+
+    <script type="module" src="/src/entries/about.jsx"></script>
+</body>
+</html>
