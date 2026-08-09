@@ -10,5 +10,8 @@
     { "source": "/blog", "destination": "/", "permanent": true },
     { "source": "/gallery.html", "destination": "/", "permanent": true },
     { "source": "/faq.html", "destination": "/", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/s/:id", "destination": "https://rzqcjsxkvdyxlkgerubu.supabase.co/functions/v1/scan-page?id=:id" }
   ]
 }

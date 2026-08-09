@@ -16,6 +16,7 @@ export default defineConfig({
         contact: resolve(__dirname, 'contact.html'),
         scan: resolve(__dirname, 'scan.html'),
         about: resolve(__dirname, 'about.html'),
+        notFound: resolve(__dirname, '404.html'),
       },
     },
   },

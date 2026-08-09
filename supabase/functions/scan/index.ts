@@ -344,6 +344,7 @@ Deno.serve(async (req) => {
       score_structured_data: scoreStructuredData,
       score_content_visibility: scoreContentVisibility,
       details: checklist,
+      auto_discovered_from: autoDiscoveredFrom,
     })
     if (error) throw error
 

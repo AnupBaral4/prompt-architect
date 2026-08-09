@@ -39,6 +39,7 @@ Deno.serve(async (req) => {
     JSON.stringify({
       id: data.id,
       url: data.url,
+      autoDiscoveredFrom: data.auto_discovered_from,
       scores: {
         overall: data.score_overall,
         crawler_access: data.score_crawler_access,

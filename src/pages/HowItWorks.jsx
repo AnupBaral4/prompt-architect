@@ -84,6 +84,10 @@ export default function HowItWorks() {
         <a className={styles.cta} href="/scan.html">
           Scan your store free →
         </a>
+
+        <a className={styles.backHome} href="/">
+          ← Back home
+        </a>
       </div>
     </div>
   )

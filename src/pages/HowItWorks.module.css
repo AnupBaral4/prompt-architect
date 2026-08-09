@@ -88,3 +88,16 @@
 .cta:hover {
   opacity: 0.9;
 }
+
+.backHome {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: var(--text-muted);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.backHome:hover {
+  color: var(--accent);
+}

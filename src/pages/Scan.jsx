@@ -63,7 +63,7 @@ function Report({ result }) {
   const schemaItems = result.checklist.filter((c) => c.category === 'structured_data')
   const visibilityItems = result.checklist.filter((c) => c.category === 'content_visibility')
 
-  const permalink = `${window.location.origin}/scan.html?id=${result.id}`
+  const permalink = `${window.location.origin}/s/${result.id}`
 
   return (
     <div className={styles.report}>
@@ -168,7 +168,11 @@ export default function Scan() {
 
         {status !== 'done' && (
           <form className={styles.form} onSubmit={handleSubmit}>
+            <label className={styles.srLabel} htmlFor="scan-url">
+              Product page URL
+            </label>
             <input
+              id="scan-url"
               className={styles.urlInput}
               type="text"
               placeholder="https://yourstore.com/products/your-product"
