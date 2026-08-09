@@ -81,8 +81,16 @@ export default function HowItWorks() {
           All three checks — crawler access, structured data, and raw content visibility — take
           about ten seconds to run against a real product page.
         </p>
-        <a className={styles.cta} href="/scan.html">
+        <a className={styles.cta} href="/scan">
           Scan your store free →
+        </a>
+
+        <a className={styles.backHome} href="/blog/ai-visibility-real-shopify-stores">
+          Read a real case study — including a mistake on our own site →
+        </a>
+
+        <a className={styles.backHome} href="/blog/shopify-theme-vs-apps-javascript-ai">
+          Does your store actually have a JavaScript problem? →
         </a>
 
         <a className={styles.backHome} href="/">

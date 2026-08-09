@@ -22,7 +22,7 @@ function escapeHtml(str) {
 }
 
 function scoreLabel(score) {
-  if (score >= 80) return { text: 'Good', tone: '#00ff88' }
+  if (score >= 80) return { text: 'Good', tone: '#ffb020' }
   if (score >= 50) return { text: 'Needs work', tone: '#ffd166' }
   return { text: 'Poor', tone: '#ff6b6b' }
 }
@@ -54,7 +54,7 @@ function renderChecklist(items, categoryFilter, title) {
 
 Deno.serve(async (req) => {
   const id = new URL(req.url).searchParams.get('id')
-  const notFoundHtml = `<!DOCTYPE html><html><head><title>Scan not found — Prompt Architect</title><meta name="robots" content="noindex"></head><body style="font-family:sans-serif;background:#0a0a0a;color:#fff;text-align:center;padding:80px 24px;">Scan not found. <a href="https://www.promptsarchitect.com/scan.html" style="color:#00ff88;">Run a new scan →</a></body></html>`
+  const notFoundHtml = `<!DOCTYPE html><html><head><title>Scan not found — Prompt Architect</title><meta name="robots" content="noindex"></head><body style="font-family:sans-serif;background:#0b0f19;color:#fff;text-align:center;padding:80px 24px;">Scan not found. <a href="https://www.promptsarchitect.com/scan" style="color:#ffb020;">Run a new scan →</a></body></html>`
 
   if (!id) {
     return new Response(notFoundHtml, { status: 400, headers: { 'Content-Type': 'text/html; charset=utf-8' } })
@@ -91,29 +91,32 @@ Deno.serve(async (req) => {
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${escapeHtml(pageTitle)}">
 <link rel="icon" type="image/png" href="https://www.promptsarchitect.com/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WY34XWK7V2"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-WY34XWK7V2');</script>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg,#0a0a0a 0%,#1a1a2e 100%); color:#fff; padding:60px 24px 80px; }
+  body { font-family: 'Inter', sans-serif; background: linear-gradient(160deg,#0b0f19 0%,#141b2e 100%); color:#f4f6fb; padding:60px 24px 80px; }
   .inner { max-width:640px; margin:0 auto; }
-  .brand { font-size:14px; letter-spacing:0.2em; text-transform:uppercase; color:#00ff88; text-align:center; margin-bottom:24px; font-weight:600; }
-  .url { font-size:13px; color:#888; text-align:center; word-break:break-all; margin-bottom:16px; }
+  .brand { font-family:'JetBrains Mono',monospace; font-size:14px; letter-spacing:0.2em; text-transform:uppercase; color:#ffb020; text-align:center; margin-bottom:24px; font-weight:600; }
+  .url { font-size:13px; color:#8b93a7; text-align:center; word-break:break-all; margin-bottom:16px; }
   .scoreWrap { text-align:center; margin-bottom:32px; }
-  .score { font-size:64px; font-weight:700; color:${overall.tone}; }
+  .score { font-family:'JetBrains Mono',monospace; font-size:64px; font-weight:700; color:${overall.tone}; }
   .scoreLabel { font-size:14px; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; color:${overall.tone}; }
-  .bars { background:rgba(255,255,255,0.02); border:1px solid #252525; border-radius:12px; padding:20px; margin-bottom:36px; font-size:13px; }
+  .bars { background:rgba(255,255,255,0.02); border:1px solid #232a3d; border-radius:12px; padding:20px; margin-bottom:36px; font-size:13px; }
   .bars div { display:flex; justify-content:space-between; padding:6px 0; }
   .section { margin-bottom:28px; }
-  .section h2 { font-size:13px; text-transform:uppercase; letter-spacing:0.05em; color:#888; margin-bottom:14px; font-weight:600; }
+  .section h2 { font-size:13px; text-transform:uppercase; letter-spacing:0.05em; color:#8b93a7; margin-bottom:14px; font-weight:600; }
   .check { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
   .checkLabel { font-size:14px; font-weight:500; }
-  .checkDetail { font-size:13px; color:#888; line-height:1.5; }
-  .checkFix { font-size:13px; color:#00ff88; margin-top:4px; }
-  .debnixNote { font-size:12px; color:#888; margin-top:8px; padding-top:8px; border-top:1px dashed rgba(255,255,255,0.08); line-height:1.5; }
-  .debnixNote a { color:#00ff88; font-weight:600; text-decoration:none; }
-  .autoDiscover { font-size:13px; color:#00ff88; text-align:center; margin-bottom:8px; }
-  .cta { display:block; text-align:center; background:#00ff88; color:#0a0a0a; font-weight:600; text-decoration:none; padding:14px 28px; border-radius:999px; margin:32px auto 0; max-width:240px; }
+  .checkDetail { font-size:13px; color:#8b93a7; line-height:1.5; }
+  .checkFix { font-size:13px; color:#ffb020; margin-top:4px; }
+  .debnixNote { font-size:12px; color:#8b93a7; margin-top:8px; padding-top:8px; border-top:1px dashed rgba(255,255,255,0.08); line-height:1.5; }
+  .debnixNote a { color:#ffb020; font-weight:600; text-decoration:none; }
+  .autoDiscover { font-size:13px; color:#ffb020; text-align:center; margin-bottom:8px; }
+  .cta { display:block; text-align:center; background:#ffb020; color:#0b0f19; font-weight:700; text-decoration:none; padding:14px 28px; border-radius:999px; margin:32px auto 0; max-width:240px; }
 </style>
 </head>
 <body>
@@ -134,7 +137,7 @@ Deno.serve(async (req) => {
   ${renderChecklist(items, 'structured_data', 'Does your product data describe itself correctly?')}
   ${renderChecklist(items, 'content_visibility', 'Is your content readable without JavaScript?')}
   ${renderChecklist(items, 'training_bots_informational', "Training bots (informational — doesn't affect your score)")}
-  <a class="cta" href="https://www.promptsarchitect.com/scan.html">Scan your own store free →</a>
+  <a class="cta" href="https://www.promptsarchitect.com/scan">Scan your own store free →</a>
 </div>
 </body>
 </html>`

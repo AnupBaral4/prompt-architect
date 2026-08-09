@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>We Scanned Real Shopify Stores for AI Visibility — Prompt Architect</title>
+    <meta name="description" content="We tested our AI-visibility scanner on real Shopify stores, including our own — and found our own site was completely invisible to AI crawlers. Here's what happened and how we fixed it.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.promptsarchitect.com/blog/ai-visibility-real-shopify-stores" />
+
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Prompt Architect">
+    <meta property="og:title" content="We scanned real Shopify stores for AI visibility. One of them was ours.">
+    <meta property="og:description" content="We tested our AI-visibility scanner on real stores, including our own — and found our own site was invisible to AI crawlers. Here's what happened.">
+    <meta property="og:url" content="https://www.promptsarchitect.com/blog/ai-visibility-real-shopify-stores">
+    <meta property="og:image" content="https://www.promptsarchitect.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="We scanned real Shopify stores for AI visibility. One of them was ours.">
+    <meta name="twitter:image" content="https://www.promptsarchitect.com/og-image.png">
+    <meta name="theme-color" content="#0b0f19">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "We scanned real Shopify stores for AI visibility. One of them was ours.",
+      "description": "We tested our AI-visibility scanner on real Shopify stores, including our own — and found our own site was invisible to AI crawlers.",
+      "author": { "@type": "Organization", "name": "Prompt Architect" },
+      "publisher": { "@type": "Organization", "name": "Prompt Architect", "logo": { "@type": "ImageObject", "url": "https://www.promptsarchitect.com/og-image.png" } },
+      "mainEntityOfPage": "https://www.promptsarchitect.com/blog/ai-visibility-real-shopify-stores"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WY34XWK7V2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-WY34XWK7V2');
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <noscript>
+        <div style="font-family: sans-serif; background:#0b0f19; color:#f4f6fb; max-width:680px; margin:0 auto; padding:60px 24px; line-height:1.7;">
+            <div style="color:#ffb020; letter-spacing:0.2em; text-transform:uppercase; font-size:14px; margin-bottom:24px; text-align:center;">Prompt Architect</div>
+            <h1 style="font-size:28px; margin-bottom:20px; text-align:center;">We scanned real Shopify stores for AI visibility. One of them was ours.</h1>
+            <p style="color:#ccc; margin-bottom:20px;">We tested our free AI-visibility scanner on real Shopify stores. Two small independent stores both scored 96/100, missing only review-rating schema. Then we scanned our own site, debnix.com — and got 0 characters of real text in the raw HTML, on both the homepage and our blog. The cause: a fully client-rendered React app with no server-side rendering, so AI crawlers that don't execute JavaScript saw an empty shell.</p>
+            <p style="color:#ccc; margin-bottom:20px;">We fixed it with build-time prerendering scoped to the public marketing and blog routes. Content visibility went from 10 to 100 on both pages after the fix.</p>
+            <p style="color:#ccc; margin-bottom:20px;"><strong>The lesson:</strong> crawler access rarely breaks by accident. The two things that actually go wrong are missing structured data and content that only exists after JavaScript runs — and the second one is invisible from a normal browser.</p>
+            <a href="/scan" style="color:#ffb020;">Scan your own store free →</a>
+        </div>
+    </noscript>
+
+    <script type="module" src="/src/entries/case-study.jsx"></script>
+</body>
+</html>

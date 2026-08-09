@@ -149,7 +149,7 @@ export default function Scan() {
       }
       setResult(data)
       setStatus('done')
-      window.history.pushState({}, '', `/scan.html?id=${data.id}`)
+      window.history.pushState({}, '', `/scan?id=${data.id}`)
     } catch {
       setStatus('error')
       setError('Something went wrong reaching the scanner. Try again.')
@@ -167,23 +167,40 @@ export default function Scan() {
         </p>
 
         {status !== 'done' && (
-          <form className={styles.form} onSubmit={handleSubmit}>
-            <label className={styles.srLabel} htmlFor="scan-url">
-              Product page URL
-            </label>
-            <input
-              id="scan-url"
-              className={styles.urlInput}
-              type="text"
-              placeholder="https://yourstore.com/products/your-product"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              required
-            />
-            <button className={styles.scanButton} type="submit" disabled={status === 'loading'}>
-              {status === 'loading' ? 'Scanning…' : 'Scan'}
-            </button>
-          </form>
+          <div className={styles.terminal}>
+            <div className={styles.termDots}>
+              <span /><span /><span />
+            </div>
+            <form className={styles.form} onSubmit={handleSubmit}>
+              <label className={styles.srLabel} htmlFor="scan-url">
+                Product page URL
+              </label>
+              <div className={styles.inputRow}>
+                <span className={`${styles.prompt} mono`} aria-hidden="true">
+                  &gt;
+                </span>
+                <input
+                  id="scan-url"
+                  className={`${styles.urlInput} mono`}
+                  type="text"
+                  placeholder="yourstore.com/products/your-product"
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
+                  required
+                />
+              </div>
+              <button className={styles.scanButton} type="submit" disabled={status === 'loading'}>
+                {status === 'loading' ? (
+                  <span className={styles.scanningLabel}>
+                    <span className={styles.pulseDot} />
+                    Scanning…
+                  </span>
+                ) : (
+                  'Run scan →'
+                )}
+              </button>
+            </form>
+          </div>
         )}
 
         {status === 'error' && <p className={styles.errorText}>{error}</p>}
@@ -196,7 +213,7 @@ export default function Scan() {
               setStatus('idle')
               setResult(null)
               setUrl('')
-              window.history.pushState({}, '', '/scan.html')
+              window.history.pushState({}, '', '/scan')
             }}
           >
             ← Scan another page

@@ -35,10 +35,13 @@
   margin-bottom: 36px;
 }
 
-.form {
-  display: flex;
-  gap: 10px;
+.terminal {
+  background: #0e1424;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
   margin-bottom: 16px;
+  transition: border-color 0.2s;
 }
 
 .srLabel {
@@ -53,40 +56,101 @@
   border: 0;
 }
 
-.urlInput {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px 16px;
-  color: var(--text-main);
-  font-family: inherit;
-  font-size: 15px;
-  outline: none;
-  transition: border-color 0.2s;
+.terminal:focus-within {
+  border-color: var(--phosphor);
 }
 
-.urlInput:focus {
-  border-color: var(--accent);
+.termDots {
+  display: flex;
+  gap: 6px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.termDots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.termDots span:nth-child(1) {
+  background: var(--fail);
+}
+
+.termDots span:nth-child(2) {
+  background: var(--phosphor);
+}
+
+.termDots span:nth-child(3) {
+  background: var(--signal-cool);
+}
+
+.form {
+  padding: 20px;
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.prompt {
+  color: var(--phosphor);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.urlInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 14px;
+  outline: none;
+}
+
+.urlInput::placeholder {
+  color: #4a5578;
 }
 
 .scanButton {
-  background: var(--accent);
-  color: #0a0a0a;
+  width: 100%;
+  background: var(--phosphor);
+  color: #0b0f19;
   border: none;
-  border-radius: 10px;
-  padding: 0 24px;
+  border-radius: 8px;
+  padding: 13px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   font-family: inherit;
   cursor: pointer;
-  white-space: nowrap;
   transition: opacity 0.2s;
 }
 
 .scanButton:disabled {
-  opacity: 0.6;
+  opacity: 0.7;
   cursor: default;
+}
+
+.scanningLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 0.35; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+.pulseDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0b0f19;
+  animation: pulseDot 1s ease-in-out infinite;
 }
 
 .errorText {
@@ -128,6 +192,7 @@
 }
 
 .overallScore {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 64px;
   font-weight: 700;
   line-height: 1;
@@ -140,7 +205,7 @@
   text-transform: uppercase;
 }
 
-.tone_good { color: #00ff88; }
+.tone_good { color: #ffb020; }
 .tone_mid { color: #ffd166; }
 .tone_bad { color: #ff6b6b; }
 
@@ -174,7 +239,7 @@
   border-radius: 999px;
 }
 
-.fill_good { background: #00ff88; }
+.fill_good { background: #ffb020; }
 .fill_mid { background: #ffd166; }
 .fill_bad { background: #ff6b6b; }
 

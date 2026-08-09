@@ -17,6 +17,8 @@ export default defineConfig({
         scan: resolve(__dirname, 'scan.html'),
         about: resolve(__dirname, 'about.html'),
         notFound: resolve(__dirname, '404.html'),
+        blogCaseStudy: resolve(__dirname, 'blog/ai-visibility-real-shopify-stores.html'),
+        blogThemeVsApps: resolve(__dirname, 'blog/shopify-theme-vs-apps-javascript-ai.html'),
       },
     },
   },

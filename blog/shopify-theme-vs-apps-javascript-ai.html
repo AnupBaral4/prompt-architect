@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Does Your Shopify Store Have a JavaScript Problem for AI Crawlers? — Prompt Architect</title>
+    <meta name="description" content="Most Shopify themes are server-rendered and fine for AI crawlers. The real risk is specific apps injecting content client-side. Here's how to tell the difference.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.promptsarchitect.com/blog/shopify-theme-vs-apps-javascript-ai" />
+
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Prompt Architect">
+    <meta property="og:title" content="Does your Shopify store actually have a JavaScript problem for AI crawlers?">
+    <meta property="og:description" content="Probably not your theme. Possibly one of your apps. Here's the difference.">
+    <meta property="og:url" content="https://www.promptsarchitect.com/blog/shopify-theme-vs-apps-javascript-ai">
+    <meta property="og:image" content="https://www.promptsarchitect.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Does your Shopify store actually have a JavaScript problem for AI crawlers?">
+    <meta name="twitter:image" content="https://www.promptsarchitect.com/og-image.png">
+    <meta name="theme-color" content="#0b0f19">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Does your Shopify store actually have a JavaScript problem for AI crawlers?",
+      "description": "Most Shopify themes are server-rendered and fine for AI crawlers. The real risk is specific apps injecting content client-side.",
+      "author": { "@type": "Organization", "name": "Prompt Architect" },
+      "publisher": { "@type": "Organization", "name": "Prompt Architect", "logo": { "@type": "ImageObject", "url": "https://www.promptsarchitect.com/og-image.png" } },
+      "mainEntityOfPage": "https://www.promptsarchitect.com/blog/shopify-theme-vs-apps-javascript-ai"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WY34XWK7V2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-WY34XWK7V2');
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <noscript>
+        <div style="font-family: sans-serif; background:#0b0f19; color:#f4f6fb; max-width:680px; margin:0 auto; padding:60px 24px; line-height:1.7;">
+            <div style="color:#ffb020; letter-spacing:0.2em; text-transform:uppercase; font-size:14px; margin-bottom:24px; text-align:center;">Prompt Architect</div>
+            <h1 style="font-size:28px; margin-bottom:20px; text-align:center;">Does your Shopify store actually have a JavaScript problem for AI crawlers?</h1>
+            <p style="color:#ccc; margin-bottom:20px;">Most Shopify stores run on Liquid, which renders server-side — your content is already in the HTML before any JavaScript runs. Even Hydrogen, Shopify's headless framework, ships server-side rendering by default. So most Shopify themes are fine at the theme level.</p>
+            <p style="color:#ccc; margin-bottom:20px;">The real risk is specific apps that inject content client-side instead of having Shopify render it up front: review widgets, dynamic pricing apps, and personalization sections are common culprits.</p>
+            <p style="color:#ccc; margin-bottom:20px;">Check your own product pages by viewing raw source and searching for text you know is on the page. If it's missing, an app is likely injecting it client-side.</p>
+            <a href="/scan" style="color:#ffb020;">Check your own store free →</a>
+        </div>
+    </noscript>
+
+    <script type="module" src="/src/entries/theme-vs-apps.jsx"></script>
+</body>
+</html>
